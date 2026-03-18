@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | N-Tech Energy Solutions</title>
+    <meta name="description" content="Get in touch with N-Tech Energy Solutions. We're here to answer your questions about solar in North Texas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+
+        :root {
+            --primary-green: #2D5016;
+            --accent-green: #5FB449;
+            --deep-navy: #1A2332;
+            --soft-cream: #FFF8F0;
+            --light-sand: #F5F1E8;
+            --text-dark: #2C2C2C;
+            --text-gray: #5A5A5A;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; color: var(--text-dark); background: var(--soft-cream); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Archivo', sans-serif; font-weight: 900; line-height: 1.1; }
+        header { background: var(--deep-navy); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        nav { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 1.4rem; color: white; text-decoration: none; }
+        .logo-icon { width: 45px; height: 45px; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .logo-icon img { height: 45px; width: auto; }
+        .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-green); }
+        .cta-button { background: #52B788; color: #FFFFFF !important; padding: 0.75rem 1.25rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: transform 0.3s, box-shadow 0.3s; white-space: nowrap; }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(82,183,136,0.4); background: #74C69D; }
+        .btn-primary { background: #52B788; color: #FFFFFF; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: transform 0.3s, box-shadow 0.3s; display: inline-block; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(82,183,136,0.5); background: #74C69D; }
+        .btn-secondary { background: transparent; color: white; padding: 1rem 2rem; border: 2px solid white; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: background 0.3s, transform 0.3s; display: inline-block; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+        .btn-dark { background: var(--deep-navy); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.3s, box-shadow 0.3s; display: inline-block; }
+        .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+        .page-hero { background: linear-gradient(135deg, var(--primary-green) 0%, var(--deep-navy) 100%); color: white; padding: 4rem 2rem; text-align: center; }
+        .page-hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .page-hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.9; }
+        .section-header { max-width: 800px; margin: 0 auto 4rem; text-align: center; }
+        .section-header h2 { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 1rem; }
+        .section-header p { font-size: 1.2rem; color: var(--text-gray); }
+        footer { background: var(--deep-navy); color: white; padding: 3rem 2rem 1.5rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; margin-bottom: 2rem; }
+        .footer-section h4 { margin-bottom: 1rem; color: var(--accent-green); font-size: 1rem; }
+        .footer-section p { color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.6rem; font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+        .footer-section a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--accent-green); }
+        .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { .nav-links { display: none; } .page-hero h1 { font-size: 2rem; } }
+
+        .contact-section { padding: 5rem 2rem; }
+        .contact-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+        .contact-info h2 { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 1rem; }
+        .contact-info p { color: var(--text-gray); font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.8; }
+        .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+        .contact-detail-icon { width: 44px; height: 44px; background: var(--light-sand); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+        .contact-detail-text h4 { font-size: 0.85rem; font-weight: 700; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.25rem; }
+        .contact-detail-text a, .contact-detail-text p { color: var(--text-dark); font-size: 1rem; font-weight: 500; text-decoration: none; }
+        .contact-detail-text a:hover { color: var(--accent-green); }
+        .consultation-card { background: var(--primary-green); color: white; padding: 2rem; border-radius: 16px; margin-top: 2rem; }
+        .consultation-card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
+        .consultation-card p { opacity: 0.9; font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.6; }
+        .contact-form-card { background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 8px 40px rgba(0,0,0,0.08); border: 1px solid var(--light-sand); }
+        .contact-form-card h3 { font-size: 1.8rem; color: var(--primary-green); margin-bottom: 0.5rem; }
+        .contact-form-card > p { color: var(--text-gray); margin-bottom: 2rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark); font-size: 0.9rem; }
+        input, select, textarea { width: 100%; padding: 0.9rem 1rem; border: 2px solid var(--light-sand); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 1rem; transition: border-color 0.3s; background: var(--soft-cream); color: var(--text-dark); }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent-green); background: white; }
+        textarea { min-height: 130px; resize: vertical; }
+        .btn-submit { background: var(--accent-green); color: white; padding: 1rem 2rem; border: none; border-radius: 10px; font-weight: 700; font-size: 1.1rem; width: 100%; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; font-family: 'Archivo', sans-serif; }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(82,183,136,0.4); background: #74C69D; }
+        .privacy-note { text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--text-gray); }
+        @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><img src="logo.JPG" alt="N-Tech Energy Solutions"></div>
+                <span>N-Tech Energy Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="service-area.html">Service Area</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="https://tally.so/r/3jdYeQ" class="cta-button" target="_blank">Free Energy Consultation</a>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <h1>Get in Touch</h1>
+        <p>Have a question? We're here to help. Reach out and we'll get back to you within 1 business day.</p>
+    </section>
+
+    <section class="contact-section">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>We'd Love to Hear From You</h2>
+                <p>Whether you have a question about solar, want to know if we serve your area, or just want to say hi — our team is ready to help.</p>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">📧</div>
+                    <div class="contact-detail-text">
+                        <h4>Email</h4>
+                        <a href="mailto:customerexperience@n-tech-es.com">customerexperience@n-tech-es.com</a>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">📞</div>
+                    <div class="contact-detail-text">
+                        <h4>Phone</h4>
+                        <a href="tel:2142679372">(214) 267-9372</a>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">🕐</div>
+                    <div class="contact-detail-text">
+                        <h4>Hours</h4>
+                        <p>Mon–Fri 8am–7pm · Sat 9am–4pm</p>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">📍</div>
+                    <div class="contact-detail-text">
+                        <h4>Service Area</h4>
+                        <p>Wise County, Parker County &amp; surrounding North Texas</p>
+                    </div>
+                </div>
+                <div class="consultation-card">
+                    <h3>Ready to go solar?</h3>
+                    <p>Skip the contact form and go straight to scheduling your free energy consultation. Takes less than 2 minutes.</p>
+                    <a href="https://tally.so/r/3jdYeQ" class="btn-primary" target="_blank" style="font-size:0.95rem;padding:0.75rem 1.5rem;">Free Energy Consultation →</a>
+                </div>
+            </div>
+            <div class="contact-form-card">
+                <h3>Send Us a Message</h3>
+                <p>We'll get back to you within 1 business day.</p>
+                <form action="https://formsubmit.co/customerexperience@n-tech-es.com" method="POST">
+                    <input type="hidden" name="_subject" value="New Contact Message — N-Tech Website">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://ntech-website.netlify.app/contact.html">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name *</label>
+                            <input type="text" id="first-name" name="first_name" required placeholder="John">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name *</label>
+                            <input type="text" id="last-name" name="last_name" required placeholder="Smith">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(940) 555-1234">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">What's this about?</label>
+                        <select id="subject" name="subject">
+                            <option value="">Select a topic...</option>
+                            <option value="solar-question">General solar question</option>
+                            <option value="service-area">Service area inquiry</option>
+                            <option value="pricing">Pricing question</option>
+                            <option value="existing-customer">Existing customer support</option>
+                            <option value="partnership">Partnership inquiry</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required placeholder="Tell us how we can help..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                    <p class="privacy-note">We respect your privacy. Your information will never be sold or shared.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>N-Tech Energy Solutions LLC</h4>
+                <p>Making solar simple and affordable for North Texas homeowners. Solutions Designed for the Texas Sun.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="founding-offer.html">Founding Offer</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Service Areas</h4>
+                <ul>
+                    <li>Wise County, TX</li>
+                    <li>Parker County, TX</li>
+                    <li>Decatur &amp; Bridgeport</li>
+                    <li>Surrounding Communities</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:customerexperience@n-tech-es.com">customerexperience@n-tech-es.com</a></li>
+                    <li><a href="tel:2142679372">(214) 267-9372</a></li>
+                    <li>Mon-Fri 8am-7pm</li>
+                    <li>Saturday 9am-4pm</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 N-Tech Energy Solutions LLC. All rights reserved. | Licensed Texas Solar Installer</p>
+        </div>
+    </footer>
+    <script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }});
+    }, {threshold:0.1});
+    document.querySelectorAll('.feature-card,.pricing-card,.step,.coverage-card,.team-card,.timeline-step').forEach(el => {
+        el.style.opacity='0'; el.style.transform='translateY(30px)'; el.style.transition='opacity 0.6s ease, transform 0.6s ease'; observer.observe(el);
+    });
+    const cur = window.location.pathname.split('/').pop()||'index.html';
+    document.querySelectorAll('.nav-links a').forEach(a => { if(a.getAttribute('href')===cur) a.classList.add('active'); });
+    document.body.style.opacity='0'; document.body.style.transition='opacity 0.3s ease';
+    setTimeout(()=>{document.body.style.opacity='1';},50);
+    </script>
+</body>
+</html>
