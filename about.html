@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | N-Tech Energy Solutions</title>
+    <meta name="description" content="Learn about N-Tech Energy Solutions — a Texas-based solar company built on transparency, local partnerships, and making solar accessible for North Texas homeowners.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+
+        :root {
+            --primary-green: #2D5016;
+            --accent-green: #5FB449;
+            --deep-navy: #1A2332;
+            --soft-cream: #FFF8F0;
+            --light-sand: #F5F1E8;
+            --text-dark: #2C2C2C;
+            --text-gray: #5A5A5A;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; color: var(--text-dark); background: var(--soft-cream); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Archivo', sans-serif; font-weight: 900; line-height: 1.1; }
+        header { background: var(--deep-navy); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        nav { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 1.4rem; color: white; text-decoration: none; }
+        .logo-icon { width: 45px; height: 45px; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .logo-icon img { height: 45px; width: auto; }
+        .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-green); }
+        .cta-button { background: #52B788; color: #FFFFFF !important; padding: 0.75rem 1.25rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: transform 0.3s, box-shadow 0.3s; white-space: nowrap; }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(82,183,136,0.4); background: #74C69D; }
+        .btn-primary { background: #52B788; color: #FFFFFF; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: transform 0.3s, box-shadow 0.3s; display: inline-block; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(82,183,136,0.5); background: #74C69D; }
+        .btn-secondary { background: transparent; color: white; padding: 1rem 2rem; border: 2px solid white; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: background 0.3s, transform 0.3s; display: inline-block; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+        .btn-dark { background: var(--deep-navy); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.3s, box-shadow 0.3s; display: inline-block; }
+        .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+        .page-hero { background: linear-gradient(135deg, var(--primary-green) 0%, var(--deep-navy) 100%); color: white; padding: 4rem 2rem; text-align: center; }
+        .page-hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .page-hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.9; }
+        .section-header { max-width: 800px; margin: 0 auto 4rem; text-align: center; }
+        .section-header h2 { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 1rem; }
+        .section-header p { font-size: 1.2rem; color: var(--text-gray); }
+        footer { background: var(--deep-navy); color: white; padding: 3rem 2rem 1.5rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; margin-bottom: 2rem; }
+        .footer-section h4 { margin-bottom: 1rem; color: var(--accent-green); font-size: 1rem; }
+        .footer-section p { color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.6rem; font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+        .footer-section a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--accent-green); }
+        .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { .nav-links { display: none; } .page-hero h1 { font-size: 2rem; } }
+
+        .about-hero { background: linear-gradient(135deg, var(--primary-green) 0%, var(--deep-navy) 100%); color: white; padding: 5rem 2rem; text-align: center; }
+        .about-hero h1 { font-size: 3.5rem; margin-bottom: 1rem; animation: fadeInUp 0.8s ease-out; }
+        .about-hero p { font-size: 1.3rem; max-width: 700px; margin: 0 auto; opacity: 0.9; animation: fadeInUp 0.8s ease-out 0.2s backwards; }
+        .mission { padding: 6rem 2rem; background: white; }
+        .mission-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+        .mission-text h2 { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 1.5rem; }
+        .mission-text p { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 1.5rem; line-height: 1.8; }
+        .mission-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .mission-stat { background: var(--light-sand); padding: 1.5rem; border-radius: 12px; text-align: center; border-left: 4px solid var(--accent-green); }
+        .mission-stat-num { font-size: 2rem; font-weight: 900; color: var(--accent-green); display: block; font-family: 'Archivo', sans-serif; }
+        .mission-stat-label { font-size: 0.85rem; color: var(--text-gray); margin-top: 0.25rem; }
+        .values { padding: 6rem 2rem; background: var(--light-sand); }
+        .values-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .value-card { background: white; padding: 2.5rem; border-radius: 16px; border: 3px solid transparent; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; }
+        .value-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(45,80,22,0.15); border-color: var(--accent-green); }
+        .value-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .value-card h3 { font-size: 1.4rem; color: var(--primary-green); margin-bottom: 0.75rem; }
+        .value-card p { color: var(--text-gray); line-height: 1.7; }
+        .story { padding: 6rem 2rem; background: white; }
+        .story-content { max-width: 800px; margin: 0 auto; }
+        .story-content h2 { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 2rem; text-align: center; }
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--accent-green), var(--primary-green)); border-radius: 2px; }
+        .timeline-step { position: relative; padding: 0 0 2.5rem 2rem; }
+        .timeline-step::before { content: ''; position: absolute; left: -2.45rem; top: 0.25rem; width: 14px; height: 14px; background: var(--accent-green); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--accent-green); }
+        .timeline-step h3 { font-size: 1.2rem; color: var(--primary-green); margin-bottom: 0.5rem; }
+        .timeline-step p { color: var(--text-gray); line-height: 1.7; }
+        .timeline-year { display: inline-block; background: var(--accent-green); color: white; font-size: 0.75rem; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-bottom: 0.5rem; }
+        .model { padding: 6rem 2rem; background: var(--primary-green); color: white; }
+        .model-content { max-width: 1000px; margin: 0 auto; text-align: center; }
+        .model-content h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .model-content p { font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto 3rem; line-height: 1.8; }
+        .model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+        .model-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); }
+        .model-card h3 { font-size: 1.2rem; margin-bottom: 0.75rem; color: #74C69D; }
+        .model-card p { font-size: 0.9rem; opacity: 0.85; line-height: 1.7; }
+        .cta-about { padding: 5rem 2rem; background: linear-gradient(135deg, var(--deep-navy), var(--primary-green)); color: white; text-align: center; }
+        .cta-about h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .cta-about p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; }
+        .cta-about-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        @media (max-width: 768px) { .mission-grid { grid-template-columns: 1fr; gap: 3rem; } .model-grid { grid-template-columns: 1fr; } .about-hero h1 { font-size: 2.5rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><img src="logo.JPG" alt="N-Tech Energy Solutions"></div>
+                <span>N-Tech Energy Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="service-area.html">Service Area</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="https://tally.so/r/3jdYeQ" class="cta-button" target="_blank">Free Energy Consultation</a>
+        </nav>
+    </header>
+
+    <section class="about-hero">
+        <h1>Built for Texas Homeowners</h1>
+        <p>We started N-Tech because going solar shouldn't require a finance degree or a tolerance for pushy salespeople.</p>
+    </section>
+
+    <section class="mission">
+        <div class="mission-grid">
+            <div class="mission-text">
+                <h2>Our Mission</h2>
+                <p>N-Tech Energy Solutions exists to make residential solar simple, affordable, and transparent for homeowners across North Texas. No gimmicks. No pressure. Just honest energy solutions designed for the Texas sun.</p>
+                <p>We operate on a fully remote, asset-light model — meaning we keep our overhead low so we can pass the savings directly to you. We handle everything from design and coordination to customer experience, while partnering with the best licensed local installers to deliver your project.</p>
+                <a href="https://tally.so/r/3jdYeQ" class="btn-primary" target="_blank">Start Your Free Consultation</a>
+            </div>
+            <div class="mission-stats">
+                <div class="mission-stat">
+                    <span class="mission-stat-num">$2.40</span>
+                    <span class="mission-stat-label">Starting price per watt</span>
+                </div>
+                <div class="mission-stat">
+                    <span class="mission-stat-num">100%</span>
+                    <span class="mission-stat-label">Online process</span>
+                </div>
+                <div class="mission-stat">
+                    <span class="mission-stat-num">40mi</span>
+                    <span class="mission-stat-label">Service radius from Chico TX</span>
+                </div>
+                <div class="mission-stat">
+                    <span class="mission-stat-num">25yr</span>
+                    <span class="mission-stat-label">Equipment warranty</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values">
+        <div class="section-header">
+            <h2>What We Stand For</h2>
+            <p>Five principles we refuse to compromise on.</p>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">💡</div>
+                <h3>Transparency First</h3>
+                <p>Our plan-based pricing means no surprise quotes, no hidden fees, and no wondering if you got a fair deal. What you see is exactly what you pay.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Local Partnerships</h3>
+                <p>We work exclusively with licensed Texas electrical contractors who know North Texas homes, weather, and utility requirements inside and out.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🚫</div>
+                <h3>No Pressure Sales</h3>
+                <p>No commissioned sales reps. No door knockers. No follow-up harassment. You decide on your timeline and we respect that completely.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">📱</div>
+                <h3>Remote-First Operations</h3>
+                <p>Everything happens online — consultation, design, coordination, and support. We built a lean operation so you get better value for your investment.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">☀️</div>
+                <h3>Texas-Specific Expertise</h3>
+                <p>We understand ERCOT, Texas utility incentives, local permitting, and North Texas roof types. This isn't a generic solar company — we're built for here.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="story">
+        <div class="story-content">
+            <h2>Our Story</h2>
+            <div class="timeline">
+                <div class="timeline-step">
+                    <span class="timeline-year">2025</span>
+                    <h3>The idea takes shape</h3>
+                    <p>Nathan Nwosu, an electrical engineer and Texas resident, noticed a gap in the North Texas solar market — homeowners were either getting oversold by aggressive companies or overwhelmed by confusing options. The vision for N-Tech was born: a remote-first solar company that puts the customer first.</p>
+                </div>
+                <div class="timeline-step">
+                    <span class="timeline-year">Early 2026</span>
+                    <h3>N-Tech Energy Solutions LLC is formed</h3>
+                    <p>The company is officially registered as a Texas LLC with a clear mission — bring transparent, plan-based solar to Wise County, Parker County, and surrounding North Texas communities.</p>
+                </div>
+                <div class="timeline-step">
+                    <span class="timeline-year">February 2026</span>
+                    <h3>First installer partnership signed</h3>
+                    <p>N-Tech partners with Will Power Electric LLC — a licensed Texas electrical contractor based in the Chico TX area — to begin delivering projects across a 40-mile service radius.</p>
+                </div>
+                <div class="timeline-step">
+                    <span class="timeline-year">Now</span>
+                    <h3>Actively serving North Texas</h3>
+                    <p>N-Tech is open for business and actively working with homeowners across Wise and Parker County. The founding customer program is live — and the first 25 customers get exclusive pricing and perks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="model">
+        <div class="model-content">
+            <h2>How Our Model Works</h2>
+            <p>Think Mint Mobile — but for solar. We don't own trucks or employ installers. We're the sales, design, and experience layer that makes everything seamless for you.</p>
+            <div class="model-grid">
+                <div class="model-card">
+                    <h3>We Handle</h3>
+                    <p>Lead qualification, system design, proposal, customer communication, permit coordination, project management, and post-install support.</p>
+                </div>
+                <div class="model-card">
+                    <h3>Partners Handle</h3>
+                    <p>Physical installation, electrical work, and on-site quality assurance — performed by licensed Texas contractors who stand behind their work.</p>
+                </div>
+                <div class="model-card">
+                    <h3>You Get</h3>
+                    <p>A lower price, a smoother experience, and a single point of contact from your first consultation all the way to your system going live.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-about">
+        <h2>Ready to Work With Us?</h2>
+        <p>Start with a free, no-pressure energy consultation and see exactly what solar looks like for your home.</p>
+        <div class="cta-about-btns">
+            <a href="https://tally.so/r/3jdYeQ" class="btn-primary" target="_blank">Free Energy Consultation</a>
+            <a href="founding-offer.html" class="btn-secondary">See Founding Offer</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>N-Tech Energy Solutions LLC</h4>
+                <p>Making solar simple and affordable for North Texas homeowners. Solutions Designed for the Texas Sun.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="founding-offer.html">Founding Offer</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Service Areas</h4>
+                <ul>
+                    <li>Wise County, TX</li>
+                    <li>Parker County, TX</li>
+                    <li>Decatur &amp; Bridgeport</li>
+                    <li>Surrounding Communities</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:customerexperience@n-tech-es.com">customerexperience@n-tech-es.com</a></li>
+                    <li><a href="tel:2142679372">(214) 267-9372</a></li>
+                    <li>Mon-Fri 8am-7pm</li>
+                    <li>Saturday 9am-4pm</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 N-Tech Energy Solutions LLC. All rights reserved. | Licensed Texas Solar Installer</p>
+        </div>
+    </footer>
+    <script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }});
+    }, {threshold:0.1});
+    document.querySelectorAll('.feature-card,.pricing-card,.step,.coverage-card,.team-card,.timeline-step').forEach(el => {
+        el.style.opacity='0'; el.style.transform='translateY(30px)'; el.style.transition='opacity 0.6s ease, transform 0.6s ease'; observer.observe(el);
+    });
+    const cur = window.location.pathname.split('/').pop()||'index.html';
+    document.querySelectorAll('.nav-links a').forEach(a => { if(a.getAttribute('href')===cur) a.classList.add('active'); });
+    document.body.style.opacity='0'; document.body.style.transition='opacity 0.3s ease';
+    setTimeout(()=>{document.body.style.opacity='1';},50);
+    </script>
+</body>
+</html>
