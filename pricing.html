@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Pricing | Transparent Plans from $2.40/Watt | N-Tech Energy Solutions</title>
+    <meta name="description" content="Choose from 4 simple pricing tiers: Starter ($2.40/W), Standard ($2.50/W), Premium ($2.70/W), Power+ ($2.90/W). All-inclusive solar for North Texas homes.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #2D6A4F;
+            --accent-green: #52B788;
+            --bright-green: #74C69D;
+            --light-green: #B7E4C7;
+            --dark-black: #0A0A0A;
+            --soft-black: #1B1B1B;
+            --pure-white: #FFFFFF;
+            --off-white: #F8F9FA;
+            --text-dark: #0A0A0A;
+            --text-gray: #6C757D;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--pure-white);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Archivo', sans-serif;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+        
+        /* Header */
+        header {
+            background: var(--dark-black);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Archivo', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent-green), var(--primary-green));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-green);
+        }
+        
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--pure-white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(82, 183, 136, 0.4);
+        }
+        
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-black) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section h2 {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .pricing-card {
+            background: var(--pure-white);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 3px solid var(--off-white);
+            position: relative;
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--accent-green);
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(82, 183, 136, 0.2);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(45, 106, 79, 0.15);
+        }
+        
+        .pricing-badge {
+            background: var(--accent-green);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-green);
+            margin: 1rem 0;
+        }
+        
+        .price-unit {
+            font-size: 1rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--off-white);
+            color: var(--text-gray);
+        }
+        
+        .pricing-features li::before {
+            content: '✓ ';
+            color: var(--accent-green);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--pure-white);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(82, 183, 136, 0.5);
+            background: var(--bright-green);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-dark);
+            padding: 1rem 2rem;
+            border: 2px solid var(--accent-green);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: background 0.3s, transform 0.3s;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--light-green);
+            transform: translateY(-3px);
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            background: var(--off-white);
+            border-radius: 16px;
+            padding: 2rem;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid white;
+        }
+        
+        th {
+            background: var(--primary-green);
+            color: white;
+            font-weight: 700;
+        }
+        
+        td {
+            background: var(--pure-white);
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .check {
+            color: var(--accent-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* FAQ Section */
+        .faq-item {
+            background: var(--off-white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-item h3 {
+            color: var(--primary-green);
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+        
+        .faq-item p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+        
+        /* CTA Section */
+        .cta-box {
+            background: linear-gradient(135deg, var(--dark-black), var(--primary-green));
+            color: white;
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .cta-box h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-box p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-black);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--accent-green);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent-green);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="https://tally.so/r/3jdYeQ" class="logo">
+                <div class="logo-icon"><img src="logo.jpg" alt="N-Tech Energy Solutions" style="height:45px;width:auto;"></div>
+                <span>N-Tech Energy Solutions</span>
+            </a>
+            <ul class="nav-links">
+              <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/how-it-works.html">How It Works</a></li>
+                <li><a href="/service-area.html">Service Area</a></li>
+                <li><a href="/get-quote.html">Contact</a></li>
+            </ul>
+            <a href="https://tally.so/r/3jdYeQ" class="cta-button">Get Free Quote</a>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <h1>Transparent Solar Pricing for North Texas</h1>
+        <p>No hidden fees. No surprise costs. Just honest pricing that makes solar simple and affordable.</p>
+    </section>
+
+    <div class="container">
+        <!-- Pricing Plans -->
+        <section class="section">
+            <h2>Choose Your Plan</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$2.40<span class="price-unit">/watt</span></div>
+                    <ul class="pricing-features">
+                        <li>Ideal for 5-7kW systems</li>
+                        <li>Standard efficiency panels (19-20%)</li>
+                        <li>Licensed professional installation</li>
+                        <li>5-year workmanship warranty</li>
+                        <li>25-year equipment warranty</li>
+                        <li>All permits & inspections included</li>
+                        <li>Basic monitoring system</li>
+                        <li>Utility interconnection handled</li>
+                    </ul>
+                    <p style="margin: 1.5rem 0; color: var(--text-gray);">
+                        <strong>Example:</strong> 6kW system = $14,400<br>
+                        After 30% tax credit: <strong>$10,080</strong>
+                    </p>
+                    <a href="https://tally.so/r/3jdYeQ" class="btn-secondary">Get Quote</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <h3>Standard</h3>
+                    <div class="price">$2.50<span class="price-unit">/watt</span></div>
+                    <ul class="pricing-features">
+                        <li>Ideal for 8-10kW systems</li>
+                        <li>High-efficiency panels (21-22%)</li>
+                        <li>Licensed professional installation</li>
+                        <li>5-year workmanship warranty</li>
+                        <li>25-year equipment warranty</li>
+                        <li>All permits & inspections included</li>
+                        <li>Premium monitoring system</li>
+                        <li>Utility interconnection handled</li>
+                    </ul>
+                    <p style="margin: 1.5rem 0; color: var(--text-gray);">
+                        <strong>Example:</strong> 10kW system = $25,000<br>
+                        After 30% tax credit: <strong>$17,500</strong>
+                    </p>
+                    <a href="https://tally.so/r/3jdYeQ" class="btn-primary">Get Quote</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Premium</h3>
+                    <div class="price">$2.70<span class="price-unit">/watt</span></div>
+                    <ul class="pricing-features">
+                        <li>Ideal for 11-13kW systems</li>
+                        <li>Premium panels (22%+ efficiency)</li>
+                        <li>Licensed professional installation</li>
+                        <li>10-year workmanship warranty</li>
+                        <li>30-year equipment warranty</li>
+                        <li>All permits & inspections included</li>
+                        <li>Advanced monitoring & support</li>
+                        <li>Priority customer service</li>
+                    </ul>
+                    <p style="margin: 1.5rem 0; color: var(--text-gray);">
+                        <strong>Example:</strong> 12kW system = $32,400<br>
+                        After 30% tax credit: <strong>$22,680</strong>
+                    </p>
+                    <a href="https://tally.so/r/3jdYeQ" class="btn-secondary">Get Quote</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Power+</h3>
+                    <div class="price">$2.90<span class="price-unit">/watt</span></div>
+                    <ul class="pricing-features">
+                        <li>Ideal for 14kW+ systems</li>
+                        <li>Top-tier premium equipment</li>
+                        <li>Licensed professional installation</li>
+                        <li>15-year workmanship warranty</li>
+                        <li>30-year equipment warranty</li>
+                        <li>All permits & inspections included</li>
+                        <li>Premium monitoring & analytics</li>
+                        <li>Dedicated account manager</li>
+                    </ul>
+                    <p style="margin: 1.5rem 0; color: var(--text-gray);">
+                        <strong>Example:</strong> 15kW system = $43,500<br>
+                        After 30% tax credit: <strong>$30,450</strong>
+                    </p>
+                    <a href="https://tally.so/r/3jdYeQ" class="btn-secondary">Get Quote</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- What's Included -->
+        <section class="section">
+            <h2>Everything Included in Every Plan</h2>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>What's Included</th>
+                            <th>Starter</th>
+                            <th>Standard</th>
+                            <th>Premium</th>
+                            <th>Power+</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Solar Panels</td>
+                            <td><span class="check">✓</span> Standard</td>
+                            <td><span class="check">✓</span> High-Eff</td>
+                            <td><span class="check">✓</span> Premium</td>
+                            <td><span class="check">✓</span> Top-Tier</td>
+                        </tr>
+                        <tr>
+                            <td>Inverter/MLPE</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Racking System</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Licensed Installation</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>All Permits</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Engineering Stamp</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Utility Interconnection</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Monitoring System</td>
+                            <td><span class="check">✓</span> Basic</td>
+                            <td><span class="check">✓</span> Premium</td>
+                            <td><span class="check">✓</span> Advanced</td>
+                            <td><span class="check">✓</span> Premium+</td>
+                        </tr>
+                        <tr>
+                            <td>Workmanship Warranty</td>
+                            <td>5 years</td>
+                            <td>5 years</td>
+                            <td>10 years</td>
+                            <td>15 years</td>
+                        </tr>
+                        <tr>
+                            <td>Equipment Warranty</td>
+                            <td>25 years</td>
+                            <td>25 years</td>
+                            <td>30 years</td>
+                            <td>30 years</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section">
+            <h2>Pricing Questions Answered</h2>
+            
+            <div class="faq-item">
+                <h3>Are there any hidden fees?</h3>
+                <p>No. Our per-watt pricing includes everything: equipment, installation, permits, engineering, utility paperwork, and monitoring. The only potential additional cost would be if your site requires unexpected structural work, which we'd identify upfront.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>How does the 30% federal tax credit work?</h3>
+                <p>The federal solar tax credit (ITC) gives you 30% back on your total system cost. For example, a $25,000 system qualifies for a $7,500 tax credit, reducing your net cost to $17,500. This is claimed when you file your federal taxes.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Do you offer financing?</h3>
+                <p>Yes! We partner with leading solar financing companies to offer options including 0% APR for qualified buyers, 12-25 year terms, and no prepayment penalties. We'll help you find the best option for your situation.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>What size system do I need?</h3>
+                <p>Most North Texas homes need between 8-12kW. We'll analyze your actual electric bills and roof space to recommend the right size. Get a free personalized quote to see your exact recommendation.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>What's the difference between the plans?</h3>
+                <p>Higher tiers include more efficient panels (generating more power in less space), longer warranties, and better monitoring systems. All plans use quality equipment and professional installation - you're choosing the level of efficiency and coverage that fits your needs.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Can I get a custom quote?</h3>
+                <p>Absolutely! Every home is different. Our pricing tiers are starting points - we'll create a custom design and quote specific to your roof, energy usage, and goals.</p>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="cta-box">
+            <h2>Ready to See Your Exact Price?</h2>
+            <p>Get a personalized quote in under 5 minutes. No pressure, no sales calls - just honest numbers.</p>
+            <a href="https://tally.so/r/3jdYeQ" class="btn-primary" style="max-width: 400px; margin: 0 auto;">Get Your Free Quote Now</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>N-Tech Energy Solutions LLC</h4>
+                <p>Making solar simple and affordable for North Texas homeowners.</p>
+                <p style="margin-top: 1rem;">Solutions Designed for the Texas Sun</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/how-it-works.html">How It Works</a></li>
+                <li><a href="/service-area.html">Service Area</a></li>
+                <li><a href="/get-quote.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Service Areas</h4>
+                <ul>
+                    <li>Wise County, TX</li>
+                    <li>Parker County, TX</li>
+                    <li>Decatur & Bridgeport</li>
+                    <li>Surrounding Communities</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li>Email: customerexperience@n-tech-es.com</li>
+                    <li>Phone: (214) 267-9372</li>
+                    <li>Hours: Mon-Fri 8am-7pm</li>
+                    <li>Saturday 9am-4pm</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 N-Tech Energy Solutions LLC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Your Free Solar Quote | N-Tech Energy Solutions</title>
+    <meta name="description" content="Get a free solar quote for your North Texas home. Instant savings estimate. No pressure, no sales calls. See how much you can save with solar today.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #2D6A4F;
+            --accent-green: #52B788;
+            --bright-green: #74C69D;
+            --light-green: #B7E4C7;
+            --dark-black: #0A0A0A;
+            --soft-black: #1B1B1B;
+            --pure-white: #FFFFFF;
+            --off-white: #F8F9FA;
+            --text-dark: #0A0A0A;
+            --text-gray: #6C757D;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--off-white);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Archivo', sans-serif;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+        
+        /* Header */
+        header {
+            background: var(--dark-black);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Archivo', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent-green), var(--primary-green));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-green);
+        }
+        
+        /* Form Section */
+        .form-container {
+            max-width: 600px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .form-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+        
+        .form-header p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+        }
+        
+        .quote-form {
+            background: var(--pure-white);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--off-white);
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .btn-submit {
+            background: var(--accent-green);
+            color: var(--pure-white);
+            padding: 1.25rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            width: 100%;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-family: 'Archivo', sans-serif;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(82, 183, 136, 0.5);
+            background: var(--bright-green);
+        }
+        
+        .privacy-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: var(--off-white);
+            border-radius: 12px;
+        }
+        
+        .benefit {
+            text-align: center;
+        }
+        
+        .benefit-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .benefit-text {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-black);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--accent-green);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent-green);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .form-header h1 {
+                font-size: 2rem;
+            }
+            
+            .quote-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="https://n-tech-es.com" class="logo">
+                <div class="logo-icon">⚡</div>
+                <span>N-Tech Energy</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="https://n-tech-es.com/pricing">Pricing</a></li>
+                <li><a href="https://n-tech-es.com/how-it-works">How It Works</a></li>
+                <li><a href="https://n-tech-es.com/service-area">Service Area</a></li>
+                <li><a href="https://n-tech-es.com/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="form-container">
+        <div class="form-header">
+            <h1>Get Your Free Solar Quote</h1>
+            <p>See your personalized savings estimate in under 5 minutes</p>
+        </div>
+
+        <form class="quote-form" action="https://formsubmit.co/info@n-tech-es.com" method="POST">
+            <!-- FormSubmit Configuration -->
+            <input type="hidden" name="_subject" value="New Solar Quote Request from N-Tech Website">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            
+            <div class="benefits">
+                <div class="benefit">
+                    <div class="benefit-icon">✓</div>
+                    <div class="benefit-text">No Pressure</div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">✓</div>
+                    <div class="benefit-text">No Sales Calls</div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">✓</div>
+                    <div class="benefit-text">Instant Estimate</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required placeholder="John Smith">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required placeholder="john@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required placeholder="(940) 555-1234">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Home Address *</label>
+                <input type="text" id="address" name="address" required placeholder="123 Main St, Decatur, TX 76234">
+            </div>
+
+            <div class="form-group">
+                <label for="electric-bill">Average Monthly Electric Bill *</label>
+                <select id="electric-bill" name="electric-bill" required>
+                    <option value="">Select range...</option>
+                    <option value="$100-150">$100 - $150</option>
+                    <option value="$150-200">$150 - $200</option>
+                    <option value="$200-250">$200 - $250</option>
+                    <option value="$250-300">$250 - $300</option>
+                    <option value="$300-350">$300 - $350</option>
+                    <option value="$350+">$350+</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="homeowner">Do you own your home? *</label>
+                <select id="homeowner" name="homeowner" required>
+                    <option value="">Select...</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="timeline">When are you looking to install? *</label>
+                <select id="timeline" name="timeline" required>
+                    <option value="">Select timeline...</option>
+                    <option value="asap">As soon as possible</option>
+                    <option value="1-3-months">1-3 months</option>
+                    <option value="3-6-months">3-6 months</option>
+                    <option value="just-researching">Just researching</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="questions">Questions or Comments (Optional)</label>
+                <textarea id="questions" name="questions" placeholder="Any specific questions or concerns we should address?"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Get My Free Quote</button>
+
+            <p class="privacy-note">
+                We respect your privacy. Your information will never be sold or shared. 
+                By submitting, you agree to receive solar information from N-Tech Energy Solutions.
+            </p>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>N-Tech Energy Solutions LLC</h4>
+                <p>Making solar simple and affordable for North Texas homeowners.</p>
+                <p style="margin-top: 1rem;">Solutions Designed for the Texas Sun</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="https://n-tech-es.com">Home</a></li>
+                    <li><a href="https://n-tech-es.com/pricing">Pricing</a></li>
+                    <li><a href="https://n-tech-es.com/how-it-works">How It Works</a></li>
+                    <li><a href="https://n-tech-es.com/get-quote">Get Quote</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Service Areas</h4>
+                <ul>
+                    <li>Wise County, TX</li>
+                    <li>Parker County, TX</li>
+                    <li>Decatur & Bridgeport</li>
+                    <li>Surrounding Communities</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li>Email: info@n-tech-es.com</li>
+                    <li>Phone: (940) XXX-XXXX</li>
+                    <li>Hours: Mon-Fri 8am-7pm</li>
+                    <li>Saturday 9am-4pm</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 N-Tech Energy Solutions LLC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

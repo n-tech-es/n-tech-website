@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Area | Solar Installation in Wise & Parker County TX | N-Tech Energy</title>
+    <meta name="description" content="N-Tech Energy Solutions serves Wise County and Parker County Texas including Decatur, Bridgeport, Chico, Boyd, Paradise, Springtown, Azle and surrounding areas.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #2D6A4F;
+            --accent-green: #52B788;
+            --bright-green: #74C69D;
+            --light-green: #B7E4C7;
+            --dark-black: #0A0A0A;
+            --soft-black: #1B1B1B;
+            --pure-white: #FFFFFF;
+            --off-white: #F8F9FA;
+            --text-dark: #0A0A0A;
+            --text-gray: #6C757D;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--pure-white);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Archivo', sans-serif;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+        
+        /* Header */
+        header {
+            background: var(--dark-black);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Archivo', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent-green), var(--primary-green));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-green);
+        }
+        
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--pure-white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(82, 183, 136, 0.4);
+        }
+        
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-black) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section h2 {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        /* Coverage Areas */
+        .coverage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .coverage-card {
+            background: var(--off-white);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-green);
+        }
+        
+        .coverage-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .coverage-card ul {
+            list-style: none;
+        }
+        
+        .coverage-card ul li {
+            padding: 0.5rem 0;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+        
+        .coverage-card ul li::before {
+            content: '📍 ';
+            margin-right: 0.5rem;
+        }
+        
+        /* Service Map */
+        .map-section {
+            background: var(--off-white);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .map-placeholder {
+            background: var(--pure-white);
+            border-radius: 12px;
+            padding: 4rem 2rem;
+            margin-top: 2rem;
+            border: 2px dashed var(--accent-green);
+        }
+        
+        .map-placeholder p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+        
+        /* CTA */
+        .cta-box {
+            background: linear-gradient(135deg, var(--dark-black), var(--primary-green));
+            color: white;
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .cta-box h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-box p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--pure-white);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(82, 183, 136, 0.5);
+            background: var(--bright-green);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-black);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--accent-green);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent-green);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+                <nav>
+            <a href="#" class="logo">
+                <div class="logo-icon"><img src="logo.jpg" alt="N-Tech Energy Solutions" style="height:45px;width:auto;"></div>
+                <span>N-Tech Energy Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/how-it-works.html">How It Works</a></li>
+                <li><a href="/service-area.html">Service Area</a></li>
+                <li><a href="/get-quote.html">Contact</a></li>
+            </ul>
+            <a href="https://tally.so/r/3jdYeQ" class="cta-button">Get Free Quote</a>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <h1>Proudly Serving North Texas</h1>
+        <p>Bringing affordable solar to Wise County, Parker County, and surrounding communities</p>
+    </section>
+
+    <div class="container">
+        <section class="section">
+            <h2>Our Service Area</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: var(--text-gray); max-width: 800px; margin: 0 auto 3rem;">
+                We specialize in serving homeowners within a 40-mile radius of Chico, Texas. If you're in North Texas and not sure if we serve your area, just ask!
+            </p>
+
+            <div class="coverage-grid">
+                <div class="coverage-card">
+                    <h3>Wise County (Primary)</h3>
+                    <ul>
+                        <li>Decatur (County Seat)</li>
+                        <li>Bridgeport</li>
+                        <li>Chico</li>
+                        <li>Boyd</li>
+                        <li>Alvord</li>
+                        <li>Paradise</li>
+                        <li>Rhome</li>
+                        <li>Newark</li>
+                        <li>Aurora</li>
+                        <li>New Fairview</li>
+                        <li>Runaway Bay</li>
+                        <li>Lake Bridgeport</li>
+                    </ul>
+                </div>
+
+                <div class="coverage-card">
+                    <h3>Parker County</h3>
+                    <ul>
+                        <li>Springtown</li>
+                        <li>Azle</li>
+                        <li>Poolville</li>
+                        <li>Weatherford</li>
+                    </ul>
+                </div>
+
+                <div class="coverage-card">
+                    <h3>Jack & Montague Counties</h3>
+                    <ul>
+                        <li>Jacksboro</li>
+                        <li>Perrin</li>
+                        <li>Bryson</li>
+                        <li>Bowie</li>
+                        <li>Nocona</li>
+                        <li>Montague</li>
+                        <li>Sunset</li>
+                    </ul>
+                </div>
+
+                <div class="coverage-card">
+                    <h3>Other Nearby Areas</h3>
+                    <ul>
+                        <li>Krum</li>
+                        <li>Justin</li>
+                        <li>Ponder</li>
+                        <li>Sanger</li>
+                        <li>Haslet</li>
+                        <li>Roanoke</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <h2>40-Mile Service Radius</h2>
+            <p style="color: var(--text-gray); font-size: 1.1rem;">
+                We're centrally located to serve Wise and Parker County communities efficiently
+            </p>
+            <div class="map-placeholder">
+                <p><strong>📍 Service Area Map</strong></p>
+                <p style="margin-top: 1rem;">40-mile radius centered on Chico, TX (ZIP 76431)</p>
+                <p style="margin-top: 0.5rem; font-size: 0.95rem;">Covering Wise County, Parker County, and surrounding North Texas communities</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Why We Focus on North Texas</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: var(--text-gray); max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                By focusing on Wise County and Parker County, we can provide faster service, lower costs, and better support to our local community. We know North Texas homes, North Texas weather, and North Texas utility companies inside and out.
+            </p>
+        </section>
+
+        <div class="cta-box">
+            <h2>Not Sure If We Serve Your Area?</h2>
+            <p>Get in touch! We're expanding our coverage and may be able to help.</p>
+            <a href="https://n-tech-es.com/get-quote" class="btn-primary">Request a Quote</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>N-Tech Energy Solutions LLC</h4>
+                <p>Making solar simple and affordable for North Texas homeowners.</p>
+                <p style="margin-top: 1rem;">Solutions Designed for the Texas Sun</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="https://n-tech-es.com">Home</a></li>
+                    <li><a href="https://n-tech-es.com/pricing">Pricing</a></li>
+                    <li><a href="https://n-tech-es.com/how-it-works">How It Works</a></li>
+                    <li><a href="https://n-tech-es.com/get-quote">Get Quote</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Service Areas</h4>
+                <ul>
+                    <li>Wise County, TX</li>
+                    <li>Parker County, TX</li>
+                    <li>Decatur & Bridgeport</li>
+                    <li>Surrounding Communities</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li>Email: customerexperience@n-tech-es.com</li>
+                    <li>Phone: (214) 267-9372</li>
+                    <li>Hours: Mon-Fri 8am-7pm</li>
+                    <li>Saturday 9am-4pm</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 N-Tech Energy Solutions LLC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
