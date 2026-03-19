@@ -206,16 +206,21 @@
             box-shadow: 0 8px 20px rgba(82, 183, 136, 0.3);
         }
         
-        .timeline-item:nth-child(even) .timeline-content:first-child {
+        .timeline-item:nth-child(even) .timeline-img {
             order: 3;
         }
-        
+
         .timeline-item:nth-child(even) .timeline-icon {
             order: 2;
         }
-        
-        .timeline-item:nth-child(even) .timeline-content:last-child {
+
+        .timeline-item:nth-child(even) .timeline-content {
             order: 1;
+        }
+
+        .timeline-content,
+        .timeline-img {
+            min-width: 0;
         }
         
         .empty {
