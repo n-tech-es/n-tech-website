@@ -63,7 +63,55 @@
         .footer-section a:hover { color: var(--accent-green); }
         .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 768px) { .nav-links { display: none; } .page-hero h1 { font-size: 2rem; } }
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            margin-left: 1rem;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background: inherit;
+            padding: 1rem 2rem 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav ul { list-style: none; }
+        .mobile-nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.85rem 0;
+            display: block;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: color 0.3s;
+        }
+        .mobile-nav ul li a:hover { color: var(--accent-green); }
+        .mobile-cta {
+            margin-top: 1.25rem;
+            text-align: center;
+            display: block;
+        }
+
+        @media (max-width: 768px) { .nav-links { display: none; } .nav-cta { display: none; } .hamburger { display: flex; } .page-hero h1 { font-size: 2rem; } }
 
         .about-hero { background: linear-gradient(135deg, var(--primary-green) 0%, var(--deep-navy) 100%); color: white; padding: 5rem 2rem; text-align: center; }
         .about-hero h1 { font-size: 3.5rem; margin-bottom: 1rem; animation: fadeInUp 0.8s ease-out; }
@@ -112,7 +160,7 @@
     <header>
         <nav>
             <a href="index.html" class="logo">
-                <div class="logo-icon"><img src="logo.JPG" alt="N-Tech Energy Solutions"></div>
+                <div class="logo-icon"><img src="logo.jpg" alt="N-Tech Energy Solutions"></div>
                 <span>N-Tech Energy Solutions</span>
             </a>
             <ul class="nav-links">
@@ -123,8 +171,24 @@
                 <li><a href="founding-offer.html">Founding Customer Offer</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <a href="https://tally.so/r/3jdYeQ" class="cta-button" target="_blank">Free Energy Consultation</a>
+            <a href="https://tally.so/r/3jdYeQ" class="cta-button nav-cta" target="_blank">Free Energy Consultation</a>
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
+        <div class="mobile-nav" id="mobile-nav">
+            <ul>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="service-area.html">Service Area</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="founding-offer.html">Founding Customer Offer</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="https://tally.so/r/3jdYeQ" class="cta-button mobile-cta">Free Energy Consultation</a>
+        </div>
     </header>
 
     <section class="about-hero">
@@ -290,6 +354,18 @@
         </div>
     </footer>
     <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobile-nav');
+        hamburger.addEventListener('click', function() {
+            mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('active');
+        });
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+                mobileNav.classList.remove('open');
+                hamburger.classList.remove('active');
+            }
+        });
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => { if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }});
     }, {threshold:0.1});
