@@ -81,8 +81,11 @@
         .value-card h3 { font-size: 1.4rem; color: var(--primary-green); margin-bottom: 0.75rem; }
         .value-card p { color: var(--text-gray); line-height: 1.7; }
         .story { padding: 6rem 2rem; background: white; }
-        .story-content { max-width: 800px; margin: 0 auto; }
-        .story-content h2 { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 2rem; text-align: center; }
+        .story-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 260px 1fr; gap: 4rem; align-items: start; }
+        .story-logo img { width: 100%; border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+        .story-content { }
+        .story-content h2 { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 2rem; }
+        @media (max-width: 768px) { .story-inner { grid-template-columns: 1fr; } .story-logo { display: none; } }
         .timeline { position: relative; padding-left: 2rem; }
         .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--accent-green), var(--primary-green)); border-radius: 2px; }
         .timeline-step { position: relative; padding: 0 0 2.5rem 2rem; }
@@ -188,6 +191,10 @@
     </section>
 
     <section class="story">
+        <div class="story-inner">
+        <div class="story-logo">
+            <img src="N-TECH%20ENERGY%20SOLNS.%20LLC%20LOGO.png" alt="N-Tech Energy Solutions LLC Logo">
+        </div>
         <div class="story-content">
             <h2>Our Story</h2>
             <div class="timeline">
@@ -212,6 +219,7 @@
                     <p>N-Tech is open for business and actively working with homeowners across Wise and Parker County. The founding customer program is live — and the first 25 customers get exclusive pricing and perks.</p>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
