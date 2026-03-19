@@ -152,7 +152,21 @@
         .faq-item { background: white; border-radius: 12px; padding: 1.5rem 2rem; margin-bottom: 1rem; border: 1px solid var(--light-sand); }
         .faq-item h3 { font-size: 1.1rem; color: var(--primary-green); margin-bottom: 0.5rem; }
         .faq-item p { color: var(--text-gray); font-size: 0.95rem; line-height: 1.7; }
-        @media (max-width: 768px) { .founding-hero h1 { font-size: 2.5rem; } .steps-row { grid-template-columns: 1fr 1fr; } .steps-row::before { display: none; } }
+        @media (max-width: 768px) {
+            .founding-hero h1 { font-size: 2.5rem; }
+            .steps-row { grid-template-columns: 1fr 1fr; }
+            .steps-row::before { display: none; }
+            .spots-bar {
+                border-radius: 12px;
+                width: 100%;
+                max-width: 100%;
+                justify-content: flex-start;
+            }
+            .spots-text { font-size: 0.85rem; }
+            .urgency-counter { grid-template-columns: 1fr; max-width: 280px; }
+            .founding-hero-btns { flex-direction: column; align-items: center; }
+            .founding-hero-btns a { width: 100%; max-width: 320px; text-align: center; }
+        }
     </style>
 </head>
 <body>
@@ -195,7 +209,7 @@
         <h1>Go Solar Before It's <span>Cool</span>.</h1>
         <p>Be one of our founding customers and lock in exclusive pricing and perks that won't be available once we open to the public.</p>
         <div class="founding-hero-btns">
-            <a href="https://tally.so/r/3jdYeQ" class="btn-primary" target="_blank" style="font-size:1.1rem;padding:1rem 2.5rem;">Claim Your Spot Now</a>
+            <a href="https://tally.so/r/zxXr4E" class="btn-primary" target="_blank" style="font-size:1.1rem;padding:1rem 2.5rem;">Claim Your Spot Now</a>
             <a href="pricing.html" class="btn-secondary" style="font-size:1.1rem;padding:1rem 2.5rem;">View Pricing</a>
         </div>
         <div class="spots-bar">
@@ -285,7 +299,7 @@
                     <div class="counter-label">To apply</div>
                 </div>
             </div>
-            <a href="https://tally.so/r/3jdYeQ" class="btn-primary" target="_blank" style="font-size:1.1rem;padding:1rem 2.5rem;">Apply Now — It's Free</a>
+            <a href="https://tally.so/r/zxXr4E" class="btn-primary" target="_blank" style="font-size:1.1rem;padding:1rem 2.5rem;">Apply Now — It's Free</a>
             <p style="margin-top:1rem;font-size:0.9rem;opacity:0.6;">No obligation. No credit card. Just a 2-minute form.</p>
         </div>
     </section>
