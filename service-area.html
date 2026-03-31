@@ -221,18 +221,13 @@
             text-align: center;
             margin: 3rem 0;
         }
-        
-        .map-placeholder {
-            background: var(--pure-white);
+
+        #coverage-map {
+            width: 100%;
+            height: 480px;
             border-radius: 12px;
-            padding: 4rem 2rem;
             margin-top: 2rem;
-            border: 2px dashed var(--accent-green);
-        }
-        
-        .map-placeholder p {
-            color: var(--text-gray);
-            font-size: 1.1rem;
+            border: none;
         }
         
         /* CTA */
@@ -487,7 +482,7 @@
         <section class="section">
             <h2>Our Service Area</h2>
             <p style="text-align: center; font-size: 1.2rem; color: var(--text-gray); max-width: 800px; margin: 0 auto 3rem;">
-                We specialize in serving homeowners within a 40-mile radius of Chico, Texas. If you're in North Texas and not sure if we serve your area, just ask!
+                We specialize in serving homeowners within a 60-mile radius of Chico, Texas. If you're in North Texas and not sure if we serve your area, just ask!
             </p>
 
             <div class="coverage-grid">
@@ -547,15 +542,11 @@
         </section>
 
         <section class="map-section">
-            <h2>40-Mile Service Radius</h2>
+            <h2>60-Mile Service Radius</h2>
             <p style="color: var(--text-gray); font-size: 1.1rem;">
                 We're centrally located to serve Wise and Parker County communities efficiently
             </p>
-            <div class="map-placeholder">
-                <p><strong>Service Area Map</strong></p>
-                <p style="margin-top: 1rem;">40-mile radius centered on Chico, TX (ZIP 76431)</p>
-                <p style="margin-top: 0.5rem; font-size: 0.95rem;">Covering Wise County, Parker County, and surrounding North Texas communities</p>
-            </div>
+            <div id="coverage-map"></div>
         </section>
 
         <section class="section">
@@ -631,6 +622,49 @@
             <p>&copy; 2026 N-Tech Energy Solutions LLC. All rights reserved.</p>
         </div>
     </footer>
+    <script>
+        function initCoverageMap() {
+            const chico = { lat: 33.2987, lng: -98.1903 };
+            const map = new google.maps.Map(document.getElementById('coverage-map'), {
+                center: chico,
+                zoom: 8,
+                mapTypeId: 'roadmap',
+                styles: [
+                    { featureType: 'poi', stylers: [{ visibility: 'off' }] }
+                ]
+            });
+
+            // 60-mile radius circle (1 mile ≈ 1609.34 meters)
+            new google.maps.Circle({
+                strokeColor: '#52B788',
+                strokeOpacity: 0.9,
+                strokeWeight: 2.5,
+                fillColor: '#52B788',
+                fillOpacity: 0.15,
+                map,
+                center: chico,
+                radius: 60 * 1609.34
+            });
+
+            new google.maps.Marker({
+                position: chico,
+                map,
+                title: 'N-Tech Energy Solutions — Chico, TX',
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    fillColor: '#2D6A4F',
+                    fillOpacity: 1,
+                    strokeColor: '#ffffff',
+                    strokeWeight: 2,
+                    scale: 10
+                }
+            });
+        }
+    </script>
+    <!-- Replace YOUR_API_KEY with your Google Maps API key -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initCoverageMap">
+    </script>
     <script>
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobile-nav');
