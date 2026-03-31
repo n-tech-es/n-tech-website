@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WSD0G7WNN3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WSD0G7WNN3');
+      gtag('config', 'AW-17959768934');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Solar Energy Tips for North Texas | N-Tech Energy Solutions</title>
+    <meta name="description" content="Stay updated with the latest solar energy news, tips for Texas homeowners, and guides on energy efficiency, net metering, and battery backup solutions.">
+    <meta name="keywords" content="solar blog, north texas solar, energy tips, solar guides, texas solar energy">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="N-Tech Energy Solutions">
+    <meta property="og:title" content="Blog | Solar Energy Tips for North Texas | N-Tech Energy Solutions">
+    <meta property="og:description" content="Stay updated with the latest solar energy news, tips for Texas homeowners, and guides on energy efficiency, net metering, and battery backup solutions.">
+    <meta property="og:url" content="https://www.n-tech-es.com/blog.html">
+    <meta property="og:image" content="https://www.n-tech-es.com/blog.jpg">
+    <link rel="canonical" href="https://www.n-tech-es.com/blog.html">
+
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-green: #2D5016;
+            --accent-green: #5FB449;
+            --deep-navy: #1A2332;
+            --soft-cream: #FFF8F0;
+            --light-sand: #F5F1E8;
+            --text-dark: #2C2C2C;
+            --text-gray: #5A5A5A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--soft-cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Archivo', sans-serif;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        /* Header */
+        header {
+            background: var(--deep-navy);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Archivo', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent-green), var(--primary-green));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin-right: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-green);
+        }
+
+        .cta-button {
+            background: #52B788;
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 182, 39, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(45,80,22,0.85) 0%, rgba(26,35,50,0.85) 100%), url('blog.jpg') center/cover no-repeat;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Blog Container */
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+        }
+
+        /* Filter Buttons */
+        .filters {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--light-sand);
+            color: var(--text-gray);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+            color: white;
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(45, 80, 22, 0.15);
+        }
+
+        .blog-thumb {
+            height: 200px;
+            background-color: var(--deep-navy);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blog-content {
+            padding: 1.75rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-tags {
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-tag {
+            display: inline-block;
+            background: rgba(95,180,73,0.12);
+            color: var(--accent-green);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+        }
+
+        .blog-title {
+            font-size: 1.25rem;
+            color: var(--primary-green);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+            flex-grow: 1;
+        }
+
+        .blog-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .blog-title a:hover {
+            color: var(--accent-green);
+        }
+
+        .blog-excerpt {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--light-sand);
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .read-more {
+            color: var(--accent-green);
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .read-more:hover {
+            color: var(--primary-green);
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--deep-navy), var(--primary-green));
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: white;
+        }
+
+        .newsletter-section h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .newsletter-section p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 1.75rem;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 480px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .email-input {
+            flex: 1;
+            min-width: 220px;
+            padding: 0.75rem 1.25rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .email-form .cta-button {
+            white-space: nowrap;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, var(--deep-navy), var(--primary-green));
+            color: white;
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn-primary {
+            background: #52B788;
+            color: #FFFFFF;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(82,183,136,0.5);
+            background: #74C69D;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-navy);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--accent-green);
+        }
+
+        .footer-section p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-green);
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent-green);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            margin-left: 1rem;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background: inherit;
+            padding: 1rem 2rem 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav ul { list-style: none; }
+        .mobile-nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.85rem 0;
+            display: block;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: color 0.3s;
+        }
+        .mobile-nav ul li a:hover { color: var(--accent-green); }
+        .mobile-cta {
+            margin-top: 1.25rem;
+            text-align: center;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-cta { display: none; }
+            .hamburger { display: flex; }
+
+            .hero h1 { font-size: 2rem; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .cta-box h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><img src="logo.jpg" alt="N-Tech Energy Solutions" style="height:45px;width:auto;"></div>
+                <span>N-Tech Energy Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="service-area.html">Service Area</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="founding-offer.html">Founding Customer Offer</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="https://tally.so/r/3jdYeQ" class="cta-button nav-cta">Free Energy Consultation</a>
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+        <div class="mobile-nav" id="mobile-nav">
+            <ul>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="service-area.html">Service Area</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="founding-offer.html">Founding Customer Offer</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="https://tally.so/r/3jdYeQ" class="cta-button mobile-cta">Free Energy Consultation</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>N-Tech Solar Blog</h1>
+        <p>Expert insights on solar energy, battery backup, and saving money for Texas homeowners.</p>
+    </section>
+
+    <div class="blog-container">
+        <div class="section-header">
+            <h2>Latest Articles</h2>
+            <p>Practical guides to help you understand solar energy and make informed decisions</p>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active">All Posts</button>
+            <button class="filter-btn">Solar Tips</button>
+            <button class="filter-btn">Texas Energy</button>
+            <button class="filter-btn">Savings</button>
+        </div>
+
+        <div class="blog-grid">
+            <article class="blog-card">
+                <div class="blog-thumb" style="background-image:url('image/vivint-solar-9CalgkSRZb8-unsplash.jpg'); background-color: var(--deep-navy);"></div>
+                <div class="blog-content">
+                    <div class="blog-tags"><span class="blog-tag">Savings</span></div>
+                    <h2 class="blog-title"><a href="the-true-cost-of-solar.html">The True Cost of Solar in North Texas (2026 Guide)</a></h2>
+                    <p class="blog-excerpt">Is solar worth it? We break down installation fees, equipment prices, hidden costs, and the 30% federal tax credit.</p>
+                    <div class="blog-meta">
+                        <span>March 18, 2026</span>
+                        <a href="the-true-cost-of-solar.html" class="read-more">Read Article →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-thumb" style="background-image:url('image/american-public-power-association-513dBrMJ_5w-unsplash.jpg'); background-color: var(--deep-navy);"></div>
+                <div class="blog-content">
+                    <div class="blog-tags"><span class="blog-tag">Technology</span></div>
+                    <h2 class="blog-title"><a href="why-battery-backup-matters.html">Why Battery Backup is Essential for Texas Weather</a></h2>
+                    <p class="blog-excerpt">From ice storms to heat waves, grid instability is real. Learn how a solar battery keeps your lights on when the neighborhood goes dark.</p>
+                    <div class="blog-meta">
+                        <span>March 10, 2026</span>
+                        <a href="why-battery-backup-matters.html" class="read-more">Read Article →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-thumb" style="background-image:url('image/moritz-lange-sGGFcc7wrp4-unsplash.jpg'); background-color: var(--deep-navy);"></div>
+                <div class="blog-content">
+                    <div class="blog-tags"><span class="blog-tag">Guide</span></div>
+                    <h2 class="blog-title"><a href="understanding-net-metering.html">Understanding Net Metering in Texas</a></h2>
+                    <p class="blog-excerpt">Confused about solar buyback plans? We explain how net metering works and how to get paid for your excess energy.</p>
+                    <div class="blog-meta">
+                        <span>February 28, 2026</span>
+                        <a href="understanding-net-metering.html" class="read-more">Read Article →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-thumb" style="background: var(--deep-navy); display:flex; align-items:center; justify-content:center; font-size:3rem;">📜</div>
+                <div class="blog-content">
+                    <div class="blog-tags"><span class="blog-tag">Texas Energy</span></div>
+                    <h2 class="blog-title"><a href="#">Understanding Net Metering in Oncor Service Areas</a></h2>
+                    <p class="blog-excerpt">How do you get paid for excess energy? We explain buyback rates and how to read your new bi-directional meter bill.</p>
+                    <div class="blog-meta">
+                        <span>February 15, 2026</span>
+                        <a href="#" class="read-more">Read Article →</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="newsletter-section">
+            <h3>Subscribe to Energy Tips</h3>
+            <p>Get the latest on solar rebates, energy efficiency hacks, and local utility news.</p>
+            <form class="email-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+                <input type="email" class="email-input" placeholder="Enter your email address" required>
+                <button type="submit" class="cta-button">Subscribe</button>
+            </form>
+        </div>
+
+        <div class="cta-box">
+            <h2>Ready to Make the Switch to Solar?</h2>
+            <p>Get your free solar savings analysis and custom quote today. No obligations, just honest answers.</p>
+            <a href="https://tally.so/r/3jdYeQ" class="btn-primary">Get Your Free Consultation</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>N-Tech Energy Solutions LLC</h4>
+                <p>Making solar simple and affordable for North Texas homeowners.</p>
+                <p style="margin-top: 1rem;">Solutions Designed for the Texas Sun</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="how-it-works.html">How It Works</a></li>
+                    <li><a href="service-area.html">Service Area</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="founding-offer.html">Founding Offer</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Service Areas</h4>
+                <ul>
+                    <li>Wise County, TX</li>
+                    <li>Parker County, TX</li>
+                    <li>Decatur &amp; Bridgeport</li>
+                    <li>Surrounding Communities</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li>Email: customerexperience@n-tech-es.com</li>
+                    <li>Phone: (214) 267-9372</li>
+                    <li>Hours: Mon-Fri 8am-7pm</li>
+                    <li>Saturday 9am-4pm</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/people/N-Tech-Energy-Solutions-LLC/61583157688284/" target="_blank" rel="noopener" class="social-link">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3l-.5 3H13v6.95C18.05 21.45 22 17.19 22 12z"/></svg>
+                        Facebook
+                    </a>
+                    <a href="https://www.instagram.com/ntechenergysolutions/" target="_blank" rel="noopener" class="social-link">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                        Instagram
+                    </a>
+                    <a href="https://www.tiktok.com/@n_teches" target="_blank" rel="noopener" class="social-link">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5 2.592 2.592 0 0 1-2.59-2.5 2.592 2.592 0 0 1 2.59-2.5c.24 0 .47.03.69.08V9.35a6 6 0 0 0-.69-.04A5.95 5.95 0 0 0 3.87 15.3a5.95 5.95 0 0 0 5.95 5.95A5.95 5.95 0 0 0 15.77 15.3V8.91a7.87 7.87 0 0 0 4.6 1.48V7.01a4.314 4.314 0 0 1-3.77-1.19z"/></svg>
+                        TikTok
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 N-Tech Energy Solutions LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobile-nav');
+        hamburger.addEventListener('click', function() {
+            mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('active');
+        });
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+                mobileNav.classList.remove('open');
+                hamburger.classList.remove('active');
+            }
+        });
+
+        // Filter buttons (visual only — full filtering requires article data attributes)
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
