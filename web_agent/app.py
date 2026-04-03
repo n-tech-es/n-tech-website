@@ -11,7 +11,7 @@ CORS(app)
 
 # ─── Load business context and KB ────────────────────────────────────────────
 
-KB_PATH = Path(__file__).parent.parent / "solar_knowledge_base.json"
+KB_PATH = Path(__file__).resolve().parent.parent / "solar_knowledge_base.json"
 
 BUSINESS_CONTEXT = """
 You are the dedicated AI agent for N-Tech Energy Solutions LLC — a solar installation
