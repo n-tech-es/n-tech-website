@@ -17,6 +17,7 @@ import os
 import sys
 import json
 import argparse
+import re
 from datetime import datetime
 from pathlib import Path
 import anthropic
@@ -279,6 +280,34 @@ Draw on the knowledge base for facts already learned.
 """
 }
 
+# ─── Website File Access ─────────────────────────────────────────────────────
+
+WEBSITE_DIR = Path(__file__).parent
+
+def list_website_pages() -> list:
+    """Return all HTML files in the website directory."""
+    pages = sorted(WEBSITE_DIR.glob("*.html"))
+    return [p.name for p in pages]
+
+def read_website_page(filename: str) -> str:
+    """Read a website page by filename."""
+    path = WEBSITE_DIR / filename
+    if not path.exists():
+        return None
+    return path.read_text(encoding="utf-8")
+
+def write_website_page(filename: str, content: str) -> Path:
+    """Write content to a website page."""
+    path = WEBSITE_DIR / filename
+    path.write_text(content, encoding="utf-8")
+    return path
+
+def format_pages_for_prompt(pages: list) -> str:
+    lines = ["WEBSITE PAGES (files the agent can read and edit):"]
+    for p in pages:
+        lines.append(f"  - {p}")
+    return "\n".join(lines)
+
 # ─── Agent Core ──────────────────────────────────────────────────────────────
 
 class SolarAgent:
@@ -302,11 +331,14 @@ class SolarAgent:
         self._rebuild_system_prompt()
 
     def _rebuild_system_prompt(self):
+        pages = list_website_pages()
         self.system_prompt = (
             BUSINESS_CONTEXT.format(
                 date=datetime.now().strftime("%B %d, %Y"),
                 knowledge_base=format_kb_for_prompt(self.kb),
             )
+            + "\n\n"
+            + format_pages_for_prompt(pages)
             + "\n\n"
             + MODE_PROMPTS.get(self.mode, MODE_PROMPTS["chat"])
         )
@@ -459,7 +491,10 @@ Commands:
   /learn <topic>    — Research a topic and save facts to KB
   /recall <topic>   — Search the knowledge base
   /kb               — Show full knowledge base summary
-  /save             — Save last response to file
+  /pages            — List all website pages
+  /read <page>      — Show a website page to the agent
+  /write <page>     — Save last response as a website page
+  /save             — Save last response to agent_output/ file
   /clear            — Clear conversation history
   /quit             — Exit
 """)
@@ -540,6 +575,44 @@ Commands:
                     total = self.kb["_meta"].get("entry_count", 0)
                     updated = self.kb["_meta"].get("last_updated", "never")
                     print(f"\nTotal: {total} facts | Last updated: {updated}")
+
+                elif cmd == "/pages":
+                    pages = list_website_pages()
+                    print(f"\n[{len(pages)} website pages:]")
+                    for p in pages:
+                        print(f"  {p}")
+
+                elif cmd == "/read":
+                    if arg:
+                        filename = arg if arg.endswith(".html") else arg + ".html"
+                        content = read_website_page(filename)
+                        if content:
+                            # Inject page content into conversation so agent can see it
+                            msg = f"Here is the current content of {filename}:\n\n{content}"
+                            self.conversation_history.append({"role": "user", "content": msg})
+                            self.conversation_history.append({"role": "assistant", "content": f"I've read {filename}. I can see its full content and am ready to help you edit or improve it."})
+                            print(f"[Loaded {filename} into context — agent can now read and edit it]")
+                        else:
+                            print(f"[File not found: {filename}]")
+                            print(f"Available pages: {', '.join(list_website_pages()[:5])}...")
+                    else:
+                        print("[Usage: /read <filename>  e.g. /read pricing.html]")
+
+                elif cmd == "/write":
+                    if not last_response:
+                        print("[No response to write yet — ask the agent to generate content first]")
+                    elif arg:
+                        filename = arg if arg.endswith(".html") else arg + ".html"
+                        # Extract HTML if wrapped in markdown code block
+                        html = last_response
+                        match = re.search(r"```html\s*([\s\S]+?)\s*```", html)
+                        if match:
+                            html = match.group(1)
+                        path = write_website_page(filename, html)
+                        print(f"[Written to {path}]")
+                        print(f"[Run sync.bat then push to make it live]")
+                    else:
+                        print("[Usage: /write <filename>  e.g. /write blog-new-post.html]")
 
                 else:
                     print(f"[Unknown command: {cmd}]")
