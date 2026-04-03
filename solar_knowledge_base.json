@@ -1,0 +1,327 @@
+{
+  "_meta": {
+    "created": "2026-04-03T17:26:17.201629",
+    "last_updated": "2026-04-03T17:26:17.201647",
+    "entry_count": 60
+  },
+  "installation_technical": [
+    {
+      "date": "2026-04-03",
+      "fact": "A typical residential solar install follows these steps: site assessment, shade analysis, system design, permit application, utility interconnection application, installation, inspection, utility interconnection approval, system activation.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "NEC Article 690 governs solar PV systems. Key requirements: rapid shutdown (690.12), disconnecting means, ground fault protection, arc fault protection, wire sizing per 690.8.",
+      "source": "NEC 2023"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "DC wire sizing: multiply max system voltage by 1.25 for continuous load. Use USE-2 or PV wire for DC runs exposed to sunlight.",
+      "source": "NEC 690.8"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Rapid shutdown required for all rooftop systems. Enphase microinverters comply automatically (module-level shutdown). String inverters require a rapid shutdown device.",
+      "source": "NEC 690.12"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Roof penetrations must be flashed and sealed. Use Quickmount PV or IronRidge flashings. Never use caulk alone on roof penetrations.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Ground mount systems require trenching for DC/AC conduit runs. Conduit must be buried minimum 24 inches (rigid metal) or 18 inches (PVC schedule 80).",
+      "source": "NEC 300.5"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "String inverter systems: all panels in a string must have same orientation and tilt. One shaded panel reduces output of entire string.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Microinverter systems (Enphase): each panel has its own inverter, shade on one panel does not affect others. Better for complex roofs.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "System grounding: equipment grounding conductor (EGC) required for all metallic racking and equipment. Array grounding per NEC 690.47.",
+      "source": "NEC 690.47"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "AC disconnect required within sight of utility meter. Many utilities require a lockable AC disconnect outside the home.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Optimal panel tilt in North Texas: 28-32 degrees (matches latitude). South-facing arrays produce maximum annual output.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "North Texas average peak sun hours: 5.0-5.5 hours/day. Used to calculate system output: kW system x peak sun hours = daily kWh.",
+      "source": "expert knowledge"
+    }
+  ],
+  "equipment_specs": [
+    {
+      "date": "2026-04-03",
+      "fact": "Enphase IQ8 microinverter: grid-agnostic, 366W AC output, 97.5% CEC efficiency, 25-year warranty, supports Sunlight Backup mode without battery.",
+      "source": "Enphase datasheet"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Enphase IQ Battery 5P: 5kWh usable, 3.84kW continuous output, 10-year warranty, indoor/outdoor rated, pairs with IQ8 microinverters.",
+      "source": "Enphase datasheet"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Tesla Powerwall 3: 13.5kWh usable, 11.5kW peak output, integrated inverter (no separate solar inverter needed), 10-year warranty.",
+      "source": "Tesla datasheet"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "SolarEdge H1 inverter with optimizers: panel-level optimization, 99% weighted efficiency, 12-year inverter warranty, 25-year optimizer warranty.",
+      "source": "SolarEdge datasheet"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Common panel brands: Qcells (Q.PEAK DUO, 400-430W), REC Alpha (430W), Jinko Tiger Neo (440W), Canadian Solar (420W). All tier-1 manufacturers.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "TOPCon panels (Jinko Neo, REC Alpha) have lower temperature coefficient (~0.30%/C) vs standard PERC (~0.35%/C), better performance in Texas heat.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Panel warranties: 25-year product warranty + 25-year performance warranty (80% output at year 25) standard for tier-1 panels.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "IronRidge XR100 and XR1000 rails are most common racking. Good for shingle, metal, and tile roofs. Pair with IronRidge flashings.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Enphase Envoy/IQ Gateway required for microinverter systems \u2014 communicates with all IQ microinverters and sends data to Enlighten monitoring platform.",
+      "source": "Enphase documentation"
+    }
+  ],
+  "utility_policy": [
+    {
+      "date": "2026-04-03",
+      "fact": "CoServ Electric is a member-owned electric co-op serving most of Wise County TX including Decatur, Bridgeport, Boyd, Chico, Rhome, Newark, Aurora.",
+      "source": "CoServ"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "CoServ net metering: residential solar customers receive retail rate credit for excess generation exported to grid. Submit Interconnection Application before installation.",
+      "source": "CoServ"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "CoServ interconnection process: submit application \u2192 engineering review (2-4 weeks) \u2192 approval \u2192 install \u2192 final inspection \u2192 permission to operate (PTO).",
+      "source": "CoServ"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Oncor serves Parker County TX (Weatherford, Aledo, Willow Park). Oncor is the TDU (transmission/distribution utility) \u2014 retail choice is available (choose your REP).",
+      "source": "Oncor"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Oncor net metering: excess solar exported to grid credited at avoided cost rate (lower than retail). Some REPs offer better buyback rates \u2014 shop accordingly.",
+      "source": "Oncor/PUCT"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "ERCOT (Electric Reliability Council of Texas) manages the grid for 90% of Texas including all N-Tech service counties. Deregulated market.",
+      "source": "ERCOT"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Texas Property Tax Code Section 11.27: solar energy devices are exempt from property tax assessment. Adding solar does not increase your property tax bill in Texas.",
+      "source": "Texas Property Tax Code"
+    }
+  ],
+  "permits_and_codes": [
+    {
+      "date": "2026-04-03",
+      "fact": "Wise County / City of Decatur: building permit required for solar installations. Submit structural drawings, electrical single-line diagram, and equipment specs.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Parker County / City of Weatherford: building permit required. Inspections: rough electrical and final. Must pass before utility interconnection.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Typical permit documents required: site plan, roof plan showing panel layout, structural calculations (or engineered letter), electrical single-line diagram, equipment spec sheets.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Rural properties in unincorporated county areas may not require a building permit but still require utility interconnection approval from CoServ or Oncor.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "HOA rules: Texas law (SB 1626) prohibits HOAs from banning solar panels outright, but they can regulate placement to minimize street visibility.",
+      "source": "Texas SB 1626"
+    }
+  ],
+  "market_and_pricing": [
+    {
+      "date": "2026-04-03",
+      "fact": "N-Tech Energy Solutions starting price: .40/watt. A 10kW system = 4,000 before 30% ITC = 6,800 net cost.",
+      "source": "N-Tech pricing"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "National average solar price: .80-.20/watt installed. N-Tech at .40/watt is significantly below market average.",
+      "source": "NREL 2025"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "North Texas average payback period: 8-12 years depending on bill size, system size, and utility rates. System lifespan 25-30 years.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Average residential system size in Texas: 8-12kW. A home using 1,500 kWh/month typically needs a 10-12kW system in North Texas.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Rule of thumb system sizing: monthly kWh usage / (peak sun hours x 30 days) = system kW needed. Example: 1500 kWh / (5.2 x 30) = 9.6kW.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Battery storage adds ,000-5,000 to system cost depending on capacity. Enphase IQ Battery 5P ~,000 installed, Tesla Powerwall 3 ~2,000 installed.",
+      "source": "expert knowledge"
+    }
+  ],
+  "incentives": [
+    {
+      "date": "2026-04-03",
+      "fact": "Federal Investment Tax Credit (ITC): 30% of total system cost deducted from federal income tax. Available through 2032. Applies to panels, inverters, battery, and installation labor.",
+      "source": "IRS Form 5695"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "ITC is a tax credit, not a refund. You must have sufficient federal tax liability to use it. Can carry forward unused credit to future tax years.",
+      "source": "IRS"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Battery storage qualifies for 30% ITC if charged primarily from solar (90%+ solar charged). Standalone battery without solar qualifies at 30% as well under IRA 2022.",
+      "source": "IRS / Inflation Reduction Act 2022"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Texas has no state solar tax credit. However, Texas property tax exemption (Section 11.27) and sales tax exemption on solar equipment provide additional savings.",
+      "source": "Texas Tax Code"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Texas sales tax exemption: solar energy devices are exempt from state sales tax under Texas Tax Code Section 151.317.",
+      "source": "Texas Tax Code 151.317"
+    }
+  ],
+  "competitors": [
+    {
+      "date": "2026-04-03",
+      "fact": "Sunrun: largest US residential solar company. Uses leases and PPAs heavily. Customer complaints about long-term contract issues and customer service.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Tesla Solar: competitive pricing but slow installation timelines and limited local support. Uses Tesla Powerwall exclusively for storage.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Freedom Forever: national installer active in Texas. Uses subcontractors heavily \u2014 quality can vary by market.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Key N-Tech differentiator vs nationals: local company, owner-operated, no subcontractors, direct customer relationship, faster permitting turnaround.",
+      "source": "N-Tech positioning"
+    }
+  ],
+  "local_area": [
+    {
+      "date": "2026-04-03",
+      "fact": "Wise County TX population: ~75,000. Growing bedroom community north of Fort Worth. Many rural and semi-rural properties ideal for solar.",
+      "source": "US Census"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Decatur TX is the Wise County seat. Fastest growing city in the county. Mix of new subdivisions and rural properties.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Parker County TX population: ~160,000. Weatherford is county seat. Rapidly growing western suburb of Fort Worth with high solar potential.",
+      "source": "US Census"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "North Texas average electricity rate: 12-15 cents/kWh. CoServ rates slightly higher than average due to co-op structure.",
+      "source": "EIA / CoServ"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "North Texas solar resource: 5.0-5.5 peak sun hours/day average. One of the best solar resources in the continental US.",
+      "source": "NREL PVWatts"
+    }
+  ],
+  "general_solar": [
+    {
+      "date": "2026-04-03",
+      "fact": "Solar panel output degrades ~0.5% per year. After 25 years a panel producing 400W will produce approximately 350W (87.5% of original).",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Shade analysis tools: Solargraf, Aurora Solar, HelioScope. These use satellite imagery and 3D modeling to calculate shading impact on output.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "String inverter vs microinverter: microinverters cost 20-30% more but perform better with shading, complex roofs, and provide panel-level monitoring.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Cleaning solar panels: light rain keeps most panels clean. Manual cleaning with soft brush and water 1-2x per year maximizes output in dusty areas like North Texas.",
+      "source": "expert knowledge"
+    }
+  ],
+  "troubleshooting": [
+    {
+      "date": "2026-04-03",
+      "fact": "If a microinverter goes offline: check Enphase Enlighten app. Likely cause: communication issue, grid voltage out of range, or hardware fault. Replace under warranty if hardware fault.",
+      "source": "Enphase documentation"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "System producing less than expected: check for shading (new tree growth, debris), inverter faults, grid outage, or soiled panels.",
+      "source": "expert knowledge"
+    },
+    {
+      "date": "2026-04-03",
+      "fact": "Ground fault on string inverter: indicates insulation damage in DC wiring. Disconnect system and inspect all DC cable runs. Do not operate until resolved.",
+      "source": "NEC 690.5"
+    }
+  ]
+}
