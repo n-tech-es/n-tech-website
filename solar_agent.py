@@ -379,7 +379,6 @@ class SolarAgent:
             with self.client.messages.stream(
                 model="claude-haiku-4-5-20251001",
                 max_tokens=8096,
-                thinking={"type": "adaptive"},
                 system=self.system_prompt,
                 tools=tools,
                 messages=self.conversation_history,
