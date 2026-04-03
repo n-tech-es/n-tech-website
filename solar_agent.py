@@ -396,76 +396,26 @@ class SolarAgent:
             "content": user_message
         })
 
-        tools = [{"type": "web_search_20260209", "name": "web_search"}]
         full_response_text = ""
-        iteration = 0
-        max_iterations = 10
+        current_text = ""
 
-        while iteration < max_iterations:
-            iteration += 1
-            assistant_content = []
-            current_text = ""
+        with self.client.messages.stream(
+            model="claude-sonnet-4-6",
+            max_tokens=8096,
+            system=self.system_prompt,
+            messages=self.conversation_history,
+        ) as stream:
+            for text in stream.text_stream:
+                print(text, end="", flush=True)
+                current_text += text
 
-            with self.client.messages.stream(
-                model="claude-sonnet-4-6",
-                max_tokens=8096,
-                system=self.system_prompt,
-                tools=tools,
-                messages=self.conversation_history,
-            ) as stream:
-                for event in stream:
-                    event_type = type(event).__name__
+            final_msg = stream.get_final_message()
+            self.conversation_history.append({
+                "role": "assistant",
+                "content": final_msg.content
+            })
 
-                    if event_type == "ContentBlockStart":
-                        block = event.content_block
-                        if hasattr(block, "type") and block.type == "tool_use":
-                            if block.name == "web_search":
-                                query = block.input.get("query", "") if hasattr(block, "input") else ""
-                                print(f"\n[Searching: {query or '...'}]", flush=True)
-
-                    elif event_type == "ContentBlockDelta":
-                        delta = event.delta
-                        if hasattr(delta, "type") and delta.type == "text_delta":
-                            print(delta.text, end="", flush=True)
-                            current_text += delta.text
-
-                final_msg = stream.get_final_message()
-                assistant_content = final_msg.content
-                stop_reason = final_msg.stop_reason
-
-            full_response_text += current_text
-
-            if stop_reason == "end_turn":
-                self.conversation_history.append({
-                    "role": "assistant",
-                    "content": assistant_content
-                })
-                break
-
-            if stop_reason == "tool_use":
-                self.conversation_history.append({
-                    "role": "assistant",
-                    "content": assistant_content
-                })
-                tool_results = []
-                for block in assistant_content:
-                    if hasattr(block, "type") and block.type == "tool_use":
-                        if block.name == "web_search":
-                            if not any(r["tool_use_id"] == block.id for r in tool_results):
-                                tool_results.append({
-                                    "type": "tool_result",
-                                    "tool_use_id": block.id,
-                                    "content": ""
-                                })
-                if tool_results:
-                    self.conversation_history.append({
-                        "role": "user",
-                        "content": tool_results
-                    })
-                else:
-                    break
-            else:
-                break
+        full_response_text = current_text
 
         # Auto-parse KB save instructions from the response
         self._parse_and_save_kb_entries(full_response_text)
