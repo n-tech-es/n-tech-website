@@ -377,7 +377,7 @@ class SolarAgent:
             current_text = ""
 
             with self.client.messages.stream(
-                model="claude-opus-4-6",
+                model="claude-haiku-4-5-20251001",
                 max_tokens=8096,
                 thinking={"type": "adaptive"},
                 system=self.system_prompt,
@@ -534,10 +534,15 @@ Commands:
                         old_mode = self.mode
                         self.mode = "research"
                         self._rebuild_system_prompt()
-                        last_response = self._stream_response(
-                            f"Research this topic thoroughly and save the most important facts "
-                            f"to the knowledge base: {arg}"
-                        )
+                        try:
+                            last_response = self._stream_response(
+                                f"Research this topic thoroughly and save the most important facts "
+                                f"to the knowledge base: {arg}"
+                            )
+                        except anthropic.RateLimitError:
+                            print("\n[Rate limit hit — wait 60 seconds and try again]")
+                        except anthropic.APIError as e:
+                            print(f"\n[API Error: {e}]")
                         self.mode = old_mode
                         self._rebuild_system_prompt()
                         print()
@@ -575,6 +580,8 @@ Commands:
             try:
                 last_response = self._stream_response(user_input)
                 print()
+            except anthropic.RateLimitError:
+                print("\n[Rate limit hit — wait 60 seconds and try again]")
             except anthropic.APIError as e:
                 print(f"\n[API Error: {e}]")
             except Exception as e:
