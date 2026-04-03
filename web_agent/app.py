@@ -6,7 +6,7 @@ from datetime import datetime
 from pathlib import Path
 import anthropic
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static", static_url_path="")
 CORS(app)
 
 # ─── Load business context and KB ────────────────────────────────────────────
