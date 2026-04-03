@@ -377,7 +377,7 @@ class SolarAgent:
             current_text = ""
 
             with self.client.messages.stream(
-                model="claude-haiku-4-5-20251001",
+                model="claude-sonnet-4-6",
                 max_tokens=8096,
                 system=self.system_prompt,
                 tools=tools,
