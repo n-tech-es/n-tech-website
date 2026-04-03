@@ -359,6 +359,36 @@ class SolarAgent:
 
         return saved
 
+    def _learn(self, topic: str) -> str:
+        """Research a topic using model knowledge and save facts to KB."""
+        learn_prompt = (
+            f"You are an expert solar installation professional and business consultant for N-Tech Energy Solutions. "
+            f"Provide a comprehensive, detailed breakdown of everything important to know about: {topic}\n\n"
+            f"Cover all key facts, processes, specifications, best practices, and anything practically useful. "
+            f"Be thorough and specific.\n\n"
+            f"At the end, list the most important facts under this exact heading:\n"
+            f"SAVE TO KNOWLEDGE BASE:\n"
+            f"- category: <category>\n"
+            f"- fact: <fact>\n"
+            f"- source: expert knowledge\n"
+            f"(repeat for each key fact)"
+        )
+
+        response = self.client.messages.create(
+            model="claude-sonnet-4-6",
+            max_tokens=4096,
+            messages=[{"role": "user", "content": learn_prompt}],
+        )
+
+        text = ""
+        for block in response.content:
+            if hasattr(block, "text"):
+                text += block.text
+                print(block.text, end="", flush=True)
+
+        self._parse_and_save_kb_entries(text)
+        return text
+
     def _stream_response(self, user_message: str) -> str:
         """Stream response with web search tool handling."""
         self.conversation_history.append({
@@ -528,22 +558,14 @@ Commands:
 
                 elif cmd == "/learn":
                     if arg:
-                        print(f"\n[Researching and learning: {arg}]\n")
+                        print(f"\n[Learning: {arg}]\n")
                         print("Agent: ", end="", flush=True)
-                        old_mode = self.mode
-                        self.mode = "research"
-                        self._rebuild_system_prompt()
                         try:
-                            last_response = self._stream_response(
-                                f"Research this topic thoroughly and save the most important facts "
-                                f"to the knowledge base: {arg}"
-                            )
+                            last_response = self._learn(arg)
                         except anthropic.RateLimitError:
                             print("\n[Rate limit hit — wait 60 seconds and try again]")
                         except anthropic.APIError as e:
                             print(f"\n[API Error: {e}]")
-                        self.mode = old_mode
-                        self._rebuild_system_prompt()
                         print()
                     else:
                         print("[Usage: /learn <topic>]")
