@@ -1,6 +1,5 @@
 [build]
 builder = "nixpacks"
-buildCommand = "pip install -r web_agent/requirements.txt"
 
 [deploy]
 startCommand = "cd web_agent && gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120 --workers 1"
