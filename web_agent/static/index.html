@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N-Tech Solar Agent</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f1117;
+      color: #e8e8e8;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #1a1d27;
+      border-bottom: 1px solid #2a2d3a;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .logo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f5a623;
+      white-space: nowrap;
+    }
+
+    .logo span { color: #e8e8e8; font-weight: 400; font-size: 0.85rem; }
+
+    select#mode {
+      background: #2a2d3a;
+      color: #e8e8e8;
+      border: 1px solid #3a3d4a;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    #messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .msg {
+      max-width: 85%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .msg.user {
+      background: #f5a623;
+      color: #0f1117;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .msg.agent {
+      background: #1e2130;
+      color: #e8e8e8;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      border: 1px solid #2a2d3a;
+    }
+
+    .msg.agent.thinking {
+      color: #666;
+      font-style: italic;
+    }
+
+    .msg.system-msg {
+      background: transparent;
+      color: #555;
+      font-size: 0.8rem;
+      align-self: center;
+      text-align: center;
+      border: none;
+      padding: 4px;
+    }
+
+    footer {
+      background: #1a1d27;
+      border-top: 1px solid #2a2d3a;
+      padding: 12px 16px;
+      display: flex;
+      gap: 8px;
+    }
+
+    #input {
+      flex: 1;
+      background: #2a2d3a;
+      color: #e8e8e8;
+      border: 1px solid #3a3d4a;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.92rem;
+      resize: none;
+      min-height: 44px;
+      max-height: 120px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    #input:focus { border-color: #f5a623; }
+
+    #send {
+      background: #f5a623;
+      color: #0f1117;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      align-self: flex-end;
+    }
+
+    #send:disabled { opacity: 0.4; cursor: not-allowed; }
+    #send:hover:not(:disabled) { background: #e09610; }
+
+    .mode-label {
+      font-size: 0.72rem;
+      color: #f5a623;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">N-Tech Solar Agent <span>by N-Tech Energy Solutions</span></div>
+    <div class="mode-label" id="mode-label">General Assistant</div>
+  </div>
+  <select id="mode">
+    <option value="chat">General Chat</option>
+    <option value="technical">Technical</option>
+    <option value="content">Content Writer</option>
+    <option value="marketing">Marketing</option>
+    <option value="research">Research</option>
+  </select>
+</header>
+
+<div id="messages">
+  <div class="msg system-msg">Ask anything about solar, system design, content, or marketing.</div>
+</div>
+
+<footer>
+  <textarea id="input" placeholder="Ask something..." rows="1"></textarea>
+  <button id="send">Send</button>
+</footer>
+
+<script>
+  const messagesEl = document.getElementById('messages');
+  const inputEl = document.getElementById('input');
+  const sendBtn = document.getElementById('send');
+  const modeEl = document.getElementById('mode');
+  const modeLabelEl = document.getElementById('mode-label');
+
+  const modeNames = {
+    chat: 'General Assistant',
+    technical: 'Technical Mode',
+    content: 'Content Writer',
+    marketing: 'Marketing Insights',
+    research: 'Research Mode',
+  };
+
+  let history = [];
+
+  modeEl.addEventListener('change', () => {
+    modeLabelEl.textContent = modeNames[modeEl.value] || modeEl.value;
+    history = [];
+    addMsg('system-msg', `Switched to ${modeNames[modeEl.value]} — history cleared`);
+  });
+
+  inputEl.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      send();
+    }
+  });
+
+  inputEl.addEventListener('input', () => {
+    inputEl.style.height = 'auto';
+    inputEl.style.height = Math.min(inputEl.scrollHeight, 120) + 'px';
+  });
+
+  sendBtn.addEventListener('click', send);
+
+  function addMsg(type, text) {
+    const div = document.createElement('div');
+    div.className = `msg ${type}`;
+    div.textContent = text;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return div;
+  }
+
+  async function send() {
+    const text = inputEl.value.trim();
+    if (!text) return;
+
+    inputEl.value = '';
+    inputEl.style.height = 'auto';
+    sendBtn.disabled = true;
+
+    addMsg('user', text);
+    history.push({ role: 'user', content: text });
+
+    const agentDiv = addMsg('agent thinking', 'Thinking...');
+
+    try {
+      const res = await fetch('/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history, mode: modeEl.value }),
+      });
+
+      if (!res.ok) {
+        agentDiv.textContent = 'Error: ' + res.statusText;
+        agentDiv.className = 'msg agent';
+        return;
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let fullText = '';
+      agentDiv.textContent = '';
+      agentDiv.className = 'msg agent';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value, { stream: true });
+        const lines = chunk.split('\n');
+
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue;
+          const data = line.slice(6);
+          if (data === '[DONE]') break;
+          try {
+            const parsed = JSON.parse(data);
+            if (parsed.text) {
+              fullText += parsed.text;
+              agentDiv.textContent = fullText;
+              messagesEl.scrollTop = messagesEl.scrollHeight;
+            }
+          } catch {}
+        }
+      }
+
+      history.push({ role: 'assistant', content: fullText });
+
+    } catch (err) {
+      agentDiv.textContent = 'Connection error. Please try again.';
+      agentDiv.className = 'msg agent';
+    } finally {
+      sendBtn.disabled = false;
+      inputEl.focus();
+    }
+  }
+</script>
+</body>
+</html>
