@@ -2,5 +2,5 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "cd web_agent && gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120 --workers 1"
+startCommand = "cd web_agent && python -m gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120 --workers 1"
 restartPolicyType = "on_failure"
