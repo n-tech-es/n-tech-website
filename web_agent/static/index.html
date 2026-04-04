@@ -295,6 +295,9 @@
     modeLabelEl.textContent = modeNames[modeEl.value] || modeEl.value;
     history = [];
     addMsg('system-msg', `Switched to ${modeNames[modeEl.value]} — history cleared`);
+    if (modeEl.value === 'website' && !activePage) {
+      addMsg('system-msg', '⚠ No page loaded. Click Pages to load a page before making edits.');
+    }
   });
 
   inputEl.addEventListener('keydown', e => {
@@ -325,6 +328,12 @@
   async function send() {
     const text = inputEl.value.trim();
     if (!text) return;
+
+    // Block edits in website mode without a loaded page
+    if (modeEl.value === 'website' && !activePage) {
+      addMsg('system-msg', '⚠ Load a page first — click the Pages button, select a page, then ask for your change.');
+      return;
+    }
 
     inputEl.value = '';
     inputEl.style.height = 'auto';
