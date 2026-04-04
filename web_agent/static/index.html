@@ -408,6 +408,20 @@
     if (!filename) return;
     if (!filename.endsWith('.html')) filename += '.html';
 
+    // Safety check — warn if content looks incomplete
+    const lineCount = html.split('\n').length;
+    const hasDoctype = html.toLowerCase().includes('<!doctype') || html.toLowerCase().includes('<html');
+    if (!hasDoctype || lineCount < 50) {
+      const ok = confirm(
+        `Warning: This content looks incomplete (${lineCount} lines, no full HTML structure).\n\n` +
+        `Saving a partial file will break the page.\n\nAre you sure you want to save to ${filename}?`
+      );
+      if (!ok) return;
+    } else {
+      const ok = confirm(`Save changes to ${filename}? This will update your live website.`);
+      if (!ok) return;
+    }
+
     btn.disabled = true;
     btn.textContent = 'Saving…';
 
