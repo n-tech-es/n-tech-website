@@ -11,7 +11,7 @@ import anthropic
 app = Flask(__name__, static_folder="static", static_url_path="")
 CORS(app)
 
-# ─── GitHub Integration ───────────────────────────────────────────────────────
+# ─── GitHub Integration (READ ONLY) ──────────────────────────────────────────
 
 GITHUB_REPO = os.environ.get("GITHUB_REPO", "n-tech-es/n-tech-website")
 GITHUB_BRANCH = os.environ.get("GITHUB_BRANCH", "main")
@@ -27,7 +27,6 @@ def github_headers():
     }
 
 def github_list_pages():
-    """List all HTML files in the repo root."""
     headers = github_headers()
     if not headers:
         return []
@@ -39,43 +38,17 @@ def github_list_pages():
     return sorted(files)
 
 def github_read_file(filename):
-    """Read a file from the GitHub repo."""
     headers = github_headers()
     if not headers:
-        return None, None
+        return None
     url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{filename}"
     r = requests.get(url, headers=headers, params={"ref": GITHUB_BRANCH})
     if r.status_code != 200:
-        return None, None
+        return None
     data = r.json()
-    content = base64.b64decode(data["content"]).decode("utf-8")
-    sha = data["sha"]
-    return content, sha
+    return base64.b64decode(data["content"]).decode("utf-8")
 
-def github_write_file(filename, content, commit_message):
-    """Write a file to the GitHub repo."""
-    headers = github_headers()
-    if not headers:
-        return False, "GitHub token not configured"
-
-    # Get current SHA if file exists
-    _, sha = github_read_file(filename)
-
-    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{filename}"
-    payload = {
-        "message": commit_message,
-        "content": base64.b64encode(content.encode("utf-8")).decode("utf-8"),
-        "branch": GITHUB_BRANCH,
-    }
-    if sha:
-        payload["sha"] = sha
-
-    r = requests.put(url, headers=headers, json=payload)
-    if r.status_code in (200, 201):
-        return True, None
-    return False, r.json().get("message", "Unknown error")
-
-# ─── Load business context and KB ────────────────────────────────────────────
+# ─── Business Context ─────────────────────────────────────────────────────────
 
 KB_PATH = Path(__file__).resolve().parent.parent / "solar_knowledge_base.json"
 
@@ -108,14 +81,11 @@ LOCAL MARKET:
 - Average payback period: 7-10 years
 - 30% Federal ITC through 2032
 
-WEBSITE FILE ACCESS:
-You can read and edit website pages. Follow these rules strictly when editing:
-
-1. ALWAYS work from the full page that has been loaded into context. Never generate HTML from scratch when editing an existing page.
-2. Make ONLY the specific change requested. Preserve every other line, style, script, schema, Google tag, canonical tag, and structural element exactly as-is.
-3. Output the COMPLETE updated HTML file (not a snippet) wrapped in: ```html ... ```
-4. Before outputting, briefly describe what you changed and what you left untouched.
-5. If a page has NOT been loaded, tell the user to click Pages and load it first — do not guess or generate a page from memory.
+WEBSITE ACCESS:
+You can read website pages when loaded. When asked about changes to a page:
+- Describe exactly what needs to change in plain English
+- Specify the section, the current text, and what it should say instead
+- Do NOT output HTML code — the user will pass your instructions to their developer to implement
 
 Today's date: {date}
 
@@ -127,18 +97,20 @@ Today's date: {date}
 MODE_PROMPTS = {
     "chat": "You are a helpful solar energy assistant for N-Tech Energy Solutions. Answer questions about solar, the install process, savings, and N-Tech's services. Be friendly, knowledgeable, and concise.",
     "technical": "You are an expert solar installation technician. Answer detailed technical questions about system design, NEC codes, wiring, inverters, panels, battery storage, racking, utility interconnection, and permitting for North Texas.",
-    "content": "You are a content writer for N-Tech Energy Solutions. Generate SEO-optimized blog posts, city pages, FAQs, and social media content. Target North Texas homeowners. Tone: friendly, expert, non-pushy. When generating full HTML pages, wrap them in ```html ... ``` code blocks.",
+    "content": "You are a content writer for N-Tech Energy Solutions. Generate SEO-optimized blog posts, city pages, FAQs, and social media content. Target North Texas homeowners. Tone: friendly, expert, non-pushy.",
     "marketing": "You are a marketing strategist for N-Tech Energy Solutions. Analyze competitors, suggest Google Ads strategies, local marketing opportunities, and customer messaging for the North Texas solar market.",
     "research": "You are a solar industry researcher for N-Tech Energy Solutions. Provide detailed analysis of market trends, utility policies, incentives, and competitor activities in North Texas.",
-    "website": """You are the website editor for N-Tech Energy Solutions. You edit pages with surgical precision — exactly like a senior developer would.
+    "website": """You are a website reviewer for N-Tech Energy Solutions. You can read pages and identify what needs to change.
 
-RULES:
-- Only edit pages that have been loaded into context. If no page is loaded, say so and ask the user to click Pages to load one.
-- Make only the change requested. Touch nothing else — not the header, footer, scripts, styles, schema markup, Google tags, or any other section.
-- Always output the COMPLETE HTML file, not a partial snippet. The file must be 100% valid and identical to the original except for the requested change.
-- Wrap the output in ```html ... ``` so the Save button appears.
-- Summarize exactly what you changed in 1-2 sentences before the code block.
-- If you are unsure what to change, ask a clarifying question instead of guessing.""",
+IMPORTANT RULES:
+- You read pages and describe changes in plain English only
+- Never output HTML code under any circumstances
+- When you spot something to fix, describe it clearly:
+  * Which section it is in
+  * What the current text says
+  * What it should say instead
+  * Why the change improves the page
+- The user will copy your instructions to their developer who will make the actual changes""",
 }
 
 def load_kb():
@@ -172,7 +144,7 @@ def build_system_prompt(mode="chat", page_content=None, page_name=None):
     system = base + "\n\n" + MODE_PROMPTS.get(mode, MODE_PROMPTS["chat"])
 
     if page_content and page_name:
-        system += f"\n\nCURRENT PAGE LOADED: {page_name}\n```html\n{page_content}\n```"
+        system += f"\n\nCURRENT PAGE LOADED: {page_name}\n\n{page_content}"
 
     return system
 
@@ -192,25 +164,10 @@ def read_file():
     filename = request.args.get("name")
     if not filename:
         return jsonify({"error": "filename required"}), 400
-    content, sha = github_read_file(filename)
+    content = github_read_file(filename)
     if content is None:
         return jsonify({"error": "File not found"}), 404
-    return jsonify({"name": filename, "content": content, "sha": sha})
-
-@app.route("/api/file", methods=["POST"])
-def write_file():
-    data = request.json
-    filename = data.get("name")
-    content = data.get("content")
-    message = data.get("message", f"Update {filename} via N-Tech Solar Agent")
-
-    if not filename or not content:
-        return jsonify({"error": "name and content required"}), 400
-
-    ok, error = github_write_file(filename, content, message)
-    if ok:
-        return jsonify({"success": True})
-    return jsonify({"error": error}), 500
+    return jsonify({"name": filename, "content": content})
 
 @app.route("/chat", methods=["POST"])
 def chat():
@@ -230,7 +187,7 @@ def chat():
     def generate():
         with client.messages.stream(
             model="claude-sonnet-4-6",
-            max_tokens=8096,
+            max_tokens=4096,
             system=system,
             messages=messages,
         ) as stream:

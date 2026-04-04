@@ -30,8 +30,7 @@
     .logo { font-size: 1rem; font-weight: 700; color: #f5a623; }
     .logo span { color: #e8e8e8; font-weight: 400; font-size: 0.82rem; }
     .mode-label { font-size: 0.72rem; color: #f5a623; text-transform: uppercase; letter-spacing: 0.05em; }
-
-    .header-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .header-controls { display: flex; gap: 8px; align-items: center; }
 
     select, button.btn-sm {
       background: #2a2d3a;
@@ -42,7 +41,6 @@
       font-size: 0.82rem;
       cursor: pointer;
     }
-
     button.btn-sm:hover { background: #3a3d4a; }
     button.btn-pages { color: #f5a623; border-color: #f5a623; }
 
@@ -57,7 +55,6 @@
       justify-content: center;
     }
     .modal-backdrop.open { display: flex; }
-
     .modal {
       background: #1a1d27;
       border: 1px solid #2a2d3a;
@@ -70,17 +67,8 @@
       flex-direction: column;
       gap: 12px;
     }
-
     .modal h3 { color: #f5a623; font-size: 1rem; }
-
-    .pages-list {
-      overflow-y: auto;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
+    .pages-list { overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 6px; }
     .page-item {
       background: #2a2d3a;
       border: 1px solid #3a3d4a;
@@ -88,10 +76,8 @@
       padding: 8px 12px;
       cursor: pointer;
       font-size: 0.85rem;
-      transition: background 0.15s;
     }
     .page-item:hover { background: #3a3d4a; border-color: #f5a623; }
-
     .modal-close {
       background: transparent;
       border: 1px solid #3a3d4a;
@@ -142,14 +128,12 @@
       white-space: pre-wrap;
       word-break: break-word;
     }
-
     .msg.user {
       background: #f5a623;
       color: #0f1117;
       align-self: flex-end;
       border-bottom-right-radius: 4px;
     }
-
     .msg.agent {
       background: #1e2130;
       color: #e8e8e8;
@@ -157,9 +141,7 @@
       border-bottom-left-radius: 4px;
       border: 1px solid #2a2d3a;
     }
-
     .msg.agent.thinking { color: #666; font-style: italic; }
-
     .msg.system-msg {
       background: transparent;
       color: #555;
@@ -168,23 +150,6 @@
       border: none;
       padding: 4px;
     }
-
-    /* Save to website button inside agent message */
-    .save-btn {
-      display: inline-block;
-      margin-top: 10px;
-      background: #2d7a2d;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      padding: 7px 14px;
-      font-size: 0.82rem;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .save-btn:hover { background: #3a9a3a; }
-    .save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-    .save-btn.saved { background: #1a5a1a; }
 
     footer {
       background: #1a1d27;
@@ -208,7 +173,6 @@
       outline: none;
       font-family: inherit;
     }
-
     #input:focus { border-color: #f5a623; }
 
     #send {
@@ -222,7 +186,6 @@
       cursor: pointer;
       align-self: flex-end;
     }
-
     #send:disabled { opacity: 0.4; cursor: not-allowed; }
     #send:hover:not(:disabled) { background: #e09610; }
   </style>
@@ -242,18 +205,18 @@
       <option value="content">Content Writer</option>
       <option value="marketing">Marketing</option>
       <option value="research">Research</option>
-      <option value="website">Website Editor</option>
+      <option value="website">Website Reviewer</option>
     </select>
   </div>
 </header>
 
 <div class="page-banner" id="page-banner">
-  <span>Editing: <strong id="banner-filename"></strong></span>
+  <span>Reviewing: <strong id="banner-filename"></strong></span>
   <button onclick="clearPage()">✕ Clear</button>
 </div>
 
 <div id="messages">
-  <div class="msg system-msg">Ask anything about solar, or click Pages to load and edit a website page.</div>
+  <div class="msg system-msg">Ask anything about solar, or click Pages to load a page for review.</div>
 </div>
 
 <footer>
@@ -264,7 +227,7 @@
 <!-- Pages Modal -->
 <div class="modal-backdrop" id="modal" onclick="closePages(event)">
   <div class="modal">
-    <h3>Select a Page to Load</h3>
+    <h3>Select a Page to Review</h3>
     <div class="pages-list" id="pages-list">
       <div style="color:#666;font-size:0.85rem;">Loading...</div>
     </div>
@@ -284,20 +247,16 @@
   const modeNames = {
     chat: 'General Assistant', technical: 'Technical Mode',
     content: 'Content Writer', marketing: 'Marketing Insights',
-    research: 'Research Mode', website: 'Website Editor',
+    research: 'Research Mode', website: 'Website Reviewer',
   };
 
   let history = [];
-  let activePage = null;   // { name, content }
-  let lastHtml = null;     // last HTML block from agent response
+  let activePage = null;
 
   modeEl.addEventListener('change', () => {
     modeLabelEl.textContent = modeNames[modeEl.value] || modeEl.value;
     history = [];
     addMsg('system-msg', `Switched to ${modeNames[modeEl.value]} — history cleared`);
-    if (modeEl.value === 'website' && !activePage) {
-      addMsg('system-msg', '⚠ No page loaded. Click Pages to load a page before making edits.');
-    }
   });
 
   inputEl.addEventListener('keydown', e => {
@@ -320,20 +279,9 @@
     return div;
   }
 
-  function extractHtml(text) {
-    const match = text.match(/```html\s*([\s\S]+?)\s*```/);
-    return match ? match[1] : null;
-  }
-
   async function send() {
     const text = inputEl.value.trim();
     if (!text) return;
-
-    // Block edits in website mode without a loaded page
-    if (modeEl.value === 'website' && !activePage) {
-      addMsg('system-msg', '⚠ Load a page first — click the Pages button, select a page, then ask for your change.');
-      return;
-    }
 
     inputEl.value = '';
     inputEl.style.height = 'auto';
@@ -345,10 +293,7 @@
     const agentDiv = addMsg('agent thinking', 'Thinking...');
 
     try {
-      const body = {
-        messages: history,
-        mode: modeEl.value,
-      };
+      const body = { messages: history, mode: modeEl.value };
       if (activePage) {
         body.page_content = activePage.content;
         body.page_name = activePage.name;
@@ -365,15 +310,8 @@
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
       let fullText = '';
-      const isWebsiteMode = modeEl.value === 'website';
-
       agentDiv.textContent = '';
       agentDiv.className = 'msg agent';
-
-      // In website mode, show a placeholder while we collect the full response silently
-      if (isWebsiteMode) {
-        agentDiv.textContent = 'Working on changes…';
-      }
 
       while (true) {
         const { done, value } = await reader.read();
@@ -387,35 +325,14 @@
             const parsed = JSON.parse(data);
             if (parsed.text) {
               fullText += parsed.text;
-              // Only stream to screen in non-website modes
-              if (!isWebsiteMode) {
-                agentDiv.textContent = fullText;
-                messagesEl.scrollTop = messagesEl.scrollHeight;
-              }
+              agentDiv.textContent = fullText;
+              messagesEl.scrollTop = messagesEl.scrollHeight;
             }
           } catch {}
         }
       }
 
       history.push({ role: 'assistant', content: fullText });
-
-      // If response contains HTML — hide the code block, show summary + Save button
-      const html = extractHtml(fullText);
-      if (html) {
-        lastHtml = html;
-        // Strip the ```html ... ``` block from display, keep only the summary text
-        const displayText = fullText.replace(/```html[\s\S]+?```/g, '').trim();
-        agentDiv.textContent = displayText || 'Changes ready to save.';
-
-        const saveBtn = document.createElement('button');
-        saveBtn.className = 'save-btn';
-        saveBtn.textContent = activePage
-          ? `Save to ${activePage.name}`
-          : 'Save to Website…';
-        saveBtn.onclick = () => saveToWebsite(saveBtn, html);
-        agentDiv.appendChild(document.createElement('br'));
-        agentDiv.appendChild(saveBtn);
-      }
 
     } catch (err) {
       agentDiv.textContent = 'Connection error. Please try again.';
@@ -426,64 +343,12 @@
     }
   }
 
-  async function saveToWebsite(btn, html) {
-    let filename = activePage ? activePage.name : prompt('Enter filename (e.g. pricing.html):');
-    if (!filename) return;
-    if (!filename.endsWith('.html')) filename += '.html';
-
-    // Safety check — warn if content looks incomplete
-    const lineCount = html.split('\n').length;
-    const hasDoctype = html.toLowerCase().includes('<!doctype') || html.toLowerCase().includes('<html');
-    if (!hasDoctype || lineCount < 50) {
-      const ok = confirm(
-        `Warning: This content looks incomplete (${lineCount} lines, no full HTML structure).\n\n` +
-        `Saving a partial file will break the page.\n\nAre you sure you want to save to ${filename}?`
-      );
-      if (!ok) return;
-    } else {
-      const ok = confirm(`Save changes to ${filename}? This will update your live website.`);
-      if (!ok) return;
-    }
-
-    btn.disabled = true;
-    btn.textContent = 'Saving…';
-
-    try {
-      const res = await fetch('/api/file', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: filename,
-          content: html,
-          message: `Update ${filename} via N-Tech Solar Agent web UI`,
-        }),
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        btn.textContent = `✓ Saved to ${filename}`;
-        btn.className = 'save-btn saved';
-        addMsg('system-msg', `✓ ${filename} saved to GitHub — changes will be live shortly`);
-        if (activePage && activePage.name === filename) {
-          activePage.content = html;
-        }
-      } else {
-        btn.textContent = 'Save failed — ' + (data.error || 'unknown error');
-        btn.disabled = false;
-      }
-    } catch {
-      btn.textContent = 'Save failed';
-      btn.disabled = false;
-    }
-  }
-
   // ─── Pages Modal ─────────────────────────────────────────
 
   async function openPages() {
     document.getElementById('modal').classList.add('open');
     const list = document.getElementById('pages-list');
     list.innerHTML = '<div style="color:#666;font-size:0.85rem;">Loading...</div>';
-
     try {
       const res = await fetch('/api/pages');
       const pages = await res.json();
@@ -500,18 +365,12 @@
     }
   }
 
-  function closeModal() {
-    document.getElementById('modal').classList.remove('open');
-  }
-
-  function closePages(e) {
-    if (e.target === document.getElementById('modal')) closeModal();
-  }
+  function closeModal() { document.getElementById('modal').classList.remove('open'); }
+  function closePages(e) { if (e.target === document.getElementById('modal')) closeModal(); }
 
   async function loadPage(filename) {
     closeModal();
     addMsg('system-msg', `Loading ${filename}…`);
-
     try {
       const res = await fetch(`/api/file?name=${encodeURIComponent(filename)}`);
       const data = await res.json();
@@ -520,14 +379,12 @@
       activePage = { name: filename, content: data.content };
       bannerFilename.textContent = filename;
       pageBanner.classList.add('visible');
-
-      // Switch to website editor mode
       modeEl.value = 'website';
       modeLabelEl.textContent = modeNames['website'];
       history = [];
 
-      addMsg('system-msg', `✓ ${filename} loaded — agent can now read and edit it`);
-      inputEl.placeholder = `Ask the agent to edit ${filename}…`;
+      addMsg('system-msg', `✓ ${filename} loaded — ask the agent what to review or improve`);
+      inputEl.placeholder = `Ask about ${filename}…`;
       inputEl.focus();
     } catch {
       addMsg('system-msg', 'Failed to load page');
