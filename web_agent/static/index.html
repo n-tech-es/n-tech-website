@@ -389,10 +389,14 @@
 
       history.push({ role: 'assistant', content: fullText });
 
-      // Check if response contains HTML — add Save button
+      // If response contains HTML — hide the code block, show summary + Save button
       const html = extractHtml(fullText);
       if (html) {
         lastHtml = html;
+        // Strip the ```html ... ``` block from display, keep only the summary text
+        const displayText = fullText.replace(/```html[\s\S]+?```/g, '').trim();
+        agentDiv.textContent = displayText || 'Changes ready to save.';
+
         const saveBtn = document.createElement('button');
         saveBtn.className = 'save-btn';
         saveBtn.textContent = activePage
