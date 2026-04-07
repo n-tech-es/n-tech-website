@@ -453,6 +453,105 @@
             font-size: 1.1rem;
         }
         
+        /* Energy Audit Section */
+        .audit-section {
+            padding: 6rem 2rem;
+            background: var(--light-sand);
+        }
+        .audit-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .audit-label {
+            display: inline-block;
+            background: var(--accent-green);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            margin-bottom: 1.25rem;
+            font-family: 'Archivo', sans-serif;
+        }
+        .audit-text h2 {
+            font-size: 2.2rem;
+            color: var(--primary-green);
+            margin-bottom: 1.25rem;
+            line-height: 1.15;
+        }
+        .audit-text p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .audit-text p:last-of-type { margin-bottom: 1.75rem; }
+        .audit-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 40px rgba(45,106,79,0.12);
+            border-top: 4px solid var(--accent-green);
+        }
+        .audit-price {
+            font-family: 'Archivo', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            color: var(--primary-green);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+        .audit-price-label {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 1.75rem;
+        }
+        .audit-features {
+            list-style: none;
+            display: grid;
+            gap: 0.65rem;
+            margin-bottom: 2rem;
+        }
+        .audit-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.97rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+        .audit-features li::before {
+            content: '✓';
+            color: var(--accent-green);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .btn-audit {
+            display: block;
+            background: var(--primary-green);
+            color: white;
+            text-align: center;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn-audit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45,106,79,0.35);
+        }
+        @media (max-width: 900px) {
+            .audit-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+        }
+
         /* Service Area */
         .service-area {
             padding: 6rem 2rem;
@@ -942,6 +1041,36 @@
                     <h3>Start Saving</h3>
                     <p>After final inspection and utility approval, your system goes live. Watch your electric bills drop and start enjoying energy independence!</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Energy Audit Section -->
+    <section class="audit-section">
+        <div class="audit-inner">
+            <div class="audit-text">
+                <span class="audit-label">New Service</span>
+                <h2>Not Sure Solar Is Right Yet? Start With an Energy Audit.</h2>
+                <p>A lot of homeowners come to us with a high electric bill and assume solar is the answer. Sometimes it is. But often there are cheaper fixes — air sealing, insulation, HVAC issues — that should come first. An energy audit tells you exactly what's going on before you spend a dollar on anything.</p>
+                <p>N-Tech's home energy audit is an in-person visit from a certified professional. We walk through your entire home, document every energy problem we find, and hand you a one-page prioritized action list: fix this first, then this, skip this. Within 48 hours you'll know exactly why your bill is high and what to do about it.</p>
+                <p>Every audit also includes a free solar readiness assessment — so if solar does make sense for your home, you'll know that too.</p>
+                <a href="energy-audit.html" class="btn-audit" style="display:inline-block;width:auto;padding:1rem 2rem;">Learn About Energy Audits</a>
+            </div>
+            <div class="audit-card">
+                <div class="audit-price">$299</div>
+                <div class="audit-price-label">Standard Home Energy Audit</div>
+                <ul class="audit-features">
+                    <li>In-person visit from a certified professional</li>
+                    <li>Full assessment: HVAC, insulation, air sealing, ductwork, windows &amp; more</li>
+                    <li>Thermal imaging scan of walls &amp; ceilings</li>
+                    <li>One-page prioritized action list</li>
+                    <li>Photos of all major findings</li>
+                    <li>Written report within 48 hours</li>
+                    <li>Estimated annual savings per finding</li>
+                    <li>Free solar readiness assessment included</li>
+                    <li>Follow-up call with N-Tech</li>
+                </ul>
+                <a href="energy-audit.html" class="btn-audit">Book Your Home Energy Audit</a>
             </div>
         </div>
     </section>
