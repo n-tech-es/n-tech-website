@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>N-Tech Solar Agent</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -125,7 +126,6 @@
       border-radius: 12px;
       font-size: 0.9rem;
       line-height: 1.6;
-      white-space: pre-wrap;
       word-break: break-word;
     }
     .msg.user {
@@ -133,6 +133,7 @@
       color: #0f1117;
       align-self: flex-end;
       border-bottom-right-radius: 4px;
+      white-space: pre-wrap;
     }
     .msg.agent {
       background: #1e2130;
@@ -142,6 +143,32 @@
       border: 1px solid #2a2d3a;
     }
     .msg.agent.thinking { color: #666; font-style: italic; }
+    /* Markdown rendering styles */
+    .msg.agent h1, .msg.agent h2, .msg.agent h3, .msg.agent h4 {
+      color: #f5a623; margin: 0.8em 0 0.4em; font-size: 1em; font-weight: 700;
+    }
+    .msg.agent h1 { font-size: 1.1em; }
+    .msg.agent h2 { font-size: 1.05em; }
+    .msg.agent p { margin: 0.4em 0; }
+    .msg.agent ul, .msg.agent ol { padding-left: 1.4em; margin: 0.4em 0; }
+    .msg.agent li { margin: 0.2em 0; }
+    .msg.agent strong { color: #fff; }
+    .msg.agent em { color: #bbb; }
+    .msg.agent code {
+      background: #2a2d3a; padding: 1px 5px; border-radius: 4px;
+      font-family: monospace; font-size: 0.85em;
+    }
+    .msg.agent pre {
+      background: #2a2d3a; padding: 10px; border-radius: 6px;
+      overflow-x: auto; margin: 0.6em 0;
+    }
+    .msg.agent pre code { background: none; padding: 0; }
+    .msg.agent blockquote {
+      border-left: 3px solid #f5a623; padding-left: 10px;
+      color: #aaa; margin: 0.4em 0;
+    }
+    .msg.agent a { color: #f5a623; }
+    .msg.agent hr { border-color: #2a2d3a; margin: 0.8em 0; }
     .msg.system-msg {
       background: transparent;
       color: #555;
@@ -270,6 +297,12 @@
 
   sendBtn.addEventListener('click', send);
 
+  const SEARCH_TRIGGERS = [
+    'recent','news','latest','current','today','this year',
+    '2025','2026','tariff','policy','regulation','incentive',
+    'price','cost','market','update','change','new',
+  ];
+
   function addMsg(type, text) {
     const div = document.createElement('div');
     div.className = `msg ${type}`;
@@ -277,6 +310,14 @@
     messagesEl.appendChild(div);
     messagesEl.scrollTop = messagesEl.scrollHeight;
     return div;
+  }
+
+  function renderMarkdown(el, text) {
+    if (typeof marked !== 'undefined') {
+      el.innerHTML = marked.parse(text);
+    } else {
+      el.textContent = text;
+    }
   }
 
   async function send() {
@@ -290,10 +331,12 @@
     addMsg('user', text);
     history.push({ role: 'user', content: text });
 
-    const agentDiv = addMsg('agent thinking', 'Thinking...');
+    const mode = modeEl.value;
+    const willSearch = mode === 'research' || SEARCH_TRIGGERS.some(t => text.toLowerCase().includes(t));
+    const agentDiv = addMsg('agent thinking', willSearch ? 'Searching the web…' : 'Thinking…');
 
     try {
-      const body = { messages: history, mode: modeEl.value };
+      const body = { messages: history, mode };
       if (activePage) {
         body.page_content = activePage.content;
         body.page_name = activePage.name;
@@ -310,7 +353,7 @@
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
       let fullText = '';
-      agentDiv.textContent = '';
+      agentDiv.innerHTML = '';
       agentDiv.className = 'msg agent';
 
       while (true) {
@@ -325,7 +368,7 @@
             const parsed = JSON.parse(data);
             if (parsed.text) {
               fullText += parsed.text;
-              agentDiv.textContent = fullText;
+              renderMarkdown(agentDiv, fullText);
               messagesEl.scrollTop = messagesEl.scrollHeight;
             }
           } catch {}

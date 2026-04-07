@@ -8,8 +8,40 @@ from datetime import datetime
 from pathlib import Path
 import anthropic
 
+try:
+    from duckduckgo_search import DDGS
+    DDG_AVAILABLE = True
+except ImportError:
+    DDG_AVAILABLE = False
+
 app = Flask(__name__, static_folder="static", static_url_path="")
 CORS(app)
+
+# ─── Web Search ──────────────────────────────────────────────────────────────
+
+SEARCH_TRIGGERS = [
+    "recent", "news", "latest", "current", "today", "this year",
+    "2025", "2026", "tariff", "policy", "regulation", "incentive",
+    "price", "cost", "market", "update", "change", "new",
+]
+
+def web_search(query, max_results=5):
+    if not DDG_AVAILABLE:
+        return ""
+    try:
+        with DDGS() as ddgs:
+            results = list(ddgs.text(query, max_results=max_results))
+        if not results:
+            return ""
+        lines = [f"LIVE WEB SEARCH RESULTS (searched: {query})\n"]
+        for i, r in enumerate(results, 1):
+            lines.append(f"{i}. {r.get('title', '')}")
+            lines.append(f"   {r.get('body', '')}")
+            lines.append(f"   Source: {r.get('href', '')}\n")
+        lines.append("Use these results to answer questions about current or recent information. Cite sources when relevant.\n")
+        return "\n".join(lines)
+    except Exception:
+        return ""
 
 # ─── GitHub Integration (READ ONLY) ──────────────────────────────────────────
 
@@ -183,6 +215,15 @@ def chat():
 
     client = anthropic.Anthropic(api_key=api_key)
     system = build_system_prompt(mode, page_content, page_name)
+
+    # Web search: always in research mode, or when message contains current-info triggers
+    last_msg = messages[-1]["content"].lower() if messages else ""
+    should_search = mode == "research" or any(t in last_msg for t in SEARCH_TRIGGERS)
+    if should_search and messages:
+        query = messages[-1]["content"]
+        search_results = web_search(query)
+        if search_results:
+            system += f"\n\n{search_results}"
 
     def generate():
         with client.messages.stream(
