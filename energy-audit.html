@@ -13,17 +13,17 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Energy Audit in North Texas | N-Tech Energy Solutions</title>
-    <meta name="description" content="Professional home energy audits in Wise County &amp; Parker County TX. Starting at $149. Find out exactly why your electric bill is high and what to do about it.">
+    <meta name="description" content="Professional home energy audits in Wise County &amp; Parker County TX. Starting at $299. Find out exactly why your electric bill is high and what to do about it.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="N-Tech Energy Solutions">
     <meta property="og:title" content="Home Energy Audit in North Texas | N-Tech Energy Solutions">
-    <meta property="og:description" content="Professional home energy audits in Wise County &amp; Parker County TX. Starting at $149. Find out exactly why your electric bill is high and what to do about it.">
+    <meta property="og:description" content="Professional home energy audits in Wise County &amp; Parker County TX. Starting at $299. Find out exactly why your electric bill is high and what to do about it.">
     <meta property="og:url" content="https://www.n-tech-es.com/energy-audit.html">
-    <meta property="og:image" content="https://www.n-tech-es.com/images/hero.jpg">
+    <meta property="og:image" content="https://www.n-tech-es.com/images/energy.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Home Energy Audit in North Texas | N-Tech Energy Solutions">
-    <meta name="twitter:description" content="Professional home energy audits in Wise County &amp; Parker County TX. Starting at $149. Find out exactly why your electric bill is high and what to do about it.">
-    <meta name="twitter:image" content="https://www.n-tech-es.com/images/hero.jpg">
+    <meta name="twitter:description" content="Professional home energy audits in Wise County &amp; Parker County TX. Starting at $299. Find out exactly why your electric bill is high and what to do about it.">
+    <meta name="twitter:image" content="https://www.n-tech-es.com/images/energy.jpg">
     <link rel="canonical" href="https://www.n-tech-es.com/energy-audit.html">
     <link rel="icon" type="image/jpeg" href="images/logo.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,9 +74,9 @@
 
         /* Hero */
         .page-hero {
-            background: linear-gradient(135deg, rgba(45,80,22,0.88) 0%, rgba(26,35,50,0.88) 100%), url('images/hero.jpg') center/cover no-repeat;
+            background: linear-gradient(135deg, rgba(45,80,22,0.88) 0%, rgba(26,35,50,0.88) 100%), url('images/energy.jpg') center/cover no-repeat;
             color: white;
-            padding: 5.5rem 2rem 4.5rem;
+            padding: 5.5rem 2rem 3.5rem;
             text-align: center;
         }
         .page-hero h1 { font-size: 2.8rem; margin-bottom: 1.25rem; max-width: 860px; margin-left: auto; margin-right: auto; }
@@ -84,12 +84,21 @@
         .btn-primary { background: var(--accent-green); color: var(--pure-white); padding: 1rem 2.25rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: transform 0.3s, box-shadow 0.3s; display: inline-block; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(82,183,136,0.5); background: var(--bright-green); }
 
-        /* Stats bar */
-        .stats-bar { background: var(--primary-green); padding: 2.5rem 2rem; }
-        .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        /* Stats bar — semi-transparent glass inside hero */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 1000px;
+            margin: 3rem auto 0;
+        }
         .stat { text-align: center; }
         .stat-number { font-size: 2.4rem; font-weight: 900; color: var(--bright-green); display: block; font-family: 'Archivo', sans-serif; }
-        .stat-label { font-size: 0.9rem; color: rgba(255,255,255,0.9); margin-top: 0.2rem; display: block; }
+        .stat-label { font-size: 0.9rem; color: rgba(255,255,255,0.9); margin-top: 0.2rem; display: block; opacity: 0.9; }
 
         /* Container */
         .container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
@@ -109,16 +118,12 @@
         /* Pricing */
         .section-heading { font-size: 2.2rem; color: var(--primary-green); margin-bottom: 0.5rem; text-align: center; }
         .section-subhead { font-size: 1.05rem; color: var(--text-gray); text-align: center; margin-bottom: 2.5rem; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
-        .pricing-card { background: var(--pure-white); border: 3px solid var(--off-white); border-radius: 16px; padding: 2.25rem 1.75rem; text-align: center; position: relative; transition: transform 0.3s, box-shadow 0.3s; }
-        .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(0,0,0,0.1); }
-        .pricing-card.featured { border-color: var(--accent-green); transform: scale(1.04); box-shadow: 0 12px 40px rgba(82,183,136,0.2); }
-        .pricing-card.featured:hover { transform: scale(1.04) translateY(-4px); }
-        .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent-green); color: white; font-size: 0.8rem; font-weight: 700; padding: 0.3rem 1rem; border-radius: 20px; white-space: nowrap; font-family: 'Archivo', sans-serif; }
-        .card-name { font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--text-dark); margin-bottom: 0.5rem; }
-        .card-price { font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 2.8rem; color: var(--primary-green); line-height: 1; margin-bottom: 1.25rem; }
-        .card-features { list-style: none; text-align: left; display: grid; gap: 0.65rem; }
-        .card-features li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.95rem; color: var(--text-gray); line-height: 1.5; }
+        .pricing-single { display: flex; justify-content: center; }
+        .pricing-card { background: var(--pure-white); border: 3px solid var(--accent-green); border-radius: 16px; padding: 2.5rem 2.25rem; text-align: center; max-width: 480px; width: 100%; box-shadow: 0 12px 40px rgba(82,183,136,0.15); }
+        .card-name { font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 1.4rem; color: var(--text-dark); margin-bottom: 0.5rem; }
+        .card-price { font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 3rem; color: var(--primary-green); line-height: 1; margin-bottom: 1.5rem; }
+        .card-features { list-style: none; text-align: left; display: grid; gap: 0.75rem; }
+        .card-features li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.98rem; color: var(--text-gray); line-height: 1.5; }
         .card-features li::before { content: '✓'; color: var(--accent-green); font-weight: 700; flex-shrink: 0; }
 
         /* How it works */
@@ -137,19 +142,18 @@
         .after-card h3 { font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 1.2rem; color: var(--primary-green); margin-bottom: 0.85rem; }
         .after-card p { font-size: 1rem; color: var(--text-gray); line-height: 1.75; }
 
-        /* FAQ */
+        /* FAQ — matches pricing.html style */
         .faq-section { background: var(--off-white); padding: 4rem 2rem; }
         .faq-inner { max-width: 860px; margin: 0 auto; }
         .faq-inner h2 { font-size: 2.2rem; color: var(--primary-green); text-align: center; margin-bottom: 2rem; }
-        .faq-list { display: grid; gap: 1.25rem; }
-        .faq-item { background: white; border-radius: 12px; padding: 1.5rem 2rem; border-left: 4px solid var(--accent-green); }
-        .faq-item h3 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--text-dark); margin-bottom: 0.75rem; }
-        .faq-item p { color: var(--text-gray); font-size: 1rem; line-height: 1.75; margin: 0; }
+        .faq-item { background: var(--pure-white); padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; }
+        .faq-item h3 { color: var(--primary-green); margin-bottom: 0.75rem; font-size: 1.3rem; font-family: 'Archivo', sans-serif; font-weight: 900; }
+        .faq-item p { color: var(--text-gray); line-height: 1.8; }
 
         /* CTA block */
         .cta-box { background: linear-gradient(135deg, var(--dark-black), var(--primary-green)); color: white; padding: 4rem 2rem; text-align: center; }
         .cta-box h2 { color: white; font-size: 2rem; margin-bottom: 1rem; max-width: 700px; margin-left: auto; margin-right: auto; }
-        .cta-box p { font-size: 1.15rem; margin-bottom: 2rem; opacity: 0.95; max-width: 560px; margin-left: auto; margin-right: auto; }
+        .cta-box p { font-size: 1.15rem; margin-bottom: 2rem; opacity: 0.95; max-width: 640px; margin-left: auto; margin-right: auto; }
         .btn-white { background: white; color: var(--primary-green); padding: 1rem 2.25rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: transform 0.3s, box-shadow 0.3s; display: inline-block; }
         .btn-white:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255,255,255,0.3); }
 
@@ -173,10 +177,8 @@
 
         /* Responsive */
         @media (max-width: 900px) {
-            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
             .two-col { grid-template-columns: 1fr; }
-            .pricing-grid { grid-template-columns: 1fr; }
-            .pricing-card.featured { transform: scale(1); }
             .after-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
@@ -189,7 +191,7 @@
         }
         @media (max-width: 480px) {
             .page-hero h1 { font-size: 1.5rem; }
-            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 
@@ -198,12 +200,12 @@
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "N-Tech Energy Solutions LLC",
-      "description": "Professional home energy audits in Wise County and Parker County TX. Starting at $149. Find out exactly why your electric bill is high and what to do about it.",
+      "description": "Professional home energy audits in Wise County and Parker County TX. Starting at $299. Find out exactly why your electric bill is high and what to do about it.",
       "url": "https://www.n-tech-es.com",
       "telephone": "+12142679372",
       "email": "customerexperience@n-tech-es.com",
       "logo": "https://www.n-tech-es.com/images/logo.jpg",
-      "image": "https://www.n-tech-es.com/images/hero.jpg",
+      "image": "https://www.n-tech-es.com/images/energy.jpg",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Chico",
@@ -297,6 +299,7 @@
                 <li><a href="pricing.html">Pricing</a></li>
                 <li><a href="how-it-works.html">How It Works</a></li>
                 <li><a href="service-area.html">Service Area</a></li>
+                <li><a href="energy-audit.html" class="active">Energy Audit</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="founding-offer.html">Founding Customer Offer</a></li>
@@ -312,6 +315,7 @@
                 <li><a href="pricing.html">Pricing</a></li>
                 <li><a href="how-it-works.html">How It Works</a></li>
                 <li><a href="service-area.html">Service Area</a></li>
+                <li><a href="energy-audit.html" class="active">Energy Audit</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="founding-offer.html">Founding Customer Offer</a></li>
@@ -325,12 +329,10 @@
     <section class="page-hero">
         <h1>Find Out Exactly Why Your Electric Bill Is So High.</h1>
         <p>A professional home energy audit from N-Tech tells you where your home is losing energy — and what it's costing you.</p>
-        <a href="#TALLY_FORM_URL" class="btn-primary">Book My Audit</a>
-    </section>
+        <a href="https://tally.so/r/3jdYeQ" class="btn-primary">Book Your Home Energy Audit</a>
 
-    <!-- Stats bar -->
-    <div class="stats-bar">
-        <div class="stats-inner">
+        <!-- Stats bar — semi-transparent glass overlay on hero image -->
+        <div class="hero-stats">
             <div class="stat">
                 <span class="stat-number">$200+</span>
                 <span class="stat-label">Avg. monthly bill in North TX</span>
@@ -344,11 +346,11 @@
                 <span class="stat-label">Audit visit duration</span>
             </div>
             <div class="stat">
-                <span class="stat-number">$149</span>
+                <span class="stat-number">$299</span>
                 <span class="stat-label">Starting price</span>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- What We Check -->
     <div class="section">
@@ -374,7 +376,7 @@
                         <h3>One Page. Prioritized. Actionable.</h3>
                         <p>We don't just tell you what's wrong — we tell you what to fix first based on cost-to-fix versus dollars saved. The cheapest wins go to the top of the list.</p>
                         <p>Every report includes photos of what we found, estimated annual savings per finding, and a clear next-step for each item — whether that's a $5 DIY fix or a call to a contractor.</p>
-                        <p>You'll also get a follow-up call with Nathan to walk through the report and answer any questions. No extra charge. That's just how we do it.</p>
+                        <p>You'll also get a follow-up call with us to walk through the report and answer any questions. No extra charge. That's just how we do it.</p>
                     </div>
                 </div>
             </div>
@@ -385,43 +387,21 @@
     <div class="section" style="background:var(--off-white);padding:4rem 2rem;">
         <div class="section-inner">
             <h2 class="section-heading">Audit Pricing</h2>
-            <p class="section-subhead">Pick the level that fits your goals. All audits include a written report and follow-up call.</p>
-            <div class="pricing-grid">
-                <!-- Basic -->
+            <p class="section-subhead">One comprehensive audit. Everything you need to know about your home's energy performance.</p>
+            <div class="pricing-single">
                 <div class="pricing-card">
-                    <div class="card-name">Basic Audit</div>
-                    <div class="card-price">$149</div>
+                    <div class="card-name">Standard Home Energy Audit</div>
+                    <div class="card-price">$299</div>
                     <ul class="card-features">
                         <li>Visual assessment of all major systems</li>
                         <li>One-page prioritized action list</li>
                         <li>Photos of all major findings</li>
                         <li>Written report delivered within 48 hours</li>
-                        <li>Follow-up call with Nathan</li>
-                    </ul>
-                </div>
-                <!-- Solar-Ready (featured) -->
-                <div class="pricing-card featured">
-                    <div class="badge">Most Popular</div>
-                    <div class="card-name">Solar-Ready Audit</div>
-                    <div class="card-price">$199</div>
-                    <ul class="card-features">
-                        <li>Everything in Basic</li>
-                        <li>Dedicated solar readiness assessment</li>
-                        <li>Panel capacity &amp; roof suitability review</li>
-                        <li>Free 30-min solar consultation with Nathan</li>
-                        <li>Ideal if you're considering solar next</li>
-                    </ul>
-                </div>
-                <!-- Standard -->
-                <div class="pricing-card">
-                    <div class="card-name">Standard Audit</div>
-                    <div class="card-price">$299</div>
-                    <ul class="card-features">
-                        <li>Everything in Basic</li>
                         <li>Thermal imaging scan of walls &amp; ceilings</li>
                         <li>Estimated annual savings per finding</li>
                         <li>Deeper diagnostic on HVAC &amp; ductwork</li>
-                        <li>Best for older homes or high bills</li>
+                        <li>Free solar readiness assessment</li>
+                        <li>Follow-up call with N-Tech</li>
                     </ul>
                 </div>
             </div>
@@ -457,7 +437,7 @@
                 <div class="step">
                     <div class="step-number">4</div>
                     <div class="step-content">
-                        <h3>Follow-Up Call With Nathan</h3>
+                        <h3>Follow-Up Call With N-Tech</h3>
                         <p>We walk through every finding together, answer your questions, and help you decide what to tackle first. No pressure, just honest guidance.</p>
                     </div>
                 </div>
@@ -490,31 +470,29 @@
     <div class="faq-section">
         <div class="faq-inner">
             <h2>Frequently Asked Questions</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <h3>Do I have to do anything before the audit?</h3>
-                    <p>No. Just make sure someone 18+ is home and the auditor has access to the attic and main electrical panel.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>How is this different from what my utility company offers?</h3>
-                    <p>Utility audits are often virtual or checklist-based. Ours is an in-person visit with a certified professional, a written report, and a follow-up call with a real human.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Do you pressure us to buy solar?</h3>
-                    <p>No. The audit stands on its own. If your home is a solar candidate we'll tell you, but the audit report is yours regardless of what you decide.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Are you licensed to do energy audits?</h3>
-                    <p>Our auditors carry BPI Building Analyst certification or equivalent professional credentials. Texas does not require a state license for residential energy auditing.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>What if I want to fix everything you find?</h3>
-                    <p>We'll connect you with our vetted partner network for any work beyond DIY. You're never on your own with the findings.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Do you serve my area?</h3>
-                    <p>We serve Wise County, Parker County, and surrounding North Texas within 60 miles of Chico TX. Same service area as our solar work.</p>
-                </div>
+            <div class="faq-item">
+                <h3>Do I have to do anything before the audit?</h3>
+                <p>No. Just make sure someone 18+ is home and the auditor has access to the attic and main electrical panel.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How is this different from what my utility company offers?</h3>
+                <p>Utility audits are often virtual or checklist-based. Ours is an in-person visit with a certified professional, a written report, and a follow-up call with a real human.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Do you pressure us to buy solar?</h3>
+                <p>No. The audit stands on its own. If your home is a solar candidate we'll tell you, but the audit report is yours regardless of what you decide.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Are you licensed to do energy audits?</h3>
+                <p>Our auditors carry BPI Building Analyst certification or equivalent professional credentials. Texas does not require a state license for residential energy auditing.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What if I want to fix everything you find?</h3>
+                <p>We'll connect you with our vetted partner network for any work beyond DIY. You're never on your own with the findings.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Do you serve my area?</h3>
+                <p>We serve Wise County, Parker County, and surrounding North Texas within 60 miles of Chico TX. Same service area as our solar work.</p>
             </div>
         </div>
     </div>
@@ -522,8 +500,8 @@
     <!-- Bottom CTA -->
     <div class="cta-box">
         <h2>Your Electric Bill Is Telling You Something. Let's Figure Out What.</h2>
-        <p>Book a home energy audit. It takes 90 minutes. The savings can last years.</p>
-        <a href="#TALLY_FORM_URL" class="btn-white">Book My Audit</a>
+        <p>Book a home energy audit with a free 15 minute call to confirm your address and availability. It takes 90 minutes. The savings can last years.</p>
+        <a href="https://tally.so/r/3jdYeQ" class="btn-white">Book Your Home Energy Audit</a>
     </div>
 
     <footer>
@@ -540,6 +518,7 @@
                     <li><a href="pricing.html">Pricing</a></li>
                     <li><a href="how-it-works.html">How It Works</a></li>
                     <li><a href="service-area.html">Service Area</a></li>
+                    <li><a href="energy-audit.html">Energy Audit</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="founding-offer.html">Founding Offer</a></li>
                     <li><a href="about.html">About Us</a></li>
