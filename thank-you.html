@@ -183,7 +183,7 @@
     <div class="checkmark">
         <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
     </div>
-    <h1>We Got It!</h1>
+    <h1 id="thank-you-heading">We Got It!</h1>
     <p>Someone from our team will contact you shortly to discuss your energy goals and next steps. We appreciate your interest in energy solutions designed for the Texas sun &#127774;!</p>
     <div class="reassurance">No obligation, no pressure. Just an honest look at what we could do for your home.</div>
 </section>
@@ -302,6 +302,12 @@
 </footer>
 
 <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name');
+    if (name) {
+        document.getElementById('thank-you-heading').textContent = 'We Got It, ' + name + '!';
+    }
+
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobile-nav');
     hamburger.addEventListener('click', function() {
