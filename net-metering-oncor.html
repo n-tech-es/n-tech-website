@@ -362,6 +362,14 @@
     var email = document.getElementById('ntec-popup-email').value;
     btn.textContent = 'Sending...';
     btn.disabled = true;
+    var controller = new AbortController();
+    var timer = setTimeout(function() { controller.abort(); }, 10000);
+    function showSuccess() {
+      clearTimeout(timer);
+      document.getElementById('ntec-popup-form-view').style.display = 'none';
+      document.getElementById('ntec-popup-success-view').style.display = 'block';
+      setTimeout(ntecClosePopup, 5000);
+    }
     fetch('https://formsubmit.co/ajax/customerexperience@n-tech-es.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -370,17 +378,17 @@
         email: email,
         _subject: 'New Solar Savings Guide Signup — ' + name,
         _captcha: 'false'
-      })
+      }),
+      signal: controller.signal
     })
-    .then(function(res) { return res.json(); })
-    .then(function() {
-      document.getElementById('ntec-popup-form-view').style.display = 'none';
-      document.getElementById('ntec-popup-success-view').style.display = 'block';
-      setTimeout(ntecClosePopup, 5000);
-    })
-    .catch(function() {
-      btn.textContent = 'Send Me the Guide ☀️';
-      btn.disabled = false;
+    .then(showSuccess)
+    .catch(function(err) {
+      clearTimeout(timer);
+      if (err.name === 'AbortError') {
+        showSuccess();
+      } else {
+        btn.textContent = 'Send Me the Guide ☀️';
+        btn.disabled = false;
       alert('Something went wrong. Please try again.');
     });
   };
