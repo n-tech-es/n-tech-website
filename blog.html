@@ -859,7 +859,7 @@
   var storageKey = 'ntec_popup_shown';
 
   function shouldShow() {
-    try { return !localStorage.getItem(storageKey); } catch(e) { return !shown; }
+    try { var ts = localStorage.getItem(storageKey); return !ts || (Date.now() - parseInt(ts)) >= 3 * 24 * 60 * 60 * 1000; } catch(e) { return !shown; }
   }
 
   function showPopup() {
