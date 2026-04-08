@@ -332,7 +332,7 @@
   function showPopup() {
     if (shown || !shouldShow()) return;
     shown = true;
-    try { localStorage.setItem(storageKey, '1'); } catch(e) {}
+    try { localStorage.setItem(storageKey, Date.now().toString()); } catch(e) {}
     document.getElementById('ntec-popup-overlay').classList.add('open');
   }
 
