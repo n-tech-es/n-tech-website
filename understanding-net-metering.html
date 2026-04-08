@@ -308,7 +308,7 @@
     if (shown || !shouldShow()) return;
     shown = true;
 
-    document.getElementById('ntec-popup-overlay').classList.add('open');
+    var ov=document.getElementById('ntec-popup-overlay'); if(ov) ov.style.display='flex';
   }
 
   // Timer: 8 seconds
@@ -322,7 +322,7 @@
   }
 
   window.ntecClosePopup = function() {
-    document.getElementById('ntec-popup-overlay').classList.remove('open');
+    var ov=document.getElementById('ntec-popup-overlay'); if(ov) ov.style.display='none';
   };
 
   // Close on overlay click
