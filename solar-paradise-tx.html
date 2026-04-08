@@ -411,27 +411,21 @@ window.addEventListener('load', function() {
       document.getElementById('ntec-popup-success-view').style.display = 'block';
       setTimeout(ntecClosePopup, 5000);
     }
+    var fd = new FormData();
+    fd.append('name', name);
+    fd.append('email', email);
+    fd.append('_subject', 'New Solar Savings Guide Signup — ' + name);
+    fd.append('_captcha', 'false');
     fetch('https://formsubmit.co/ajax/customerexperience@n-tech-es.com', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        _subject: 'New Solar Savings Guide Signup — ' + name,
-        _captcha: 'false'
-      }),
+      body: fd,
       signal: controller.signal
     })
     .then(showSuccess)
     .catch(function(err) {
       clearTimeout(timer);
-      if (err.name === 'AbortError') {
-        showSuccess();
-      } else {
-        btn.textContent = 'Send Me the Guide ☀️';
-        btn.disabled = false;
-        alert('Something went wrong. Please try again.');
-      }
+      btn.textContent = 'Send Me the Guide ☀️';
+      btn.disabled = false;
     });
   };
 });
