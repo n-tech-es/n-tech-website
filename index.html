@@ -1352,7 +1352,6 @@ window.addEventListener('load', function() {
 
   setTimeout(showPopup, 1000);
 
-  // Exit intent: desktop only
   if (!/Mobi|Android/i.test(navigator.userAgent)) {
     document.addEventListener('mouseleave', function(e) {
       if (e.clientY <= 0) showPopup();
@@ -1401,12 +1400,13 @@ window.addEventListener('load', function() {
       if (err.name === 'AbortError') {
         showSuccess();
       } else {
-        btn.textContent = 'Send Me the Guide ☀️';
+        btn.textContent = 'Send Me the Guide \u2600\uFE0F';
         btn.disabled = false;
-      alert('Something went wrong. Please try again.');
+        alert('Something went wrong. Please try again.');
+      }
     });
   };
-})();
+});
 </script>
 <!-- End Email Capture Popup -->
 
