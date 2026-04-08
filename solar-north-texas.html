@@ -421,16 +421,16 @@
       <form id="ntec-popup-form" onsubmit="ntecSubmitPopup(event)">
         <input type="text" id="ntec-popup-name" placeholder="Your first name" required style="width:100%;padding:0.75rem 1rem;border:1.5px solid #ddd;border-radius:8px;font-size:0.95rem;font-family:inherit;margin-bottom:0.75rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#52B788'" onblur="this.style.borderColor='#ddd'">
         <input type="email" id="ntec-popup-email" placeholder="Your email address" required style="width:100%;padding:0.75rem 1rem;border:1.5px solid #ddd;border-radius:8px;font-size:0.95rem;font-family:inherit;margin-bottom:1rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#52B788'" onblur="this.style.borderColor='#ddd'">
-        <button type="submit" id="ntec-popup-submit" style="width:100%;background:#52B788;color:white;border:none;border-radius:8px;padding:0.9rem;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:background 0.2s;">Send Me the Guide ☀️</button>
+        <button type="submit" id="ntec-popup-submit" style="width:100%;background:#52B788;color:white;border:none;border-radius:8px;padding:0.9rem;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:background 0.2s;">Send Me the Guide</button>
       </form>
       <p style="text-align:center;font-size:0.75rem;color:#aaa;margin-top:0.85rem;">No spam. Unsubscribe anytime.</p>
     </div>
     <!-- Success View -->
     <div id="ntec-popup-success-view" style="display:none;text-align:center;padding:1rem 0;">
-      <div style="font-size:3.5rem;margin-bottom:1rem;animation:ntecSpin 0.6s ease-out;">☀️</div>
+      <div style="margin-bottom:1rem;animation:ntecSpin 0.6s ease-out;"><img src="images/logo.jpg" alt="N-Tech Energy Solutions" style="width:64px;height:64px;border-radius:50%;object-fit:cover;box-shadow:0 4px 16px rgba(0,0,0,0.12);"></div>
       <h3 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:1.6rem;color:#0A0A0A;margin-bottom:0.75rem;">You're in!</h3>
       <p style="color:#6C757D;font-size:0.97rem;line-height:1.7;margin-bottom:0.5rem;">Your savings guide is on its way. Real numbers, no pressure — that's how we do everything at N-Tech.</p>
-      <p style="color:#52B788;font-weight:700;font-size:0.9rem;">Solutions designed for the Texas sun ☀️</p>
+      <p style="color:#52B788;font-weight:700;font-size:0.9rem;">Solutions designed for the Texas sun</p>
     </div>
   </div>
 </div>
@@ -497,7 +497,7 @@ window.addEventListener('load', function() {
     .then(showSuccess)
     .catch(function(err) {
       clearTimeout(timer);
-      btn.textContent = 'Send Me the Guide ☀️';
+      btn.textContent = 'Send Me the Guide';
       btn.disabled = false;
     });
   };
