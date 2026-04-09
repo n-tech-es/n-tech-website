@@ -409,11 +409,13 @@ window.addEventListener('load', function() {
 
   function showPopup() {
     if (shown) return;
+    if (sessionStorage.getItem('ntec_popup_seen')) return;
     shown = true;
+    sessionStorage.setItem('ntec_popup_seen', '1');
     if (overlay) overlay.style.display = 'flex';
   }
 
-  setTimeout(showPopup, 1000);
+  setTimeout(showPopup, 5000);
 
   // Exit intent: desktop only
   if (!/Mobi|Android/i.test(navigator.userAgent)) {
