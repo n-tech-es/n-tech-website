@@ -9,7 +9,7 @@ Static HTML/CSS/JS website for N-Tech Energy Solutions LLC, a solar installation
 - **Service area**: 60-mile radius of Chico, TX — Wise, Parker, Jack, Montague Counties
 - **Contact**: customerexperience@n-tech-es.com | (214) 267-9372
 - **Tally forms**: Consultation → `https://tally.so/r/3jdYeQ` | Founding offer → `https://tally.so/r/zxXr4E`
-- **Pricing**: Base rate $2.40/watt (range $2.40–$3.00/watt)
+- **Pricing tiers**: Starter $2.40/watt | Standard $2.50/watt | Premium $2.70/watt | Power Plus $2.90/watt
 - **Founded**: 2025/2026 — still building first 25 founding customers
 
 ## Brand Voice
