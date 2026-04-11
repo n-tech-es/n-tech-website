@@ -430,6 +430,7 @@
       <p style="color:#6C757D;font-size:0.92rem;line-height:1.65;margin-bottom:1.5rem;">Real numbers on what solar costs in your area, what the 30% tax credit covers, and what your payback looks like. No fluff. No pressure.</p>
       <form id="ntec-popup-form" onsubmit="ntecSubmitPopup(event)">
         <input type="text" id="ntec-popup-name" placeholder="Your first name" required style="width:100%;padding:0.75rem 1rem;border:1.5px solid #ddd;border-radius:8px;font-size:0.95rem;font-family:inherit;margin-bottom:0.75rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#52B788'" onblur="this.style.borderColor='#ddd'">
+        <input type="text" id="ntec-popup-honey" name="_honey" style="display:none;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off">
         <input type="email" id="ntec-popup-email" placeholder="Your email address" required style="width:100%;padding:0.75rem 1rem;border:1.5px solid #ddd;border-radius:8px;font-size:0.95rem;font-family:inherit;margin-bottom:1rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#52B788'" onblur="this.style.borderColor='#ddd'">
         <button type="submit" id="ntec-popup-submit" style="width:100%;background:#52B788;color:white;border:none;border-radius:8px;padding:0.9rem;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:background 0.2s;">Send Me the Guide</button>
       </form>
@@ -500,6 +501,7 @@ window.addEventListener('load', function() {
     fd.append('name', name);
     fd.append('email', email);
     fd.append('_subject', 'New Solar Savings Guide Signup — ' + name);
+    fd.append('_honey', document.getElementById('ntec-popup-honey').value);
     fd.append('_captcha', 'false');
     fetch('https://formsubmit.co/ajax/customerexperience@n-tech-es.com', {
       method: 'POST',

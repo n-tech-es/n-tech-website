@@ -283,6 +283,7 @@
                 <h3>Send Us a Message</h3>
                 <p>We'll get back to you within 24 hours.</p>
                 <form id="ntec-contact-form">
+                    <input type="text" name="_honey" style="display:none;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="first-name">First Name *</label>
@@ -359,6 +360,7 @@
                     fd.append('phone', phone);
                     fd.append('subject', subject);
                     fd.append('message', message);
+                    fd.append('_honey', document.querySelector('#ntec-contact-form [name="_honey"]').value);
                     fd.append('_subject', 'New Contact Message — N-Tech Website');
                     fd.append('_captcha', 'false');
                     fd.append('_template', 'table');
