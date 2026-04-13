@@ -194,6 +194,27 @@
             .page-hero h1 { font-size: 1.5rem; }
             .hero-stats { grid-template-columns: repeat(2, 1fr); }
         }
+
+        /* City Radar Grid */
+        .city-radar-section { background: var(--soft-black); padding: 5rem 2rem; }
+        .city-radar-inner { max-width: 1200px; margin: 0 auto; }
+        .city-radar-header { text-align: center; margin-bottom: 3rem; }
+        .radar-eyebrow { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-green); border: 1px solid rgba(82,183,136,0.5); border-radius: 4px; padding: 0.3rem 0.8rem; margin-bottom: 1.25rem; }
+        .city-radar-header h2 { font-size: 2.2rem; color: white; margin-bottom: 0.85rem; }
+        .city-radar-header p { font-size: 1.05rem; color: rgba(255,255,255,0.62); max-width: 640px; margin: 0 auto; line-height: 1.7; }
+        .city-radar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+        .radar-card { display: flex; flex-direction: column; background: rgba(255,255,255,0.04); border: 1px solid rgba(82,183,136,0.16); border-radius: 14px; padding: 1.75rem 1.5rem; text-decoration: none; transition: all 0.28s ease; position: relative; overflow: hidden; }
+        .radar-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(82,183,136,0.06) 0%, transparent 65%); pointer-events: none; }
+        .radar-card:hover { background: rgba(82,183,136,0.1); border-color: var(--accent-green); transform: translateY(-5px); box-shadow: 0 16px 40px rgba(82,183,136,0.18); }
+        .radar-dot { width: 9px; height: 9px; background: var(--accent-green); border-radius: 50%; margin-bottom: 1.25rem; flex-shrink: 0; box-shadow: 0 0 0 0 rgba(82,183,136,0.6); animation: radar-pulse 2.5s ease-in-out infinite; }
+        @keyframes radar-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(82,183,136,0.5); } 50% { box-shadow: 0 0 0 8px rgba(82,183,136,0); } }
+        .radar-city { font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 1.35rem; color: white; margin-bottom: 0.3rem; line-height: 1.1; }
+        .radar-county { font-size: 0.75rem; font-weight: 700; color: var(--accent-green); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 1rem; }
+        .radar-arrow { font-size: 0.88rem; color: rgba(255,255,255,0.35); margin-top: auto; transition: color 0.25s, transform 0.25s; display: inline-block; }
+        .radar-card:hover .radar-arrow { color: var(--bright-green); transform: translateX(4px); }
+        @media (max-width: 1000px) { .city-radar-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 700px) { .city-radar-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 400px) { .city-radar-grid { grid-template-columns: 1fr; } }
     </style>
 
     <script type="application/ld+json">
@@ -494,6 +515,85 @@
             <div class="faq-item">
                 <h3>Do you serve my area?</h3>
                 <p>We serve Wise County, Parker County, and surrounding North Texas within 60 miles of Chico TX. Same service area as our solar work.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- City Coverage Radar -->
+    <div class="city-radar-section">
+        <div class="city-radar-inner">
+            <div class="city-radar-header">
+                <span class="radar-eyebrow">Coverage Area</span>
+                <h2>Book a Home Energy Audit in Your City</h2>
+                <p>We audit homes across 11 cities in Wise and Parker Counties. Click your city for local findings, common issues, and what to expect from your audit.</p>
+            </div>
+            <div class="city-radar-grid">
+                <a href="energy-audit-decatur-tx.html" class="radar-card">
+                    <span class="radar-dot"></span>
+                    <div class="radar-city">Decatur</div>
+                    <div class="radar-county">Wise County · CoServ</div>
+                    <span class="radar-arrow">See Decatur energy profile →</span>
+                </a>
+                <a href="energy-audit-bridgeport-tx.html" class="radar-card">
+                    <span class="radar-dot"></span>
+                    <div class="radar-city">Bridgeport</div>
+                    <div class="radar-county">Wise County · CoServ</div>
+                    <span class="radar-arrow">See Bridgeport energy profile →</span>
+                </a>
+                <a href="energy-audit-chico-tx.html" class="radar-card">
+                    <span class="radar-dot"></span>
+                    <div class="radar-city">Chico</div>
+                    <div class="radar-county">Wise County · CoServ</div>
+                    <span class="radar-arrow">See Chico energy profile →</span>
+                </a>
+                <a href="energy-audit-boyd-tx.html" class="radar-card">
+                    <span class="radar-dot"></span>
+                    <div class="radar-city">Boyd</div>
+                    <div class="radar-county">Wise County · CoServ</div>
+                    <span class="radar-arrow">See Boyd energy profile →</span>
+                </a>
+                <a href="energy-audit-paradise-tx.html" class="radar-card">
+                    <span class="radar-dot"></span>
+                    <div class="radar-city">Paradise</div>
+                    <div class="radar-county">Wise County · CoServ</div>
+                    <span class="radar-arrow">See Paradise energy profile →</span>
+                </a>
+                <a href="energy-audit-rhome-tx.html" class="radar-card">
+                    <span class="radar-dot"></span>
+                    <div class="radar-city">Rhome</div>
+                    <div class="radar-county">Wise County · CoServ</div>
+                    <span class="radar-arrow">See Rhome energy profile →</span>
+                </a>
+                <a href="energy-audit-newark-tx.html" class="radar-card">
+                    <span class="radar-dot"></span>
+                    <div class="radar-city">Newark</div>
+                    <div class="radar-county">Wise County · CoServ</div>
+                    <span class="radar-arrow">See Newark energy profile →</span>
+                </a>
+                <a href="energy-audit-azle-tx.html" class="radar-card">
+                    <span class="radar-dot"></span>
+                    <div class="radar-city">Azle</div>
+                    <div class="radar-county">Parker/Tarrant · CoServ</div>
+                    <span class="radar-arrow">See Azle energy profile →</span>
+                </a>
+                <a href="energy-audit-springtown-tx.html" class="radar-card">
+                    <span class="radar-dot"></span>
+                    <div class="radar-city">Springtown</div>
+                    <div class="radar-county">Parker County · Oncor</div>
+                    <span class="radar-arrow">See Springtown energy profile →</span>
+                </a>
+                <a href="energy-audit-aledo-tx.html" class="radar-card">
+                    <span class="radar-dot"></span>
+                    <div class="radar-city">Aledo</div>
+                    <div class="radar-county">Parker County · Oncor</div>
+                    <span class="radar-arrow">See Aledo energy profile →</span>
+                </a>
+                <a href="energy-audit-weatherford-tx.html" class="radar-card">
+                    <span class="radar-dot"></span>
+                    <div class="radar-city">Weatherford</div>
+                    <div class="radar-county">Parker County · Oncor</div>
+                    <span class="radar-arrow">See Weatherford energy profile →</span>
+                </a>
             </div>
         </div>
     </div>
