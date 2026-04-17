@@ -1,0 +1,36 @@
+name: Weekly SEO Audit
+
+on:
+  schedule:
+    - cron: '0 10 * * 1'   # Every Monday at 10am UTC
+  workflow_dispatch:         # Allow manual trigger from Actions tab
+
+jobs:
+  seo-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Run SEO audit
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/seo_audit.py
+
+      - name: Upload audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-audit-report-${{ github.run_number }}
+          path: seo-reports/
+          retention-days: 90
+          if-no-files-found: error

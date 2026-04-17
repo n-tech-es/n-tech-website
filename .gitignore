@@ -1,0 +1,4 @@
+seo-reports/
+__pycache__/
+*.pyc
+.env
