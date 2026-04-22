@@ -71,20 +71,20 @@
         /* Hero */
         .article-hero {
             position: relative;
-            height: 420px;
+            min-height: 420px;
             display: flex;
             align-items: flex-end;
             overflow: hidden;
         }
         .article-hero-bg {
             position: absolute;
-            inset: 0;
+            top:0;left:0;right:0;bottom:0;
             background-size: cover;
             background-position: center;
         }
         .article-hero-overlay {
             position: absolute;
-            inset: 0;
+            top:0;left:0;right:0;bottom:0;
             background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.4) 60%, rgba(10,10,10,0.2) 100%);
             pointer-events: none;
         }
@@ -181,8 +181,8 @@
         }
         @media (max-width: 768px) {
             .nav-links { display: none; } .nav-cta { display: none; } .hamburger { display: flex; }
-            .article-hero { height: 320px; }
-            .hero-content h1 { font-size: 1.7rem; }
+            .article-hero { min-height: 320px; height: auto; }
+            .hero-content h1 { font-size: 1.5rem; }
             .data-table { display: block; overflow-x: auto; font-size: 0.82rem; }
             .data-table th, .data-table td { padding: 0.5rem 0.65rem; }
         }
