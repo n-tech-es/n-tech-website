@@ -474,7 +474,6 @@
                 <button type="button" class="pill" data-val="Battery Storage">Battery Storage</button>
                 <button type="button" class="pill" data-val="Just Exploring">Just Exploring</button>
             </div>
-            <div id="interestsInputs"></div>
         </div>
         <div class="field-group">
             <label class="field-label">Avg. Monthly Electric Bill <span class="required">*</span></label>
@@ -843,28 +842,10 @@
         });
     }
 
-    // Pills (multi-select)
-    function setupMultiPills(groupId, containerId) {
-        var pills = document.querySelectorAll('#' + groupId + ' .pill');
-        var container = document.getElementById(containerId);
-        pills.forEach(function(pill) {
-            pill.addEventListener('click', function() {
-                this.classList.toggle('active');
-                container.innerHTML = '';
-                pills.forEach(function(p) {
-                    if (p.classList.contains('active')) {
-                        var inp = document.createElement('input');
-                        inp.type = 'hidden';
-                        inp.name = 'Interests';
-                        inp.value = p.dataset.val;
-                        container.appendChild(inp);
-                    }
-                });
-            });
-        });
-    }
-
-    setupMultiPills('interests', 'interestsInputs');
+    // Pills (multi-select) — toggle active class only; hidden fields built on submit
+    document.querySelectorAll('#interests .pill').forEach(function(pill) {
+        pill.addEventListener('click', function() { this.classList.toggle('active'); });
+    });
 
     // Newsletter toggle label
     var newsletterToggle = document.getElementById('newsletterToggle');
