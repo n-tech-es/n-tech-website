@@ -46,23 +46,26 @@
         body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; overflow-x: hidden; }
         h1,h2,h3,h4 { font-family: 'Archivo', sans-serif; }
         /* NAV */
-        nav { background: var(--navy); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-        .nav-inner { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo { display: flex; align-items: center; text-decoration: none; }
-        .nav-logo img { display: block; height: 40px; width: auto; }
+        header { background: var(--navy); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        nav { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 1.5rem; color: white; text-decoration: none; }
+        .logo-icon { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; }
         .nav-links { display: flex; gap: 1.5rem; list-style: none; margin-right: 2rem; }
         .nav-links a { color: white; text-decoration: none; font-weight: 500; font-size: 0.9rem; white-space: nowrap; transition: color 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: var(--green-accent); }
-        .nav-cta { background: var(--btn); color: #fff; padding: 0.65rem 1.25rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.88rem; transition: background 0.2s; white-space: nowrap; }
-        .nav-cta:hover { background: var(--btn-hover); }
-        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 0.5rem; margin-left: 0.5rem; }
+        .cta-button { background: var(--btn); color: #fff; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 700; transition: background 0.2s; white-space: nowrap; }
+        .cta-button:hover { background: var(--btn-hover); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 0.5rem; margin-left: 1rem; }
         .hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s; }
-        .mobile-menu { display: none; flex-direction: column; padding: 0.5rem 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); position: relative; }
-        .mobile-menu.open { display: flex; }
-        .mobile-menu ul { list-style: none; }
-        .mobile-menu ul li a { color: white; text-decoration: none; font-weight: 500; font-size: 1rem; padding: 0.85rem 0; display: block; border-bottom: 1px solid rgba(255,255,255,0.08); transition: color 0.3s; }
-        .mobile-menu ul li a:hover { color: var(--green-accent); }
-        .mobile-close { position: absolute; top: 0.75rem; right: 1.5rem; background: none; border: none; color: rgba(255,255,255,0.7); font-size: 1.2rem; cursor: pointer; padding: 0.25rem; line-height: 1; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+        .mobile-nav { display: none; flex-direction: column; background: var(--navy); padding: 1rem 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav ul { list-style: none; }
+        .mobile-nav ul li a { color: white; text-decoration: none; font-weight: 500; font-size: 1rem; padding: 0.85rem 0; display: block; border-bottom: 1px solid rgba(255,255,255,0.08); transition: color 0.3s; }
+        .mobile-nav ul li a:hover { color: var(--green-accent); }
+        .mobile-cta { margin-top: 1.25rem; text-align: center; display: block; }
         /* HERO */
         .form-hero { background: linear-gradient(135deg, var(--green-dark) 0%, #1e3a0e 60%, var(--navy) 100%); padding: 56px 32px 48px; text-align: center; position: relative; overflow: hidden; }
         .form-hero::before { content: ''; position: absolute; top:0;left:0;right:0;bottom:0; background: repeating-linear-gradient(45deg, transparent, transparent 28px, rgba(95,180,73,0.04) 28px, rgba(95,180,73,0.04) 29px); pointer-events: none; }
@@ -167,6 +170,11 @@
         .hours-grid .time { font-weight: 500; }
         .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
         .service-tag { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 100px; background: rgba(95,180,73,0.1); color: var(--green-dark); letter-spacing: 0.04em; }
+        /* SOCIAL LINKS */
+        .social-links { display: flex; flex-direction: column; gap: 0.75rem; }
+        .social-link { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s; }
+        .social-link:hover { color: var(--green-accent); }
+        .social-link svg { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
         /* FOOTER */
         footer { background: var(--navy); color: white; padding: 3rem 2rem 1.5rem; margin-top: 4rem; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 2rem; }
@@ -246,34 +254,41 @@
 <body>
 
 <!-- NAV -->
-<nav>
-    <div class="nav-inner">
-        <a href="/" class="nav-logo" aria-label="N-Tech Energy Solutions Home">
-            <img src="images/logo.webp" alt="N-Tech Energy Solutions" width="140" height="40">
+<header>
+    <nav>
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><img src="images/logo.webp" alt="N-Tech Energy Solutions" style="height:45px;width:auto;"></div>
+            <span>N-Tech Energy Solutions</span>
         </a>
         <ul class="nav-links">
-            <li><a href="solar-north-texas.html">Solar</a></li>
             <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
             <li><a href="service-area.html">Service Area</a></li>
+            <li><a href="energy-audit.html">Energy Audit</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="blog.html">Blog</a></li>
+            <li><a href="founding-offer.html">Founding Customer Offer</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
-        <a href="consultation.html" class="nav-cta">Free Consultation</a>
-        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <a href="consultation.html" class="cta-button nav-cta">Free Energy Consultation</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
             <span></span><span></span><span></span>
         </button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
-        <button class="mobile-close" id="mobileClose" aria-label="Close menu">&#x2715;</button>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav">
         <ul>
-            <li><a href="solar-north-texas.html">Solar</a></li>
             <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
             <li><a href="service-area.html">Service Area</a></li>
+            <li><a href="energy-audit.html">Energy Audit</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="blog.html">Blog</a></li>
-            <li><a href="consultation.html">Free Consultation</a></li>
+            <li><a href="founding-offer.html">Founding Customer Offer</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
+        <a href="consultation.html" class="cta-button mobile-cta">Free Energy Consultation</a>
     </div>
+</header>
 </nav>
 
 <!-- HERO -->
@@ -600,6 +615,26 @@
             </select>
         </div>
         <div class="field-group">
+            <label class="field-label" for="referral">How did you hear about N-Tech? <span style="font-weight:400;color:#9AA5B1;">(optional)</span></label>
+            <select class="field-input field-select" id="referral" name="How You Heard">
+                <option value="">Select one…</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Instagram">Instagram</option>
+                <option value="TikTok">TikTok</option>
+                <option value="Google Search">Google Search</option>
+                <option value="Google Business Profile">Google Business Profile</option>
+                <option value="Referred by a friend or neighbor">Referred by a friend or neighbor</option>
+                <option value="Flyer / Mailer">Flyer / Mailer</option>
+                <option value="Other">Other</option>
+            </select>
+            <p class="field-hint">Helps us know where we're making an impact in the community.</p>
+        </div>
+        <div class="field-group" id="referralNameWrap" style="display:none">
+            <label class="field-label" for="referralName">Who referred you? <span style="font-weight:400;color:#9AA5B1;">(optional)</span></label>
+            <input class="field-input" type="text" id="referralName" name="Referred By" placeholder="Their name">
+            <p class="field-hint">We love to give credit where it's due.</p>
+        </div>
+        <div class="field-group">
             <label class="field-label" for="notes">Anything else we should know?</label>
             <textarea class="field-input field-textarea" id="notes" name="Additional Notes" placeholder="Special circumstances, questions, anything on your mind…" rows="4"></textarea>
         </div>
@@ -695,53 +730,69 @@
 <footer>
     <div class="footer-content">
         <div class="footer-section">
-            <h4>N-Tech Energy Solutions</h4>
-            <p>Based in North Texas, serving a 60-mile radius of Chico, TX. Transparent pricing. No door-to-door sales. No commissions.</p>
+            <h4>N-Tech Energy Solutions LLC</h4>
+            <p>Making solar simple and affordable for North Texas homeowners.</p>
+            <p style="margin-top:1rem;">Solutions Designed for the Texas Sun</p>
             <div style="margin-top:1.25rem;">
-                <a href='https://www.chamberofcommerce.com/business-directory/texas/chico/solar-energy-company/2034199863-n-tech-energy-solutions-llc?source=memberwebsite' target='_blank' rel='noopener'>
-                    <img style='width:auto;height:100px;' src='https://coc.codes/images/badge/2034199863' alt='Chamber of Commerce Member - N-Tech Energy Solutions' loading="lazy">
+                <a id='COCBadgeURL' href='https://www.chamberofcommerce.com/business-directory/texas/chico/solar-energy-company/2034199863-n-tech-energy-solutions-llc?source=memberwebsite' target='_tab'>
+                    <img style='width:auto;height:150px;' id='COCBadgeIMG' src='https://coc.codes/images/badge/2034199863' alt='Chamber of Commerce Member - N-Tech Energy Solutions' loading="lazy">
                 </a>
             </div>
         </div>
         <div class="footer-section">
-            <h4>Services</h4>
+            <h4>Quick Links</h4>
             <ul>
-                <li><a href="solar-north-texas.html">Solar Installation</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="energy-audit-chico-tx.html">Energy Audit</a></li>
-                <li><a href="founding-offer.html">Founding Customer Offer</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="service-area.html">Service Area</a></li>
+                <li><a href="energy-audit.html">Energy Audit</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="founding-offer.html">Founding Offer</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
         <div class="footer-section">
-            <h4>Service Area</h4>
+            <h4>Service Areas</h4>
             <ul>
-                <li><a href="solar-decatur-tx.html">Decatur</a></li>
-                <li><a href="solar-bridgeport-tx.html">Bridgeport</a></li>
-                <li><a href="solar-weatherford-tx.html">Weatherford</a></li>
-                <li><a href="service-area.html">View all cities &rarr;</a></li>
+                <li>Wise County, TX</li>
+                <li>Parker County, TX</li>
+                <li>Jack County, TX</li>
+                <li>Montague County, TX</li>
+                <li>Decatur, Bridgeport, Jacksboro</li>
+                <li>Bowie, Nocona &amp; More</li>
             </ul>
         </div>
         <div class="footer-section">
             <h4>Contact</h4>
-            <p>
-                <a href="tel:+12142679372">(214) 267-9372</a><br>
-                <a href="mailto:customerexperience@n-tech-es.com">customerexperience@n-tech-es.com</a>
-            </p>
-            <div style="display:flex;gap:12px;margin-top:1rem;">
-                <a href="https://www.facebook.com/people/N-Tech-Energy-Solutions-LLC/61583157688284/" target="_blank" rel="noopener" aria-label="Facebook">
-                    <svg width="22" height="22" fill="white" opacity="0.75" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            <ul>
+                <li>Email: customerexperience@n-tech-es.com</li>
+                <li>Phone: (214) 267-9372</li>
+                <li>Hours: Mon-Fri 8am-7pm</li>
+                <li>Saturday 9am-4pm</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+                <a href="https://www.facebook.com/people/N-Tech-Energy-Solutions-LLC/61583157688284/" target="_blank" rel="noopener" class="social-link">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3l-.5 3H13v6.95C18.05 21.45 22 17.19 22 12z"/></svg>
+                    Facebook
                 </a>
-                <a href="https://www.instagram.com/ntechenergysolutions/" target="_blank" rel="noopener" aria-label="Instagram">
-                    <svg width="22" height="22" fill="none" stroke="white" opacity="0.75" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none" opacity="0.75"/></svg>
+                <a href="https://www.instagram.com/ntechenergysolutions/" target="_blank" rel="noopener" class="social-link">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                    Instagram
                 </a>
-                <a href="https://www.tiktok.com/@n_teches" target="_blank" rel="noopener" aria-label="TikTok">
-                    <svg width="22" height="22" fill="white" opacity="0.75" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.31 6.31 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.2 8.2 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z"/></svg>
+                <a href="https://www.tiktok.com/@n_teches" target="_blank" rel="noopener" class="social-link">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5 2.592 2.592 0 0 1-2.59-2.5 2.592 2.592 0 0 1 2.59-2.5c.24 0 .47.03.69.08V9.35a6 6 0 0 0-.69-.04A5.95 5.95 0 0 0 3.87 15.3a5.95 5.95 0 0 0 5.95 5.95A5.95 5.95 0 0 0 15.77 15.3V8.91a7.87 7.87 0 0 0 4.6 1.48V7.01a4.314 4.314 0 0 1-3.77-1.19z"/></svg>
+                    TikTok
                 </a>
             </div>
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2025 N-Tech Energy Solutions LLC. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        <p>&copy; 2026 N-Tech Energy Solutions LLC. All rights reserved. | Licensed Texas Solar Installer</p>
     </div>
 </footer>
 
@@ -924,18 +975,26 @@
 
     // Hamburger nav
     var hamburger = document.getElementById('hamburger');
-    var mobileMenu = document.getElementById('mobileMenu');
-    var mobileClose = document.getElementById('mobileClose');
+    var mobileNav = document.getElementById('mobile-nav');
     if (hamburger) {
         hamburger.addEventListener('click', function() {
-            var open = mobileMenu.classList.toggle('open');
-            hamburger.setAttribute('aria-expanded', open);
+            mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('active');
+        });
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+                mobileNav.classList.remove('open');
+                hamburger.classList.remove('active');
+            }
         });
     }
-    if (mobileClose) {
-        mobileClose.addEventListener('click', function() {
-            mobileMenu.classList.remove('open');
-            hamburger.setAttribute('aria-expanded', false);
+
+    // Referral name show/hide
+    var referralSelect = document.getElementById('referral');
+    var referralNameWrap = document.getElementById('referralNameWrap');
+    if (referralSelect) {
+        referralSelect.addEventListener('change', function() {
+            referralNameWrap.style.display = this.value === 'Referred by a friend or neighbor' ? 'flex' : 'none';
         });
     }
 
