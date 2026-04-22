@@ -374,13 +374,13 @@
             <input class="field-input" type="email" id="email" name="Email" placeholder="john@example.com" required autocomplete="email">
         </div>
         <div class="field-group">
-            <label class="field-label" for="phone">Phone Number <span class="required">*</span></label>
-            <input class="field-input" type="tel" id="phone" name="Phone" placeholder="(214) 555-0100" required autocomplete="tel">
+            <label class="field-label" for="phone">Phone Number</label>
+            <input class="field-input" type="tel" id="phone" name="Phone" placeholder="(214) 555-0100" autocomplete="tel">
         </div>
         <div class="field-group">
-            <label class="field-label" for="streetAddress">Street Address <span class="required">*</span></label>
-            <input class="field-input" type="text" id="streetAddress" name="Street Address" placeholder="123 Main St, Chico, TX 76431" required autocomplete="street-address">
-            <p class="field-hint">We use this to verify your location is within our service area.</p>
+            <label class="field-label" for="streetAddress">Street Address</label>
+            <input class="field-input" type="text" id="streetAddress" name="Street Address" placeholder="123 Main St, Chico, TX 76431" autocomplete="street-address">
+            <p class="field-hint">Helps us confirm you're within our service area — optional but useful.</p>
         </div>
         <div class="form-nav">
             <span></span>
@@ -404,7 +404,7 @@
             <div class="radio-group" role="group">
                 <label class="radio-card" style="flex-direction:column;align-items:flex-start;gap:2px;">
                     <div style="display:flex;align-items:center;gap:10px;">
-                        <input type="radio" name="Home Ownership" value="Yes — I own this home" required>
+                        <input type="radio" name="Home Ownership" value="Yes — I own this home" required class="req-ownership">
                         <span class="radio-label">Yes — I own this home</span>
                     </div>
                 </label>
@@ -418,8 +418,8 @@
             </div>
         </div>
         <div class="field-group">
-            <label class="field-label" for="homeType">Home Type</label>
-            <select class="field-input field-select" id="homeType" name="Home Type">
+            <label class="field-label" for="homeType">Home Type <span class="required">*</span></label>
+            <select class="field-input field-select" id="homeType" name="Home Type" required>
                 <option value="">Select one…</option>
                 <option value="Single-family">Single-family</option>
                 <option value="Manufactured/mobile">Manufactured / mobile home</option>
@@ -471,7 +471,6 @@
                 <button type="button" class="pill" data-val="Home Energy Audit">Home Energy Audit</button>
                 <button type="button" class="pill" data-val="Energy Efficiency Upgrades">Energy Efficiency Upgrades</button>
                 <button type="button" class="pill" data-val="Battery Storage">Battery Storage</button>
-                <button type="button" class="pill" data-val="Lower My Electric Bill">Lower My Electric Bill</button>
                 <button type="button" class="pill" data-val="Just Exploring">Just Exploring</button>
             </div>
             <input type="hidden" name="Interests" id="interestsInput" value="">
@@ -480,7 +479,7 @@
             <label class="field-label">Avg. Monthly Electric Bill</label>
             <div class="radio-group" role="group" style="flex-direction:column;">
                 <label class="radio-card" style="width:100%;">
-                    <input type="radio" name="Average Monthly Bill" value="Under $100">
+                    <input type="radio" name="Average Monthly Bill" value="Under $100" required>
                     <span class="radio-label">Under $100</span>
                 </label>
                 <label class="radio-card" style="width:100%;">
@@ -508,8 +507,12 @@
                 <option value="Oncor">Oncor</option>
                 <option value="AEP">AEP</option>
                 <option value="PVEC">PVEC (Pedernales)</option>
-                <option value="Other/not sure">Other / not sure</option>
+                <option value="Other">Other</option>
             </select>
+        </div>
+        <div class="field-group" id="utilityOtherWrap" style="display:none">
+            <label class="field-label" for="utilityOther">Your utility name</label>
+            <input class="field-input" type="text" id="utilityOther" name="Utility Provider (Other)" placeholder="e.g. Tri-County Electric">
         </div>
         <div class="field-group">
             <label class="field-label" for="timeline">How soon are you looking to act?</label>
@@ -911,6 +914,15 @@
                 mobileNav.classList.remove('open');
                 hamburger.classList.remove('active');
             }
+        });
+    }
+
+    // Utility "Other" show/hide
+    var utilitySelect = document.getElementById('utility');
+    var utilityOtherWrap = document.getElementById('utilityOtherWrap');
+    if (utilitySelect) {
+        utilitySelect.addEventListener('change', function() {
+            utilityOtherWrap.style.display = this.value === 'Other' ? 'block' : 'none';
         });
     }
 
