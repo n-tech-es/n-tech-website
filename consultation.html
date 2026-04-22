@@ -474,6 +474,7 @@
                 <button type="button" class="pill" data-val="Battery Storage">Battery Storage</button>
                 <button type="button" class="pill" data-val="Just Exploring">Just Exploring</button>
             </div>
+            <input type="hidden" name="Interests" id="interestsHidden">
         </div>
         <div class="field-group">
             <label class="field-label">Avg. Monthly Electric Bill <span class="required">*</span></label>
@@ -928,17 +929,14 @@
     style.textContent = '.upload-zone.drag-over { border-color: #5FB449; background: rgba(95,180,73,0.08); }';
     document.head.appendChild(style);
 
-    // Rebuild Interest hidden fields on submit
+    // Collect active pills into single comma-separated field on submit
     var consultForm = document.getElementById('consultForm');
     consultForm.addEventListener('submit', function() {
-        consultForm.querySelectorAll('input[name="Interest"]').forEach(function(el) { el.remove(); });
-        document.querySelectorAll('.pill.active').forEach(function(pill) {
-            var inp = document.createElement('input');
-            inp.type = 'hidden';
-            inp.name = 'Interest';
-            inp.value = pill.textContent.trim();
-            consultForm.appendChild(inp);
+        var selected = [];
+        document.querySelectorAll('#interests .pill.active').forEach(function(pill) {
+            selected.push(pill.textContent.trim());
         });
+        document.getElementById('interestsHidden').value = selected.join(', ');
     });
 
     // Init
