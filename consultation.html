@@ -50,7 +50,7 @@
         header { background: var(--navy); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
         nav { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
         .logo { display: flex; align-items: center; gap: 0.75rem; font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 1.5rem; color: white; text-decoration: none; }
-        .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, var(--green-accent), var(--green-dark)); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, var(--green-accent), var(--green-dark)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; }
         .nav-links { display: flex; gap: 1.5rem; list-style: none; margin-right: 2rem; }
         .nav-links a { color: white; text-decoration: none; font-weight: 500; font-size: 0.9rem; white-space: nowrap; transition: color 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: var(--green-accent); }
@@ -262,7 +262,7 @@
 <header>
     <nav>
         <a href="index.html" class="logo">
-            <div class="logo-icon"><img src="images/logo.webp" alt="N-Tech Energy Solutions" style="height:45px;width:auto;"></div>
+            <div class="logo-icon"><img loading="lazy" src="images/logo.webp" alt="N-Tech Energy Solutions" style="height:45px;width:auto;"></div>
             <span>N-Tech Energy Solutions</span>
         </a>
         <ul class="nav-links">
