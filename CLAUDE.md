@@ -1,7 +1,7 @@
 # N-Tech Energy Solutions — Claude Code Instructions
 
 ## Project Overview
-Static HTML/CSS/JS website for N-Tech Energy Solutions LLC, a solar installation company serving North Texas. Deployed via Netlify at `https://n-tech-es.com` and `https://www.n-tech-es.com`.
+Static HTML/CSS/JS website for N-Tech Energy Solutions LLC, a solar and energy efficiency company serving North Texas. N-Tech is not just solar — they help homeowners figure out what actually makes sense for their situation, which may include energy efficiency improvements, not just solar panels. Deployed via Netlify at `https://n-tech-es.com` and `https://www.n-tech-es.com`.
 
 ## Business Context
 - **Company**: N-Tech Energy Solutions LLC
