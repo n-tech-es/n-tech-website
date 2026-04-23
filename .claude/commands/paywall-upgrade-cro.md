@@ -1,0 +1,1 @@
+../skills/paywall-upgrade-cro/SKILL.md

@@ -1,0 +1,1 @@
+../skills/competitor-profiling/SKILL.md

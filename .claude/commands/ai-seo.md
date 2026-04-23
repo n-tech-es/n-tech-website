@@ -1,0 +1,1 @@
+../skills/ai-seo/SKILL.md

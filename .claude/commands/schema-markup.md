@@ -1,0 +1,1 @@
+../skills/schema-markup/SKILL.md

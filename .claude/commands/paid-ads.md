@@ -1,0 +1,1 @@
+../skills/paid-ads/SKILL.md
