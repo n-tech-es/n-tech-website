@@ -34,6 +34,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap"></noscript>
+    <!-- Cabinet Grotesk (Fontshare) — hero headlines only -->
+    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,900&display=swap"></noscript>
     <style>
 
         :root {
@@ -65,7 +68,8 @@
         .btn-dark { background: var(--deep-navy); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.3s, box-shadow 0.3s; display: inline-block; }
         .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
         .page-hero { background: linear-gradient(135deg, rgba(45,106,79,0.82) 0%, rgba(26,35,50,0.82) 100%), url('images/aboutus.webp') center/cover no-repeat; color: white; padding: 4rem 2rem; text-align: center; }
-        .page-hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .page-hero h1 {
+            font-family: 'Cabinet Grotesk', 'Archivo', sans-serif; font-size: 3rem; margin-bottom: 1rem; }
         .page-hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.9; }
         .section-header { max-width: 800px; margin: 0 auto 4rem; text-align: center; }
         .section-header h2 { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 1rem; }
@@ -132,7 +136,8 @@
             display: block;
         }
 
-        @media (max-width: 768px) { .nav-links { display: none; } .nav-cta { display: none; } .hamburger { display: flex; } .page-hero h1 { font-size: 2rem; } }
+        @media (max-width: 768px) { .nav-links { display: none; } .nav-cta { display: none; } .hamburger { display: flex; } .page-hero h1 {
+            font-family: 'Cabinet Grotesk', 'Archivo', sans-serif; font-size: 2rem; } }
 
         .about-hero { background: linear-gradient(135deg, rgba(45,80,22,0.82) 0%, rgba(26,35,50,0.82) 100%), url('images/aboutus.webp') center/cover no-repeat; color: white; padding: 5rem 2rem; text-align: center; }
         .about-hero h1 { font-size: 3.5rem; margin-bottom: 1rem; animation: fadeInUp 0.8s ease-out; }
@@ -175,7 +180,8 @@
         .cta-about p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; }
         .cta-about-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
         @media (max-width: 768px) { .mission-grid { grid-template-columns: 1fr; gap: 3rem; } .model-grid { grid-template-columns: 1fr; } .about-hero h1 { font-size: 2.5rem; } }
-        @media (max-width: 480px) { .about-hero h1 { font-size: 1.7rem; } .page-hero h1 { font-size: 1.6rem; } }
+        @media (max-width: 480px) { .about-hero h1 { font-size: 1.7rem; } .page-hero h1 {
+            font-family: 'Cabinet Grotesk', 'Archivo', sans-serif; font-size: 1.6rem; } }
     </style>
     <script type="application/ld+json">
     {

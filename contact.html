@@ -34,6 +34,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap"></noscript>
+    <!-- Cabinet Grotesk (Fontshare) — hero headlines only -->
+    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,900&display=swap"></noscript>
     <style>
 
         :root {
@@ -66,7 +69,8 @@
         .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
         .page-hero { background: linear-gradient(135deg, var(--primary-green) 0%, var(--deep-navy) 100%); color: white; padding: 4rem 2rem; text-align: center; position: relative; overflow: hidden; }
         .page-hero::before { content: ''; position: absolute; top:0;left:0;right:0;bottom:0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='12' fill='none' stroke='rgba(95,180,73,0.15)' stroke-width='1.5'/%3E%3Cpath d='M30 18 L30 10 M30 42 L30 50 M18 30 L10 30 M42 30 L50 30' stroke='rgba(95,180,73,0.1)' stroke-width='1.5'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect x='8' y='8' width='24' height='24' rx='4' fill='none' stroke='rgba(95,180,73,0.08)' stroke-width='1.5'/%3E%3C/svg%3E"); background-size: 80px 80px, 55px 55px; background-position: 0 0, 30px 30px; pointer-events: none; }
-        .page-hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .page-hero h1 {
+            font-family: 'Cabinet Grotesk', 'Archivo', sans-serif; font-size: 3rem; margin-bottom: 1rem; }
         .page-hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.9; }
         .section-header { max-width: 800px; margin: 0 auto 4rem; text-align: center; }
         .section-header h2 { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 1rem; }
@@ -133,7 +137,8 @@
             display: block;
         }
 
-        @media (max-width: 768px) { .nav-links { display: none; } .nav-cta { display: none; } .hamburger { display: flex; } .page-hero h1 { font-size: 2rem; } }
+        @media (max-width: 768px) { .nav-links { display: none; } .nav-cta { display: none; } .hamburger { display: flex; } .page-hero h1 {
+            font-family: 'Cabinet Grotesk', 'Archivo', sans-serif; font-size: 2rem; } }
 
         .contact-section { padding: 5rem 2rem; }
         .contact-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
@@ -160,7 +165,8 @@
         .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,182,39,0.4); background: #74C69D; }
         .privacy-note { text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--text-gray); }
         @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
-        @media (max-width: 480px) { .page-hero h1 { font-size: 1.6rem; } }
+        @media (max-width: 480px) { .page-hero h1 {
+            font-family: 'Cabinet Grotesk', 'Archivo', sans-serif; font-size: 1.6rem; } }
     </style>
     <script type="application/ld+json">
     {

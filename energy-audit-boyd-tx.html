@@ -26,6 +26,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap"></noscript>
+    <!-- Cabinet Grotesk (Fontshare) — hero headlines only -->
+    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,900&display=swap"></noscript>
     <style>
         :root { --primary-green:#2D6A4F; --accent-green:#52B788; --bright-green:#74C69D; --dark-black:#0A0A0A; --pure-white:#FFFFFF; --off-white:#F8F9FA; --text-dark:#0A0A0A; --text-gray:#6C757D; }
         * { margin:0; padding:0; box-sizing:border-box; } html { overflow-x:hidden; }
@@ -50,7 +53,8 @@
         .mobile-nav ul li a { color:white; text-decoration:none; font-weight:500; font-size:1rem; padding:0.85rem 0; display:block; border-bottom:1px solid rgba(255,255,255,0.08); }
         .mobile-cta { margin-top:1.25rem; text-align:center; display:block; }
         .page-hero { background:linear-gradient(135deg,rgba(45,106,79,0.88) 0%,rgba(10,10,10,0.88) 100%),url('images/energy.webp') center/cover no-repeat; color:white; padding:5.5rem 2rem 3.5rem; text-align:center; }
-        .page-hero h1 { font-size:2.8rem; margin-bottom:1.25rem; max-width:860px; margin-left:auto; margin-right:auto; }
+        .page-hero h1 {
+            font-family: 'Cabinet Grotesk', 'Archivo', sans-serif; font-size:2.8rem; margin-bottom:1.25rem; max-width:860px; margin-left:auto; margin-right:auto; }
         .page-hero p { font-size:1.2rem; max-width:740px; margin:0 auto 2rem; opacity:0.95; line-height:1.65; }
         .btn-primary { background:var(--accent-green); color:var(--pure-white); padding:1rem 2.25rem; border-radius:8px; text-decoration:none; font-weight:700; font-size:1.1rem; display:inline-block; }
         .hero-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; background:rgba(255,255,255,0.1); backdrop-filter:blur(10px); padding:2rem; border-radius:12px; max-width:1000px; margin:3rem auto 0; }
@@ -112,8 +116,10 @@
         .social-link svg { width:20px; height:20px; fill:currentColor; flex-shrink:0; }
         .footer-bottom { max-width:1200px; margin:0 auto; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.1); text-align:center; color:rgba(255,255,255,0.6); }
         @media (max-width:900px) { .hero-stats { grid-template-columns:repeat(2,1fr); } .two-col { grid-template-columns:1fr; } .after-grid { grid-template-columns:1fr; } }
-        @media (max-width:768px) { .nav-links { display:none; } .nav-cta { display:none; } .hamburger { display:flex; } .page-hero h1 { font-size:2rem; } .step { grid-template-columns:1fr; } }
-        @media (max-width:480px) { .page-hero h1 { font-size:1.5rem; } .hero-stats { grid-template-columns:repeat(2,1fr); } }
+        @media (max-width:768px) { .nav-links { display:none; } .nav-cta { display:none; } .hamburger { display:flex; } .page-hero h1 {
+            font-family: 'Cabinet Grotesk', 'Archivo', sans-serif; font-size:2rem; } .step { grid-template-columns:1fr; } }
+        @media (max-width:480px) { .page-hero h1 {
+            font-family: 'Cabinet Grotesk', 'Archivo', sans-serif; font-size:1.5rem; } .hero-stats { grid-template-columns:repeat(2,1fr); } }
     </style>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"N-Tech Energy Solutions LLC","description":"Home energy audits in Boyd, TX starting at $299.","url":"https://www.n-tech-es.com","telephone":"+12142679372","email":"customerexperience@n-tech-es.com","address":{"@type":"PostalAddress","addressLocality":"Chico","addressRegion":"TX","postalCode":"76431","addressCountry":"US"},"areaServed":{"@type":"City","name":"Boyd, Texas"},"serviceType":"Home Energy Audit"}</script>
 </head>
