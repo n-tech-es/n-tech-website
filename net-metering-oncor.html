@@ -316,7 +316,7 @@
   <div id="ntec-popup-card" style="background:#fff;border-radius:16px;max-width:440px;width:100%;padding:2.5rem 2rem;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.4);animation:ntecPopIn 0.35s ease-out;">
     <button onclick="ntecClosePopup()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;font-size:1.3rem;color:#999;line-height:1;" aria-label="Close">✕</button>
     <!-- Form View -->
-    <div id="ntec-popup-form-view">
+    <div id="ntec-popup-form-view" style="display:block">
       <div style="display:inline-block;background:#f0faf0;color:#2D6A4F;font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem;">Free Worksheet</div>
       <h3 style="font-family:'Cabinet Grotesk','Archivo',sans-serif;font-weight:900;font-size:1.55rem;color:#0A0A0A;line-height:1.2;margin-bottom:0.75rem;">Is Solar Worth It For Your Home?</h3>
       <p style="color:#6C757D;font-size:0.92rem;line-height:1.65;margin-bottom:1.5rem;">Real numbers on what solar costs in your area, what Texas solar tax exemptions covers, and what your payback looks like. No fluff. No pressure.</p>
@@ -389,6 +389,8 @@ window.addEventListener('load', function() {
     fd.append('_subject', 'New Solar Decision Worksheet Signup');
     fd.append('_honey', document.getElementById('ntec-popup-honey').value);
     fd.append('_captcha', 'false');
+    fd.append('_replyto', email);
+    fd.append('_template', 'table');
     fetch('https://formsubmit.co/ajax/customerexperience@n-tech-es.com', {
       method: 'POST',
       body: fd
