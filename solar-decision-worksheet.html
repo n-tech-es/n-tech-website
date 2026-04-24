@@ -78,7 +78,7 @@
         .opt{padding:0.9rem 0.6rem;border:2px solid #e0e0e0;border-radius:10px;background:white;cursor:pointer;text-align:center;font-family:inherit;font-size:0.87rem;font-weight:600;color:var(--text-dark);transition:all 0.2s;line-height:1.3;}
         .opt:hover{border-color:#a8d8be;background:#f8fdf9;}
         .opt.selected{border-color:var(--ws-green);background:var(--ws-light);color:var(--ws-dark);}
-        .opt-icon{display:block;font-size:1.3rem;margin-bottom:0.3rem;}
+        .opt-icon{display:block;width:22px;height:22px;margin:0 auto 0.4rem;}
         .opt-pts{display:block;font-size:0.68rem;font-weight:700;color:var(--ws-green);margin-top:0.25rem;opacity:0;transition:opacity 0.2s;}
         .opt.selected .opt-pts{opacity:1;}
         .ws-context{background:#f4f9f5;border-left:3px solid var(--ws-green);border-radius:0 8px 8px 0;padding:0.75rem 1rem;margin-top:1.25rem;font-size:0.83rem;color:var(--text-gray);line-height:1.6;}
@@ -194,11 +194,11 @@
       <div><div class="ws-step-title">Your Electric Bill</div><div class="ws-step-sub">What is your average monthly electric bill?</div></div>
     </div>
     <div class="option-grid" id="bill-grid">
-      <button class="opt" onclick="pickBill(this,0,70)"><span class="opt-icon">💡</span>Under $100<span class="opt-pts">0 pts</span></button>
-      <button class="opt" onclick="pickBill(this,1,125)"><span class="opt-icon">📊</span>$100–$149<span class="opt-pts">1 pt</span></button>
-      <button class="opt" onclick="pickBill(this,2,175)"><span class="opt-icon">📈</span>$150–$199<span class="opt-pts">2 pts</span></button>
-      <button class="opt" onclick="pickBill(this,3,250)"><span class="opt-icon">🔥</span>$200–$299<span class="opt-pts">3 pts</span></button>
-      <button class="opt" onclick="pickBill(this,3,350)"><span class="opt-icon">⚡</span>$300+<span class="opt-pts">3 pts</span></button>
+      <button class="opt" onclick="pickBill(this,0,70)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14.5a7 7 0 1 0-6 0V17h6v-2.5z"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="10" y1="22" x2="14" y2="22"/></svg></span>Under $100<span class="opt-pts">0 pts</span></button>
+      <button class="opt" onclick="pickBill(this,1,125)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="14" width="4" height="7"/><rect x="10" y="9" width="4" height="12"/></svg></span>$100–$149<span class="opt-pts">1 pt</span></button>
+      <button class="opt" onclick="pickBill(this,2,175)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="14" width="4" height="7"/><rect x="10" y="9" width="4" height="12"/><rect x="17" y="4" width="4" height="17"/></svg></span>$150–$199<span class="opt-pts">2 pts</span></button>
+      <button class="opt" onclick="pickBill(this,3,250)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>$200–$299<span class="opt-pts">3 pts</span></button>
+      <button class="opt" onclick="pickBill(this,3,350)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="2" x2="5" y2="12"/><line x1="5" y1="12" x2="12" y2="12"/><line x1="12" y1="12" x2="9" y2="22"/><line x1="16" y1="2" x2="13" y2="12" opacity=".45"/><line x1="13" y1="12" x2="20" y2="12" opacity=".45"/><line x1="20" y1="12" x2="17" y2="22" opacity=".45"/></svg></span>$300+<span class="opt-pts">3 pts</span></button>
     </div>
     <div class="ws-context"><strong>Rule of thumb:</strong> Bills under $100/month rarely justify the upfront cost. $150+/month is where the math typically starts working well in North Texas.</div>
   </div>
@@ -210,10 +210,10 @@
       <div><div class="ws-step-title">Roof Direction</div><div class="ws-step-sub">Which way does your main roof area face?</div></div>
     </div>
     <div class="option-grid" id="dir-grid">
-      <button class="opt" onclick="pickDir(this,3)"><span class="opt-icon">☀️</span>South<span class="opt-pts">3 pts — best</span></button>
-      <button class="opt" onclick="pickDir(this,2)"><span class="opt-icon">🌤️</span>West<span class="opt-pts">2 pts — good</span></button>
-      <button class="opt" onclick="pickDir(this,1)"><span class="opt-icon">⛅</span>East<span class="opt-pts">1 pt — fair</span></button>
-      <button class="opt" onclick="pickDir(this,0)"><span class="opt-icon">❓</span>North / Unsure<span class="opt-pts">0 pts</span></button>
+      <button class="opt" onclick="pickDir(this,3)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>South<span class="opt-pts">3 pts — best</span></button>
+      <button class="opt" onclick="pickDir(this,2)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 0 1 5 5 5 5 0 0 1-.1.9A4 4 0 1 1 13 19H6a5 5 0 0 1 0-10 4.5 4.5 0 0 1 .5 0A5 5 0 0 1 12 2z"/></svg></span>West<span class="opt-pts">2 pts — good</span></button>
+      <button class="opt" onclick="pickDir(this,1)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 17a4 4 0 0 0-4-4 5 5 0 0 0-9.9 1A4 4 0 0 0 8 22h11a3 3 0 0 0 1-5.83z"/></svg></span>East<span class="opt-pts">1 pt — fair</span></button>
+      <button class="opt" onclick="pickDir(this,0)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>North / Unsure<span class="opt-pts">0 pts</span></button>
     </div>
     <div class="ws-context"><strong>South-facing at 28–32° tilt</strong> produces maximum output — 5.0–5.5 peak sun hours per day in North Texas. West-facing captures afternoon peak hours when grid demand is highest.</div>
   </div>
@@ -226,16 +226,16 @@
     </div>
     <div class="ws-sub-label">How much shade hits your roof?</div>
     <div class="option-grid" id="shade-grid">
-      <button class="opt" onclick="pickShade(this,2)"><span class="opt-icon">🌞</span>Minimal — open sky most of the day<span class="opt-pts">2 pts</span></button>
-      <button class="opt" onclick="pickShade(this,1)"><span class="opt-icon">🌳</span>Some shade — mornings or evenings<span class="opt-pts">1 pt</span></button>
-      <button class="opt" onclick="pickShade(this,0)"><span class="opt-icon">🌑</span>Heavy shade — blocked most of the day<span class="opt-pts">0 pts</span></button>
+      <button class="opt" onclick="pickShade(this,2)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>Minimal — open sky most of the day<span class="opt-pts">2 pts</span></button>
+      <button class="opt" onclick="pickShade(this,1)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 0 1 5 5 5 5 0 0 1-.1.9A4 4 0 1 1 13 19H6a5 5 0 0 1 0-10 4.5 4.5 0 0 1 .5 0A5 5 0 0 1 12 2z"/></svg></span>Some shade — mornings or evenings<span class="opt-pts">1 pt</span></button>
+      <button class="opt" onclick="pickShade(this,0)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 17a4 4 0 0 0-4-4 5 5 0 0 0-9.9 1A4 4 0 0 0 8 22h11a3 3 0 0 0 1-5.83z"/><path d="M20 17a4 4 0 0 0-4-4 5 5 0 0 0-9.9 1A4 4 0 0 0 8 22h11a3 3 0 0 0 1-5.83z" opacity=".5" transform="translate(0 -4)"/></svg></span>Heavy shade — blocked most of the day<span class="opt-pts">0 pts</span></button>
     </div>
     <hr class="ws-sep">
     <div class="ws-sub-label">Estimated roof age?</div>
     <div class="option-grid" id="age-grid">
-      <button class="opt" onclick="pickAge(this,2)"><span class="opt-icon">🏠</span>Under 10 years<span class="opt-pts">2 pts</span></button>
-      <button class="opt" onclick="pickAge(this,1)"><span class="opt-icon">🏘️</span>10–20 years<span class="opt-pts">1 pt</span></button>
-      <button class="opt" onclick="pickAge(this,0)"><span class="opt-icon">🔧</span>Over 20 years<span class="opt-pts">0 pts</span></button>
+      <button class="opt" onclick="pickAge(this,2)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>Under 10 years<span class="opt-pts">2 pts</span></button>
+      <button class="opt" onclick="pickAge(this,1)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>10–20 years<span class="opt-pts">1 pt</span></button>
+      <button class="opt" onclick="pickAge(this,0)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>Over 20 years<span class="opt-pts">0 pts</span></button>
     </div>
     <div class="ws-context">Shade can reduce output 20–30%. <strong>Enphase microinverters</strong> significantly reduce that impact. A roof over 20 years old may need replacement first — we flag this upfront at no cost.</div>
   </div>
@@ -255,9 +255,9 @@
     <hr class="ws-sep">
     <div class="ws-sub-label">Planning to stay at least 5 more years?</div>
     <div class="option-grid" id="stay-grid">
-      <button class="opt" onclick="pickStay(this,2)"><span class="opt-icon">✅</span>Yes — 5+ years<span class="opt-pts">2 pts</span></button>
-      <button class="opt" onclick="pickStay(this,1)"><span class="opt-icon">🤔</span>Unsure<span class="opt-pts">1 pt</span></button>
-      <button class="opt" onclick="pickStay(this,0)"><span class="opt-icon">🏃</span>Moving soon<span class="opt-pts">0 pts</span></button>
+      <button class="opt" onclick="pickStay(this,2)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>Yes — 5+ years<span class="opt-pts">2 pts</span></button>
+      <button class="opt" onclick="pickStay(this,1)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>Unsure<span class="opt-pts">1 pt</span></button>
+      <button class="opt" onclick="pickStay(this,0)"><span class="opt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span>Moving soon<span class="opt-pts">0 pts</span></button>
     </div>
     <div class="ws-context">Solar adds 2–4% to home value at resale, but the strongest financial case is staying through payback — typically 9–12 years in North Texas today.</div>
   </div>
