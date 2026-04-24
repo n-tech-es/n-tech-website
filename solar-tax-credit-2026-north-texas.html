@@ -466,6 +466,8 @@ window.addEventListener('load', function() {
     }
     var fd = new FormData();
     fd.append('email', email);
+    fd.append('source', 'Popup — Solar Decision Worksheet');
+    fd.append('message', 'New email signup: ' + email);
     fd.append('_subject', 'New Solar Decision Worksheet Signup');
     fd.append('_honey', document.getElementById('ntec-popup-honey').value);
     fd.append('_captcha', 'false');
