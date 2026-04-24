@@ -285,6 +285,7 @@
     <h2 class="result-h2" id="r-head">—</h2>
     <p class="result-body" id="r-body">—</p>
     <a href="consultation.html" class="result-cta-btn" id="r-cta">Schedule a Free Energy Consultation →</a>
+    <div id="email-status" style="margin-top:1rem;font-size:0.82rem;color:var(--text-gray);min-height:1.2em;"></div>
   </div>
 
 </div>
@@ -452,6 +453,8 @@ function sendResultsEmail(email,sc,t){
   var shadeLabels=['Heavy shade','Some shade','Minimal shade'];
   var ageLabels=['Over 20 years','10–20 years','Under 10 years'];
   var stayLabels=['Moving soon','Unsure','5+ years'];
+  var statusEl=document.getElementById('email-status');
+  if(statusEl)statusEl.textContent='Sending results to '+email+'…';
   emailjs.send('service_nur5gfr','template_047kyrs',{
     to_email: email,
     score: sc+'/15',
@@ -464,7 +467,12 @@ function sendResultsEmail(email,sc,t){
     roof_age: S.age!==null?ageLabels[S.age]:'—',
     owns_home: S.own?'Yes':'No',
     stay: S.stay!==null?stayLabels[S.stay]:'N/A'
-  }).catch(function(){});
+  }).then(function(){
+    if(statusEl)statusEl.textContent='Results sent to '+email;
+  }).catch(function(err){
+    console.error('EmailJS error:',JSON.stringify(err));
+    if(statusEl)statusEl.textContent='Could not send email — check your inbox manually or contact us.';
+  });
 }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
