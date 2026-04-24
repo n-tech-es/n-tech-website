@@ -86,6 +86,7 @@
         .ws-sep{border:none;border-top:1px solid #eee;margin:1.5rem 0;}
         .ws-sub-label{font-size:0.8rem;font-weight:700;color:var(--text-gray);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.75rem;}
         .rent-warn{display:none;background:#fff3f3;border-left:3px solid #e53e3e;border-radius:0 8px 8px 0;padding:0.75rem 1rem;margin-top:1rem;font-size:0.84rem;color:#c0392b;line-height:1.5;}
+
         .calc-card{background:linear-gradient(135deg,#1a3a1a 0%,#2D6A4F 100%);border-radius:16px;padding:2rem;color:white;margin-bottom:1.5rem;}
         .calc-title{font-size:1.1rem;font-weight:700;color:white;margin-bottom:0.35rem;}
         .calc-note{font-size:0.79rem;color:rgba(255,255,255,0.6);margin-bottom:1.5rem;}
@@ -418,44 +419,73 @@ function runCalc(){
   document.getElementById('c-back').textContent=pb+' years';
 }
 
+function getTierData(sc){
+  if(S.own===false)return{cls:'tier-no',label:'Not Currently Eligible',head:'Solar requires home ownership — but the math could work in the future.',body:'You\'d need to own the home to install solar. If you\'re planning to buy in the next few years, save this page and run the numbers then. You can also share this worksheet with your landlord — owned solar increases property value and can be a compelling pitch.',cta:'Learn More About Solar →',href:'solar-north-texas.html'};
+  if(sc<=4)return{cls:'tier-no',label:'Not the Right Time',head:'Solar may not pencil out for your home right now.',body:'Based on your answers, the financial case is challenging — a low bill, heavy shade, or a roof needing attention can push payback too long. That said, every home is different. A free site assessment gives you a definitive answer before you commit to anything.',cta:'Get a Free Assessment Anyway →',href:'consultation.html'};
+  if(sc<=9)return{cls:'tier-maybe',label:'Worth Exploring',head:'Solar is worth analyzing closely for your home.',body:'Your score suggests real potential — a few factors may limit the upside, but they\'re worth investigating with actual numbers. A free site assessment maps your roof precisely, models savings based on your real utility rate, and gives you a clear answer before any decision.',cta:'Schedule a Free Energy Consultation →',href:'consultation.html'};
+  if(sc<=12)return{cls:'tier-good',label:'Strong Candidate',head:'Your home looks like a strong candidate for solar.',body:'Good bill size, solid roof conditions, and owner-occupancy all check out. The financial case is there. Next step is a free custom assessment — N-Tech analyzes your specific roof, shade pattern, and CoServ/Oncor rates to put a real number on it.',cta:'Schedule a Free Energy Consultation →',href:'consultation.html'};
+  return{cls:'tier-great',label:'Excellent Fit',head:'Solar looks like an excellent fit for your home.',body:'High bill, good roof exposure, minimal shade, and long-term ownership — exactly the conditions that make solar a strong financial decision. Based on your inputs, you\'re positioned for 15+ years of essentially free electricity after payback. We\'d love to put real numbers on this — free, within 24–48 hours.',cta:'Schedule Your Free Energy Consultation →',href:'consultation.html'};
+}
+
 function check(){
   if(!allDone())return;
   var sc=score();
+  var t=getTierData(sc);
   var r=document.getElementById('results');
-  var tier=document.getElementById('r-tier');
-  var num=document.getElementById('r-num');
-  var head=document.getElementById('r-head');
-  var body=document.getElementById('r-body');
+  document.getElementById('r-tier').textContent=t.label;
+  document.getElementById('r-tier').className='result-tier '+t.cls;
+  document.getElementById('r-num').textContent=sc;
+  document.getElementById('r-head').textContent=t.head;
+  document.getElementById('r-body').textContent=t.body;
   var cta=document.getElementById('r-cta');
-  num.textContent=sc;
-  if(S.own===false){
-    tier.textContent='Not Currently Eligible';tier.className='result-tier tier-no';
-    head.textContent='Solar requires home ownership — but the math could work in the future.';
-    body.textContent='You\'d need to own the home to install solar. If you\'re planning to buy in the next few years, save this page and run the numbers then. You can also share this worksheet with your landlord — owned solar increases property value and can be a compelling pitch.';
-    cta.textContent='Learn More About Solar →';cta.href='solar-north-texas.html';
-  } else if(sc<=4){
-    tier.textContent='Not the Right Time';tier.className='result-tier tier-no';
-    head.textContent='Solar may not pencil out for your home right now.';
-    body.textContent='Based on your answers, the financial case is challenging — a low bill, heavy shade, or a roof needing attention can push payback too long. That said, every home is different. A free site assessment gives you a definitive answer before you commit to anything.';
-    cta.textContent='Get a Free Assessment Anyway →';cta.href='consultation.html';
-  } else if(sc<=9){
-    tier.textContent='Worth Exploring';tier.className='result-tier tier-maybe';
-    head.textContent='Solar is worth analyzing closely for your home.';
-    body.textContent='Your score suggests real potential — a few factors may limit the upside, but they\'re worth investigating with actual numbers. A free site assessment maps your roof precisely, models savings based on your real utility rate, and gives you a clear answer before any decision.';
-    cta.textContent='Schedule a Free Energy Consultation →';cta.href='consultation.html';
-  } else if(sc<=12){
-    tier.textContent='Strong Candidate';tier.className='result-tier tier-good';
-    head.textContent='Your home looks like a strong candidate for solar.';
-    body.textContent='Good bill size, solid roof conditions, and owner-occupancy all check out. The financial case is there. Next step is a free custom assessment — N-Tech analyzes your specific roof, shade pattern, and CoServ/Oncor rates to put a real number on it.';
-    cta.textContent='Schedule a Free Energy Consultation →';cta.href='consultation.html';
-  } else {
-    tier.textContent='Excellent Fit';tier.className='result-tier tier-great';
-    head.textContent='Solar looks like an excellent fit for your home.';
-    body.textContent='High bill, good roof exposure, minimal shade, and long-term ownership — exactly the conditions that make solar a strong financial decision. Based on your inputs, you\'re positioned for 15+ years of essentially free electricity after payback. We\'d love to put real numbers on this — free, within 24–48 hours.';
-    cta.textContent='Schedule Your Free Energy Consultation →';cta.href='consultation.html';
-  }
+  cta.textContent=t.cta;
+  cta.href=t.href;
   r.classList.add('show');
   setTimeout(function(){r.scrollIntoView({behavior:'smooth',block:'start'});},300);
+  var wsEmail=sessionStorage.getItem('ntec_ws_email');
+  if(wsEmail)sendResultsEmail(wsEmail,sc,t);
+}
+
+function sendResultsEmail(email,sc,t){
+  var name=sessionStorage.getItem('ntec_ws_name')||'';
+  var dirLabels=['—','East','West','South'];
+  var shadeLabels=['Heavy shade','Some shade','Minimal shade'];
+  var ageLabels=['Over 20 years','10–20 years','Under 10 years'];
+  var stayLabels=['Moving soon','Unsure','5+ years'];
+  var greeting=name?'Hi '+name+',\n\n':'Hi,\n\n';
+  var autoMsg=greeting+
+    'Here are your N-Tech Solar Decision Worksheet results:\n\n'+
+    'Score: '+sc+'/15 — '+t.label+'\n\n'+
+    t.head+'\n\n'+
+    t.body+'\n\n'+
+    'Your inputs:\n'+
+    '• Monthly bill: ~$'+S.billAmt+'/month\n'+
+    '• Roof direction: '+(S.dir!==null?dirLabels[S.dir]:'—')+'\n'+
+    '• Shade: '+(S.shade!==null?shadeLabels[S.shade]:'—')+'\n'+
+    '• Roof age: '+(S.age!==null?ageLabels[S.age]:'—')+'\n'+
+    '• Owns home: '+(S.own?'Yes':'No')+'\n'+
+    '• Planning to stay: '+(S.stay!==null?stayLabels[S.stay]:'N/A')+'\n\n'+
+    'Ready to see real numbers for your specific home?\n'+
+    'Book a free energy consultation: https://www.n-tech-es.com/consultation\n\n'+
+    'No pressure. No obligation. Just honest numbers.\n\n'+
+    '— N-Tech Energy Solutions\n'+
+    '(214) 267-9372 | customerexperience@n-tech-es.com\n'+
+    'n-tech-es.com';
+  var fd=new FormData();
+  fd.append('email',email);
+  fd.append('_replyto',email);
+  if(name)fd.append('name',name);
+  fd.append('_subject','Your Solar Worksheet Results — '+t.label+' ('+sc+'/15)');
+  fd.append('_autoresponse',autoMsg);
+  fd.append('Score',sc+'/15 — '+t.label);
+  fd.append('Monthly Bill','~$'+S.billAmt+'/month');
+  fd.append('Roof Direction',S.dir!==null?dirLabels[S.dir]:'—');
+  fd.append('Shade',S.shade!==null?shadeLabels[S.shade]:'—');
+  fd.append('Roof Age',S.age!==null?ageLabels[S.age]:'—');
+  fd.append('Owns Home',S.own?'Yes':'No');
+  fd.append('Planning to Stay',S.stay!==null?stayLabels[S.stay]:'N/A');
+  fd.append('_captcha','false');
+  fetch('https://formsubmit.co/ajax/customerexperience@n-tech-es.com',{method:'POST',body:fd}).catch(function(){});
 }
 </script>
 </body>
