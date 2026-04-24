@@ -902,6 +902,12 @@ window.addEventListener('load', function() {
     if (sessionStorage.getItem('ntec_popup_seen')) return;
     shown = true;
     sessionStorage.setItem('ntec_popup_seen', '1');
+    var fv = document.getElementById('ntec-popup-form-view');
+    var sv = document.getElementById('ntec-popup-success-view');
+    var btn = document.getElementById('ntec-popup-submit');
+    if (fv) fv.style.display = 'block';
+    if (sv) sv.style.display = 'none';
+    if (btn) { btn.textContent = 'Get the Free Worksheet'; btn.disabled = false; }
     if (overlay) overlay.style.display = 'flex';
   }
 
