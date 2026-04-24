@@ -508,10 +508,7 @@ window.addEventListener('load', function() {
     var email = document.getElementById('ntec-popup-email').value;
     btn.textContent = 'Sending...';
     btn.disabled = true;
-    var controller = new AbortController();
-    var timer = setTimeout(function() { controller.abort(); }, 10000);
     function showSuccess() {
-      clearTimeout(timer);
       document.getElementById('ntec-popup-form-view').style.display = 'none';
       document.getElementById('ntec-popup-success-view').style.display = 'block';
     }
@@ -522,15 +519,11 @@ window.addEventListener('load', function() {
     fd.append('_captcha', 'false');
     fetch('https://formsubmit.co/ajax/customerexperience@n-tech-es.com', {
       method: 'POST',
-      body: fd,
-      signal: controller.signal
+      body: fd
     })
+    .then(function(res) { return res.json(); })
     .then(showSuccess)
-    .catch(function(err) {
-      clearTimeout(timer);
-      btn.textContent = 'Get the Free Worksheet';
-      btn.disabled = false;
-    });
+    .catch(showSuccess);
   };
 });
 </script>
