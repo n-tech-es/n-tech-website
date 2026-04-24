@@ -470,8 +470,8 @@ function sendResultsEmail(email,sc,t){
   }).then(function(){
     if(statusEl)statusEl.textContent='Results sent to '+email;
   }).catch(function(err){
-    console.error('EmailJS error:',JSON.stringify(err));
-    if(statusEl)statusEl.textContent='Could not send email — check your inbox manually or contact us.';
+    var msg=err&&(err.text||err.status||JSON.stringify(err))||'unknown';
+    if(statusEl)statusEl.textContent='EmailJS error: '+msg;
   });
 }
 </script>
