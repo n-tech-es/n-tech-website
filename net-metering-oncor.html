@@ -321,10 +321,9 @@
       <h3 style="font-family:'Cabinet Grotesk','Archivo',sans-serif;font-weight:900;font-size:1.55rem;color:#0A0A0A;line-height:1.2;margin-bottom:0.75rem;">Find Out If Solar Is Right for Your Home</h3>
       <p style="color:#6C757D;font-size:0.92rem;line-height:1.65;margin-bottom:1.5rem;">Answer 5 quick questions about your bill, roof, and situation. Get an honest read in 2 minutes — no sales call required.</p>
       <form id="ntec-popup-form" onsubmit="ntecSubmitPopup(event)">
-        <input type="text" id="ntec-popup-name" placeholder="Your first name" required style="width:100%;padding:0.75rem 1rem;border:1.5px solid #ddd;border-radius:8px;font-size:0.95rem;font-family:inherit;margin-bottom:0.75rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#52B788'" onblur="this.style.borderColor='#ddd'">
         <input type="text" id="ntec-popup-honey" name="_honey" style="display:none;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off">
         <input type="email" id="ntec-popup-email" placeholder="Your email address" required style="width:100%;padding:0.75rem 1rem;border:1.5px solid #ddd;border-radius:8px;font-size:0.95rem;font-family:inherit;margin-bottom:1rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#52B788'" onblur="this.style.borderColor='#ddd'">
-        <button type="submit" id="ntec-popup-submit" style="width:100%;background:#52B788;color:white;border:none;border-radius:8px;padding:0.9rem;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:background 0.2s;">Take the Free Worksheet →</button>
+        <button type="submit" id="ntec-popup-submit" style="width:100%;background:#52B788;color:white;border:none;border-radius:8px;padding:0.9rem;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:background 0.2s;">Try the Free Worksheet</button>
       </form>
       <p style="text-align:center;font-size:0.75rem;color:#aaa;margin-top:0.85rem;">No spam. Unsubscribe anytime.</p>
     </div>
@@ -377,7 +376,6 @@ window.addEventListener('load', function() {
   window.ntecSubmitPopup = function(e) {
     e.preventDefault();
     var btn = document.getElementById('ntec-popup-submit');
-    var name = document.getElementById('ntec-popup-name').value;
     var email = document.getElementById('ntec-popup-email').value;
     btn.textContent = 'Sending...';
     btn.disabled = true;
@@ -386,14 +384,12 @@ window.addEventListener('load', function() {
     function showSuccess() {
       clearTimeout(timer);
       sessionStorage.setItem('ntec_ws_email', email);
-      sessionStorage.setItem('ntec_ws_name', name);
       document.getElementById('ntec-popup-form-view').style.display = 'none';
       document.getElementById('ntec-popup-success-view').style.display = 'block';
     }
     var fd = new FormData();
-    fd.append('name', name);
     fd.append('email', email);
-    fd.append('_subject', 'Solar Worksheet Signup — ' + name);
+    fd.append('_subject', 'Solar Worksheet Signup');
     fd.append('_honey', document.getElementById('ntec-popup-honey').value);
     fd.append('_captcha', 'false');
     fetch('https://formsubmit.co/ajax/customerexperience@n-tech-es.com', {
@@ -404,7 +400,7 @@ window.addEventListener('load', function() {
     .then(showSuccess)
     .catch(function(err) {
       clearTimeout(timer);
-      btn.textContent = 'Take the Free Worksheet →';
+      btn.textContent = 'Try the Free Worksheet';
       btn.disabled = false;
     });
   };
