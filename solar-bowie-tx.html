@@ -477,23 +477,22 @@
     <button onclick="ntecClosePopup()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;font-size:1.3rem;color:#999;line-height:1;" aria-label="Close">✕</button>
     <!-- Form View -->
     <div id="ntec-popup-form-view">
-      <div style="display:inline-block;background:#f0faf0;color:#2D6A4F;font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem;">Free Resource</div>
-      <h3 style="font-family:'Cabinet Grotesk','Archivo',sans-serif;font-weight:900;font-size:1.55rem;color:#0A0A0A;line-height:1.2;margin-bottom:0.75rem;">Get the North Texas Solar Savings Guide</h3>
+      <div style="display:inline-block;background:#f0faf0;color:#2D6A4F;font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem;">Free Worksheet</div>
+      <h3 style="font-family:'Cabinet Grotesk','Archivo',sans-serif;font-weight:900;font-size:1.55rem;color:#0A0A0A;line-height:1.2;margin-bottom:0.75rem;">Is Solar Worth It For Your Home?</h3>
       <p style="color:#6C757D;font-size:0.92rem;line-height:1.65;margin-bottom:1.5rem;">Real numbers on what solar costs in your area, what Texas solar tax exemptions covers, and what your payback looks like. No fluff. No pressure.</p>
       <form id="ntec-popup-form" onsubmit="ntecSubmitPopup(event)">
-        <input type="text" id="ntec-popup-name" placeholder="Your first name" required style="width:100%;padding:0.75rem 1rem;border:1.5px solid #ddd;border-radius:8px;font-size:0.95rem;font-family:inherit;margin-bottom:0.75rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#52B788'" onblur="this.style.borderColor='#ddd'">
         <input type="text" id="ntec-popup-honey" name="_honey" style="display:none;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off">
         <input type="email" id="ntec-popup-email" placeholder="Your email address" required style="width:100%;padding:0.75rem 1rem;border:1.5px solid #ddd;border-radius:8px;font-size:0.95rem;font-family:inherit;margin-bottom:1rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#52B788'" onblur="this.style.borderColor='#ddd'">
-        <button type="submit" id="ntec-popup-submit" style="width:100%;background:#52B788;color:white;border:none;border-radius:8px;padding:0.9rem;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:background 0.2s;">Send Me the Guide</button>
+        <button type="submit" id="ntec-popup-submit" style="width:100%;background:#52B788;color:white;border:none;border-radius:8px;padding:0.9rem;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:background 0.2s;">Get the Free Worksheet</button>
       </form>
       <p style="text-align:center;font-size:0.75rem;color:#aaa;margin-top:0.85rem;">No spam. Unsubscribe anytime.</p>
     </div>
     <!-- Success View -->
     <div id="ntec-popup-success-view" style="display:none;text-align:center;padding:1rem 0;">
-      <div style="margin-bottom:1rem;animation:ntecSpin 0.6s ease-out;"><img src="images/logo.webp" alt="N-Tech Energy Solutions" style="width:64px;height:64px;border-radius:50%;object-fit:cover;box-shadow:0 4px 16px rgba(0,0,0,0.12);"></div>
-      <h3 style="font-family:'Cabinet Grotesk','Archivo',sans-serif;font-weight:900;font-size:1.6rem;color:#0A0A0A;margin-bottom:0.75rem;">You're in!</h3>
-      <p style="color:#6C757D;font-size:0.97rem;line-height:1.7;margin-bottom:0.5rem;">Your savings guide is on its way. Real numbers, no pressure — that's how we do everything at N-Tech.</p>
-      <p style="color:#52B788;font-weight:700;font-size:0.9rem;">Solutions designed for the Texas sun</p>
+      <div style="margin-bottom:1rem;animation:ntecSpin 0.6s ease-out;"><img src="logo.jpg" alt="N-Tech Energy Solutions" style="width:64px;height:64px;border-radius:50%;object-fit:cover;box-shadow:0 4px 16px rgba(0,0,0,0.12);"></div>
+      <h3 style="font-family:'Cabinet Grotesk','Archivo',sans-serif;font-weight:900;font-size:1.6rem;color:#0A0A0A;margin-bottom:0.75rem;">Your worksheet is ready.</h3>
+      <p style="color:#6C757D;font-size:0.97rem;line-height:1.7;margin-bottom:1.25rem;">Answer 5 questions and get a personalized payback estimate — no pressure, no sales call required.</p>
+      <a href="solar-decision-worksheet.html" style="display:inline-block;background:#52B788;color:#fff;font-weight:700;font-size:1rem;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;">Open the Worksheet &#8594;</a>
     </div>
   </div>
 </div>
@@ -537,7 +536,7 @@ window.addEventListener('load', function() {
   window.ntecSubmitPopup = function(e) {
     e.preventDefault();
     var btn = document.getElementById('ntec-popup-submit');
-    var name = document.getElementById('ntec-popup-name').value;
+    
     var email = document.getElementById('ntec-popup-email').value;
     btn.textContent = 'Sending...';
     btn.disabled = true;
@@ -547,12 +546,10 @@ window.addEventListener('load', function() {
       clearTimeout(timer);
       document.getElementById('ntec-popup-form-view').style.display = 'none';
       document.getElementById('ntec-popup-success-view').style.display = 'block';
-      setTimeout(ntecClosePopup, 5000);
     }
     var fd = new FormData();
-    fd.append('name', name);
     fd.append('email', email);
-    fd.append('_subject', 'New Solar Savings Guide Signup — ' + name);
+    fd.append('_subject', 'New Solar Decision Worksheet Signup');
     fd.append('_honey', document.getElementById('ntec-popup-honey').value);
     fd.append('_captcha', 'false');
     fetch('https://formsubmit.co/ajax/customerexperience@n-tech-es.com', {
@@ -563,7 +560,7 @@ window.addEventListener('load', function() {
     .then(showSuccess)
     .catch(function(err) {
       clearTimeout(timer);
-      btn.textContent = 'Send Me the Guide';
+      btn.textContent = 'Get the Free Worksheet';
       btn.disabled = false;
     });
   };
