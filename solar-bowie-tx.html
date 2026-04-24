@@ -549,6 +549,8 @@ window.addEventListener('load', function() {
     fd.append('_subject', 'New Solar Decision Worksheet Signup');
     fd.append('_honey', document.getElementById('ntec-popup-honey').value);
     fd.append('_captcha', 'false');
+    fd.append('_replyto', email);
+    fd.append('_template', 'table');
     fetch('https://formsubmit.co/ajax/customerexperience@n-tech-es.com', {
       method: 'POST',
       body: fd
