@@ -514,7 +514,10 @@ window.addEventListener('load', function() {
     var email = document.getElementById('ntec-popup-email').value;
     btn.textContent = 'Sending...';
     btn.disabled = true;
+    var successShown = false;
     function showSuccess() {
+      if (successShown) return;
+      successShown = true;
       document.getElementById('ntec-popup-form-view').style.display = 'none';
       document.getElementById('ntec-popup-success-view').style.display = 'block';
     }
@@ -527,11 +530,11 @@ window.addEventListener('load', function() {
     fd.append('_captcha', 'false');
     fd.append('_replyto', email);
     fd.append('_template', 'table');
+    setTimeout(showSuccess, 8000);
     fetch('https://formsubmit.co/ajax/customerexperience@n-tech-es.com', {
       method: 'POST',
       body: fd
     })
-    .then(function(res) { return res.json(); })
     .then(showSuccess)
     .catch(showSuccess);
   };
