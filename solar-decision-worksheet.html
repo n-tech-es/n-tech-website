@@ -289,6 +289,23 @@
 
 </div>
 
+<!-- Hidden iframe + form for reliable customer autoresponse email -->
+<iframe name="ntec-email-frame" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<form id="ntec-customer-email-form" action="https://formsubmit.co/customerexperience@n-tech-es.com" method="POST" target="ntec-email-frame" style="display:none;">
+  <input type="hidden" name="email" id="nce-email">
+  <input type="hidden" name="_replyto" id="nce-replyto">
+  <input type="hidden" name="_subject" id="nce-subject">
+  <input type="hidden" name="_autoresponse" id="nce-autoresponse">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="Score" id="nce-score">
+  <input type="hidden" name="Monthly_Bill" id="nce-bill">
+  <input type="hidden" name="Roof_Direction" id="nce-dir">
+  <input type="hidden" name="Shade" id="nce-shade">
+  <input type="hidden" name="Roof_Age" id="nce-age">
+  <input type="hidden" name="Owns_Home" id="nce-own">
+  <input type="hidden" name="Planning_to_Stay" id="nce-stay">
+</form>
+
 <div class="bottom-cta">
   <div class="bottom-cta-inner">
     <h2>What a Free N-Tech Energy Consultation Covers</h2>
@@ -447,45 +464,41 @@ function check(){
 }
 
 function sendResultsEmail(email,sc,t){
-  var name=sessionStorage.getItem('ntec_ws_name')||'';
   var dirLabels=['—','East','West','South'];
   var shadeLabels=['Heavy shade','Some shade','Minimal shade'];
   var ageLabels=['Over 20 years','10–20 years','Under 10 years'];
   var stayLabels=['Moving soon','Unsure','5+ years'];
-  var greeting=name?'Hi '+name+',\n\n':'Hi,\n\n';
-  var autoMsg=greeting+
+  var autoMsg=
     'Here are your N-Tech Solar Decision Worksheet results:\n\n'+
     'Score: '+sc+'/15 — '+t.label+'\n\n'+
     t.head+'\n\n'+
     t.body+'\n\n'+
     'Your inputs:\n'+
-    '• Monthly bill: ~$'+S.billAmt+'/month\n'+
-    '• Roof direction: '+(S.dir!==null?dirLabels[S.dir]:'—')+'\n'+
-    '• Shade: '+(S.shade!==null?shadeLabels[S.shade]:'—')+'\n'+
-    '• Roof age: '+(S.age!==null?ageLabels[S.age]:'—')+'\n'+
-    '• Owns home: '+(S.own?'Yes':'No')+'\n'+
-    '• Planning to stay: '+(S.stay!==null?stayLabels[S.stay]:'N/A')+'\n\n'+
+    '- Monthly bill: ~$'+S.billAmt+'/month\n'+
+    '- Roof direction: '+(S.dir!==null?dirLabels[S.dir]:'—')+'\n'+
+    '- Shade: '+(S.shade!==null?shadeLabels[S.shade]:'—')+'\n'+
+    '- Roof age: '+(S.age!==null?ageLabels[S.age]:'—')+'\n'+
+    '- Owns home: '+(S.own?'Yes':'No')+'\n'+
+    '- Planning to stay: '+(S.stay!==null?stayLabels[S.stay]:'N/A')+'\n\n'+
     'Ready to see real numbers for your specific home?\n'+
     'Book a free energy consultation: https://www.n-tech-es.com/consultation\n\n'+
     'No pressure. No obligation. Just honest numbers.\n\n'+
-    '— N-Tech Energy Solutions\n'+
+    '-- N-Tech Energy Solutions\n'+
     '(214) 267-9372 | customerexperience@n-tech-es.com\n'+
     'n-tech-es.com';
-  var fd=new FormData();
-  fd.append('email',email);
-  fd.append('_replyto',email);
-  if(name)fd.append('name',name);
-  fd.append('_subject','Your Solar Worksheet Results — '+t.label+' ('+sc+'/15)');
-  fd.append('_autoresponse',autoMsg);
-  fd.append('Score',sc+'/15 — '+t.label);
-  fd.append('Monthly Bill','~$'+S.billAmt+'/month');
-  fd.append('Roof Direction',S.dir!==null?dirLabels[S.dir]:'—');
-  fd.append('Shade',S.shade!==null?shadeLabels[S.shade]:'—');
-  fd.append('Roof Age',S.age!==null?ageLabels[S.age]:'—');
-  fd.append('Owns Home',S.own?'Yes':'No');
-  fd.append('Planning to Stay',S.stay!==null?stayLabels[S.stay]:'N/A');
-  fd.append('_captcha','false');
-  fetch('https://formsubmit.co/ajax/customerexperience@n-tech-es.com',{method:'POST',body:fd}).catch(function(){});
+  var f=document.getElementById('ntec-customer-email-form');
+  document.getElementById('nce-email').value=email;
+  document.getElementById('nce-replyto').value=email;
+  document.getElementById('nce-subject').value='Your Solar Worksheet Results — '+t.label+' ('+sc+'/15)';
+  document.getElementById('nce-autoresponse').value=autoMsg;
+  document.getElementById('nce-score').value=sc+'/15 — '+t.label;
+  document.getElementById('nce-bill').value='~$'+S.billAmt+'/month';
+  document.getElementById('nce-dir').value=S.dir!==null?dirLabels[S.dir]:'—';
+  document.getElementById('nce-shade').value=S.shade!==null?shadeLabels[S.shade]:'—';
+  document.getElementById('nce-age').value=S.age!==null?ageLabels[S.age]:'—';
+  document.getElementById('nce-own').value=S.own?'Yes':'No';
+  document.getElementById('nce-stay').value=S.stay!==null?stayLabels[S.stay]:'N/A';
+  f.submit();
 }
 </script>
 </body>
