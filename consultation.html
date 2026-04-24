@@ -885,12 +885,8 @@
     function updateSubmitSummary() {
         var first = document.getElementById('firstName').value;
         var last = document.getElementById('lastName').value;
-        var city = document.getElementById('city').value;
         var nameEl = document.getElementById('submitName');
-        var parts = [];
-        if (first || last) parts.push(first + ' ' + last);
-        if (city) parts.push(city);
-        nameEl.textContent = parts.join(' — ');
+        nameEl.textContent = (first + ' ' + last).trim();
     }
 
     // Hamburger nav
