@@ -86,20 +86,7 @@
         .ws-sep{border:none;border-top:1px solid #eee;margin:1.5rem 0;}
         .ws-sub-label{font-size:0.8rem;font-weight:700;color:var(--text-gray);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.75rem;}
         .rent-warn{display:none;background:#fff3f3;border-left:3px solid #e53e3e;border-radius:0 8px 8px 0;padding:0.75rem 1rem;margin-top:1rem;font-size:0.84rem;color:#c0392b;line-height:1.5;}
-        .email-gate-card{background:linear-gradient(135deg,#1a3a1a 0%,#2D6A4F 100%);border-radius:16px;padding:2.5rem 2rem;color:white;margin-bottom:1.5rem;text-align:center;display:none;}
-        .eg-score-wrap{display:flex;align-items:baseline;justify-content:center;gap:0.3rem;margin-bottom:0.25rem;}
-        .eg-score-big{font-family:'Cabinet Grotesk','Archivo',sans-serif;font-weight:900;font-size:4rem;color:#52B788;line-height:1;}
-        .eg-score-of{font-size:1.4rem;color:rgba(255,255,255,0.55);font-weight:700;}
-        .eg-score-label{font-size:0.75rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1.5rem;}
-        .eg-head{font-size:1.45rem;color:white;margin-bottom:0.6rem;}
-        .eg-sub{font-size:0.9rem;color:rgba(255,255,255,0.72);line-height:1.65;max-width:400px;margin:0 auto;}
-        .eg-input{width:100%;padding:0.85rem 1rem;border:2px solid rgba(255,255,255,0.2);border-radius:10px;font-size:0.97rem;font-family:inherit;background:rgba(255,255,255,0.1);color:white;outline:none;margin-top:1.25rem;transition:border-color 0.2s;}
-        .eg-input::placeholder{color:rgba(255,255,255,0.4);}
-        .eg-input:focus{border-color:#52B788;}
-        .eg-btn{width:100%;margin-top:0.75rem;background:#52B788;color:white;border:none;border-radius:10px;padding:0.95rem;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:background 0.2s;}
-        .eg-btn:hover{background:#3d9e72;}
-        .eg-btn:disabled{opacity:0.6;cursor:not-allowed;}
-        .eg-privacy{font-size:0.72rem;color:rgba(255,255,255,0.3);margin-top:0.85rem;}
+
         .calc-card{background:linear-gradient(135deg,#1a3a1a 0%,#2D6A4F 100%);border-radius:16px;padding:2rem;color:white;margin-bottom:1.5rem;}
         .calc-title{font-size:1.1rem;font-weight:700;color:white;margin-bottom:0.35rem;}
         .calc-note{font-size:0.79rem;color:rgba(255,255,255,0.6);margin-bottom:1.5rem;}
@@ -288,23 +275,6 @@
     <div class="calc-row"><span class="calc-label">Estimated payback period</span><span class="calc-val big" id="c-back">—</span></div>
   </div>
 
-  <!-- Email Gate -->
-  <div class="email-gate-card" id="email-gate">
-    <div class="eg-score-wrap">
-      <span class="eg-score-big" id="eg-score">—</span>
-      <span class="eg-score-of">/ 15</span>
-    </div>
-    <div class="eg-score-label">Your worksheet score</div>
-    <h3 class="eg-head">Your results are ready.</h3>
-    <p class="eg-sub">Enter your email to see your personalized recommendation — we'll send a copy to your inbox too.</p>
-    <form id="eg-form" onsubmit="submitEmail(event)">
-      <input type="text" name="_honey" style="display:none;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off" id="eg-honey">
-      <input type="email" id="eg-email" placeholder="your@email.com" required class="eg-input">
-      <button type="submit" id="eg-btn" class="eg-btn">See My Results →</button>
-    </form>
-    <p class="eg-privacy">No spam. Unsubscribe anytime.</p>
-  </div>
-
   <!-- Results -->
   <div class="results-card" id="results">
     <div class="result-tier" id="r-tier">—</div>
@@ -460,14 +430,6 @@ function getTierData(sc){
 function check(){
   if(!allDone())return;
   var sc=score();
-  document.getElementById('eg-score').textContent=sc;
-  var gate=document.getElementById('email-gate');
-  gate.style.display='block';
-  setTimeout(function(){gate.scrollIntoView({behavior:'smooth',block:'start'});},300);
-}
-
-function revealResults(){
-  var sc=score();
   var t=getTierData(sc);
   var r=document.getElementById('results');
   document.getElementById('r-tier').textContent=t.label;
@@ -480,46 +442,40 @@ function revealResults(){
   cta.href=t.href;
   r.classList.add('show');
   setTimeout(function(){r.scrollIntoView({behavior:'smooth',block:'start'});},300);
+  var wsEmail=sessionStorage.getItem('ntec_ws_email');
+  if(wsEmail)sendResultsEmail(wsEmail,sc,t);
 }
 
-function submitEmail(e){
-  e.preventDefault();
-  var btn=document.getElementById('eg-btn');
-  var email=document.getElementById('eg-email').value;
-  btn.textContent='Sending...';
-  btn.disabled=true;
-  var sc=score();
-  var t=getTierData(sc);
-  var dirLabels=['North/Unsure','East','West','South'];
+function sendResultsEmail(email,sc,t){
+  var name=sessionStorage.getItem('ntec_ws_name')||'';
+  var dirLabels=['—','East','West','South'];
   var shadeLabels=['Heavy shade','Some shade','Minimal shade'];
   var ageLabels=['Over 20 years','10–20 years','Under 10 years'];
   var stayLabels=['Moving soon','Unsure','5+ years'];
-  var autoMsg=
+  var greeting=name?'Hi '+name+',\n\n':'Hi,\n\n';
+  var autoMsg=greeting+
     'Here are your N-Tech Solar Decision Worksheet results:\n\n'+
     'Score: '+sc+'/15 — '+t.label+'\n\n'+
     t.head+'\n\n'+
     t.body+'\n\n'+
-    'Your answers:\n'+
+    'Your inputs:\n'+
     '• Monthly bill: ~$'+S.billAmt+'/month\n'+
     '• Roof direction: '+(S.dir!==null?dirLabels[S.dir]:'—')+'\n'+
     '• Shade: '+(S.shade!==null?shadeLabels[S.shade]:'—')+'\n'+
     '• Roof age: '+(S.age!==null?ageLabels[S.age]:'—')+'\n'+
     '• Owns home: '+(S.own?'Yes':'No')+'\n'+
     '• Planning to stay: '+(S.stay!==null?stayLabels[S.stay]:'N/A')+'\n\n'+
-    'Ready to see the real numbers for your specific home?\n'+
+    'Ready to see real numbers for your specific home?\n'+
     'Book a free energy consultation: https://www.n-tech-es.com/consultation\n\n'+
     'No pressure. No obligation. Just honest numbers.\n\n'+
     '— N-Tech Energy Solutions\n'+
     '(214) 267-9372 | customerexperience@n-tech-es.com\n'+
     'n-tech-es.com';
-  function done(){
-    document.getElementById('email-gate').style.display='none';
-    revealResults();
-  }
   var fd=new FormData();
   fd.append('email',email);
   fd.append('_replyto',email);
-  fd.append('_subject','Solar Worksheet Results — '+t.label+' ('+sc+'/15)');
+  if(name)fd.append('name',name);
+  fd.append('_subject','Your Solar Worksheet Results — '+t.label+' ('+sc+'/15)');
   fd.append('_autoresponse',autoMsg);
   fd.append('Score',sc+'/15 — '+t.label);
   fd.append('Monthly Bill','~$'+S.billAmt+'/month');
@@ -529,14 +485,7 @@ function submitEmail(e){
   fd.append('Owns Home',S.own?'Yes':'No');
   fd.append('Planning to Stay',S.stay!==null?stayLabels[S.stay]:'N/A');
   fd.append('_captcha','false');
-  fd.append('_honey',document.getElementById('eg-honey').value||'');
-  var controller=new AbortController();
-  var timer=setTimeout(function(){controller.abort();},10000);
-  fetch('https://formsubmit.co/ajax/customerexperience@n-tech-es.com',{
-    method:'POST',body:fd,signal:controller.signal
-  })
-  .then(function(){clearTimeout(timer);done();})
-  .catch(function(){clearTimeout(timer);done();});
+  fetch('https://formsubmit.co/ajax/customerexperience@n-tech-es.com',{method:'POST',body:fd}).catch(function(){});
 }
 </script>
 </body>

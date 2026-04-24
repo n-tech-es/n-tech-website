@@ -382,8 +382,8 @@
     <div id="ntec-popup-success-view" style="display:none;text-align:center;padding:1rem 0;">
       <div style="margin-bottom:1rem;animation:ntecSpin 0.6s ease-out;"><img src="images/logo.webp" alt="N-Tech Energy Solutions" style="width:64px;height:64px;border-radius:50%;object-fit:cover;box-shadow:0 4px 16px rgba(0,0,0,0.12);"></div>
       <h3 style="font-family:'Cabinet Grotesk','Archivo',sans-serif;font-weight:900;font-size:1.6rem;color:#0A0A0A;margin-bottom:0.75rem;">You're in!</h3>
-      <p style="color:#6C757D;font-size:0.97rem;line-height:1.7;margin-bottom:0.5rem;">Your savings guide is on its way. Real numbers, no pressure — that's how we do everything at N-Tech.</p>
-      <p style="color:#52B788;font-weight:700;font-size:0.9rem;">Solutions designed for the Texas sun</p>
+      <p style="color:#6C757D;font-size:0.97rem;line-height:1.7;margin-bottom:0.5rem;">Take 2 minutes to find out if solar makes sense for your home.</p>
+      <a href="solar-decision-worksheet.html" style="display:inline-block;background:#52B788;color:white;padding:0.7rem 1.5rem;border-radius:8px;font-weight:700;font-size:0.9rem;text-decoration:none;margin-top:0.25rem;">Take the Solar Worksheet →</a>
     </div>
   </div>
 </div>
@@ -435,9 +435,10 @@ window.addEventListener('load', function() {
     var timer = setTimeout(function() { controller.abort(); }, 10000);
     function showSuccess() {
       clearTimeout(timer);
+      sessionStorage.setItem('ntec_ws_email', email);
+      sessionStorage.setItem('ntec_ws_name', name);
       document.getElementById('ntec-popup-form-view').style.display = 'none';
       document.getElementById('ntec-popup-success-view').style.display = 'block';
-      setTimeout(ntecClosePopup, 5000);
     }
     var fd = new FormData();
     fd.append('name', name);
