@@ -455,7 +455,7 @@ function sendResultsEmail(email,sc,t){
   var stayLabels=['Moving soon','Unsure','5+ years'];
   var statusEl=document.getElementById('email-status');
   if(statusEl)statusEl.textContent='Sending results to '+email+'…';
-  emailjs.send('service_nur5gfr','template_047kyrs',{
+  emailjs.send('service_co9hpfk','template_047kyrs',{
     to_email: email,
     score: sc+'/15',
     tier: t.label,
