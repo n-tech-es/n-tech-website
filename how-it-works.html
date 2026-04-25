@@ -52,6 +52,7 @@
             --text-gray: #6C757D;
         }
         
+        html { overflow-x: hidden; }
         * {
             margin: 0;
             padding: 0;
@@ -526,6 +527,13 @@
         @media (max-width: 480px) {
             .page-hero h1 {
             font-family: 'Cabinet Grotesk', 'Archivo', sans-serif; font-size: 1.6rem; }
+        }
+    
+        /* iPad / tablet nav fix — hamburger at ≤1024px */
+        @media (max-width: 1024px) {
+            .nav-links { display: none !important; }
+            .nav-cta { display: none !important; }
+            .hamburger { display: flex !important; }
         }
     </style>
     <script type="application/ld+json">

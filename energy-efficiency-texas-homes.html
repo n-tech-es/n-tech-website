@@ -152,6 +152,14 @@
             .data-table { display: block; overflow-x: auto; font-size: 0.82rem; }
             .data-table th, .data-table td { padding: 0.5rem 0.65rem; }
         }
+    
+        html { overflow-x: hidden; }
+        /* iPad / tablet nav fix — hamburger at ≤1024px */
+        @media (max-width: 1024px) {
+            .nav-links { display: none !important; }
+            .nav-cta { display: none !important; }
+            .hamburger { display: flex !important; }
+        }
     </style>
 
     <script type="application/ld+json">
