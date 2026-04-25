@@ -195,6 +195,14 @@
             .founding-hero h1 { font-size: 1.8rem; }
             .steps-row { grid-template-columns: 1fr; }
         }
+    
+        html { overflow-x: hidden; }
+        /* iPad / tablet nav fix — hamburger at ≤1024px */
+        @media (max-width: 1024px) {
+            .nav-links { display: none !important; }
+            .nav-cta { display: none !important; }
+            .hamburger { display: flex !important; }
+        }
     </style>
     <script type="application/ld+json">
     {

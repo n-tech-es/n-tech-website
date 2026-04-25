@@ -142,6 +142,14 @@
             .data-table { display: block; overflow-x: auto; font-size: 0.82rem; }
         }
         @media (max-width: 480px) { .hero-content h1 { font-size: 1.4rem; } }
+    
+        html { overflow-x: hidden; }
+        /* iPad / tablet nav fix — hamburger at ≤1024px */
+        @media (max-width: 1024px) {
+            .nav-links { display: none !important; }
+            .nav-cta { display: none !important; }
+            .hamburger { display: flex !important; }
+        }
     </style>
     <script type="application/ld+json">
     {

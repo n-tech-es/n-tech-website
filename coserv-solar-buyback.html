@@ -130,6 +130,14 @@
         .mobile-cta { margin-top: 1.25rem; text-align: center; display: block; }
         @media (max-width: 900px) { .content-container { grid-template-columns: 1fr; } .sidebar { position: static; } }
         @media (max-width: 768px) { .nav-links { display: none; } .nav-cta { display: none; } .hamburger { display: flex; } .article-hero { height: 320px; } .hero-content h1 { font-size: 1.7rem; } .data-table { display: block; overflow-x: auto; font-size: 0.82rem; } .data-table th, .data-table td { padding: 0.5rem 0.65rem; } }
+    
+        html { overflow-x: hidden; }
+        /* iPad / tablet nav fix — hamburger at ≤1024px */
+        @media (max-width: 1024px) {
+            .nav-links { display: none !important; }
+            .nav-cta { display: none !important; }
+            .hamburger { display: flex !important; }
+        }
     </style>
 </head>
 <body>

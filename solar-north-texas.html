@@ -108,6 +108,13 @@
             font-family: 'Cabinet Grotesk', 'Archivo', sans-serif; font-size: 2rem; } .hero-stats { grid-template-columns: 1fr; gap: 1.5rem; } .step { grid-template-columns: 1fr; } .step-number { width: 55px; height: 55px; font-size: 1.4rem; } }
         @media (max-width: 480px) { .page-hero h1 {
             font-family: 'Cabinet Grotesk', 'Archivo', sans-serif; font-size: 1.4rem; } }
+    
+        /* iPad / tablet nav fix — hamburger at ≤1024px */
+        @media (max-width: 1024px) {
+            .nav-links { display: none !important; }
+            .nav-cta { display: none !important; }
+            .hamburger { display: flex !important; }
+        }
     </style>
       <script type="application/ld+json">
   {

@@ -131,6 +131,14 @@
         .social-link:hover{color:var(--accent-green);}
         .social-link svg{width:20px;height:20px;fill:currentColor;flex-shrink:0;}
         @media(max-width:600px){.ws-hero{padding:3.5rem 1.25rem 3rem;}.ws-container{padding:1.5rem 1rem 4rem;}.ws-step{padding:1.5rem 1.25rem;}.option-grid{grid-template-columns:1fr 1fr;}.results-card{padding:1.75rem 1.25rem;}.result-h2{font-size:1.3rem;}.how-sep{display:none;}.how-strip-inner{flex-direction:column;align-items:flex-start;gap:0.9rem;}}
+    
+        html { overflow-x: hidden; }
+        /* iPad / tablet nav fix — hamburger at ≤1024px */
+        @media (max-width: 1024px) {
+            .nav-links { display: none !important; }
+            .nav-cta { display: none !important; }
+            .hamburger { display: flex !important; }
+        }
     </style>
 </head>
 <body>

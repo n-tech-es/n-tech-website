@@ -182,6 +182,14 @@
         @media (max-width: 768px) { .mission-grid { grid-template-columns: 1fr; gap: 3rem; } .model-grid { grid-template-columns: 1fr; } .about-hero h1 { font-size: 2.5rem; } }
         @media (max-width: 480px) { .about-hero h1 { font-size: 1.7rem; } .page-hero h1 {
             font-family: 'Cabinet Grotesk', 'Archivo', sans-serif; font-size: 1.6rem; } }
+    
+        html { overflow-x: hidden; }
+        /* iPad / tablet nav fix — hamburger at ≤1024px */
+        @media (max-width: 1024px) {
+            .nav-links { display: none !important; }
+            .nav-cta { display: none !important; }
+            .hamburger { display: flex !important; }
+        }
     </style>
     <script type="application/ld+json">
     {

@@ -121,6 +121,14 @@
             font-family: 'Cabinet Grotesk', 'Archivo', sans-serif; font-size:2rem; } .step { grid-template-columns:1fr; } }
         @media (max-width:480px) { .page-hero h1 {
             font-family: 'Cabinet Grotesk', 'Archivo', sans-serif; font-size:1.5rem; } .hero-stats { grid-template-columns:repeat(2,1fr); } }
+    
+        html { overflow-x: hidden; }
+        /* iPad / tablet nav fix — hamburger at ≤1024px */
+        @media (max-width: 1024px) {
+            .nav-links { display: none !important; }
+            .nav-cta { display: none !important; }
+            .hamburger { display: flex !important; }
+        }
     </style>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"N-Tech Energy Solutions LLC","description":"Home energy audits in Paradise, TX starting at $299.","url":"https://www.n-tech-es.com","telephone":"+12142679372","email":"customerexperience@n-tech-es.com","address":{"@type":"PostalAddress","addressLocality":"Chico","addressRegion":"TX","postalCode":"76431","addressCountry":"US"},"areaServed":{"@type":"City","name":"Paradise, Texas"},"serviceType":"Home Energy Audit"}</script>
 </head>
