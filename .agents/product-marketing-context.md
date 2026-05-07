@@ -116,7 +116,7 @@ These are the core messages to reinforce across all content:
 
 Full pricing at: pricing.html
 Founding customer offer (locked pricing, first 25 customers):(https://www.n-tech-es.com/founding-offer-form)
-
+$299 energy audit pricing
 ---
 
 ## 7. Common Objections & Responses
@@ -127,7 +127,7 @@ Founding customer offer (locked pricing, first 25 customers):(https://www.n-tech
 | "I've heard shady solar companies are everywhere." | We're not door-to-door, no commission salespeople. We tell you the real cost upfront. |
 | "I'm not sure if solar works well in Texas." | North Texas averages 230+ sunny days/year. We can show you actual production estimates for your roof. |
 | "I'm worried about incentives going away." | We don't make promises about incentives — they change. We price based on what's real today. |
-| "What if I'm not ready for solar?" | Energy audit is the starting point. $0 commitment, just information. |
+| "What if I'm not ready for solar?" | Energy audit is an another starting point. $299. |
 | "Are you a real local company?" | Chamber of Commerce member. Our installer partner is based in Chico. |
 
 ---
@@ -165,7 +165,7 @@ Post in groups for: Wise County, Parker County, Jack County, Montague County, an
 - Social proof / behind-the-scenes (as projects accumulate)
 - Dry humor / brand personality posts
 - Local community references (weather, utility rates, specific county callouts)
-- CTAs to free consultation form (tally.so/r/3jdYeQ)
+- CTAs to free consultation form (https://www.n-tech-es.com/consultation)
 
 ### Scheduling Tool
 Buffer (Facebook, Instagram, Google Business, TikTok)
