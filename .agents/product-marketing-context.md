@@ -14,13 +14,13 @@
 
 ### What We Do (Equal Priority — Do NOT treat solar as primary)
 
-**Solar Contracting:** Residential solar design, sales, and project coordination. Partnered with licensed Texas installers (currently Will Power Electric LLC, operating within a 40-mile radius of Chico TX 76431). Asset-light model — we do not own equipment or employ installers directly.
+**Solar Contracting:** Residential solar design, sales, and project coordination. Partnered with licensed Texas installers (currently Will Power Electric LLC, operating within a 60-mile radius of Chico TX 76431). Asset-light model — we do not own equipment or employ installers directly.
 
 **Energy Efficiency:** Home energy audits, efficiency consultation, and upgrade recommendations. Uses freelance energy auditors.
 
 **Business model inspiration:** Mint Mobile — lean, remote, transparent, no-fluff. We coordinate expert partners, not a field crew.
 
-**Stage:** Early — actively building first 25 founding customers (founding offer active at tally.so/r/zxXr4E).
+**Stage:** Early — actively building first 25 founding customers (founding offer active at https://www.n-tech-es.com/founding-offer-form).
 
 **Credibility signals:** Chamber of Commerce member (Chico, TX).
 
@@ -31,12 +31,12 @@
 **Primary counties:** Wise, Parker, Jack, Montague — within 40 miles of Chico TX 76431 (60-mile max).
 
 **Cities by county:**
-- **Wise County:** Chico, Decatur, Bridgeport, Boyd, Alvord, Rhome, Newark, Paradise
-- **Parker County:** Weatherford, Aledo, Azle, Springtown, Willow Park
-- **Jack County:** Jacksboro, Perrin
-- **Montague County:** Bowie, Nocona, Montague
+- **Wise County:** Chico, Decatur, Bridgeport, Boyd, Alvord, Rhome, Newark, Paradise and more
+- **Parker County:** Weatherford, Aledo, Azle, Springtown, Willow Park and more
+- **Jack County:** Jacksboro, Perrin and more
+- **Montague County:** Bowie, Nocona, Montague and more
 
-**Grid territory:** Oncor Electric Delivery (relevant for net metering, billing, interconnection).
+**Grid territory:** Oncor Electric Delivery (relevant for net metering, billing, interconnection) and whatever utilities are local to the area.
 
 ---
 
@@ -112,10 +112,10 @@ These are the core messages to reinforce across all content:
 | Starter | $2.40/watt | Entry tier |
 | Standard | $2.50/watt | |
 | Premium | $2.70/watt | |
-| Power Plus | $2.90/watt | Full-featured |
+| Power Plus | $2.90/watt | Full-featured | Battery Storage included
 
 Full pricing at: pricing.html
-Founding customer offer (locked pricing, first 25 customers): tally.so/r/zxXr4E
+Founding customer offer (locked pricing, first 25 customers):(https://www.n-tech-es.com/founding-offer-form)
 
 ---
 
@@ -194,8 +194,12 @@ Each post can yield: 1 Facebook educational post, 1 TikTok/Reel idea, 1 "hot tak
 
 | Tool | Use |
 |------|-----|
-| Tally (consultation) | tally.so/r/3jdYeQ |
-| Tally (founding offer) | tally.so/r/zxXr4E |
+| Free Energy Consultation (consultation) | (https://www.n-tech-es.com/consultation) |
+| Founding Customer Offer (founding offer) | (https://www.n-tech-es.com/founding-offer-form) |
+| Solar Decision Worksheet (pop-up) | (https://www.n-tech-es.com/solar-decision-worksheet) |
+| FormSubmit | Consultation form → nnwosu@n-tech-es.com |
+| FormSubmit | Founding Offer form → customerexperience@n-tech-es.com |
+| FormSubmit | Pop-up → customerexperience@n-tech-es.com |
 | FormSubmit | Contact form → customerexperience@n-tech-es.com |
 | OpenSolar | Solar project management |
 | Notion | Business HQ |
@@ -210,7 +214,7 @@ Each post can yield: 1 Facebook educational post, 1 TikTok/Reel idea, 1 "hot tak
 - **Customer email:** customerexperience@n-tech-es.com
 - **Owner email:** nnwosu@n-tech-es.com
 - **Website:** n-tech-es.com
-- **Hours:** Mon–Fri 8am–7pm · Saturday 9am–4pm
+- **Hours:** Mon–Fri 8am–4pm · Saturday 9am–12pm
 
 ---
 
@@ -228,7 +232,7 @@ Each post can yield: 1 Facebook educational post, 1 TikTok/Reel idea, 1 "hot tak
 | Heading Font | Archivo, weight 900 |
 | Body Font | DM Sans |
 
-Logo file: `NTECH_ENERGY_SOLNS__LLC_LOGO.png` (green N-bolt icon + wordmark)
+Logo file: `logo.JPG` (green N-bolt icon)
 Website logo: `images/logo.webp`
 
 ---
@@ -244,10 +248,11 @@ Website logo: `images/logo.webp`
 | About | about.html | Story, mission, values |
 | Contact | contact.html | FormSubmit contact form |
 | Founding Offer | founding-offer.html | Founding customer promo page |
+| Refer & Earn| referral.html | Referral and Partner Program |
 | Energy Audit | energy-audit.html | Home energy audit service page |
 | Blog | blog.html | Posts and educational content |
 
-Primary CTA: "Free Energy Consultation" → tally.so/r/3jdYeQ
+Primary CTA: "Free Energy Consultation" → https://www.n-tech-es.com/consultation
 Use relative links in HTML (e.g. `pricing.html` not `/pricing.html`).
 
 ---
